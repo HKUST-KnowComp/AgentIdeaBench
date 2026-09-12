@@ -1,0 +1,898 @@
+{
+  "azure/anthropic/claude-haiku-4-5": {
+    "short": "claude-haiku-4-5",
+    "closed": true,
+    "static_total": 5.203409090909091,
+    "active_total": 5.374621212121212,
+    "gain": 0.17121212121212093,
+    "active_dims": {
+      "originality": 5.1083333333333325,
+      "feasibility": 5.8875,
+      "clarity": 6.3166666666666655,
+      "impact": 5.041666666666667,
+      "specificity": 5.470833333333333
+    }
+  },
+  "azure/anthropic/claude-opus-4-5": {
+    "short": "claude-opus-4-5",
+    "closed": true,
+    "static_total": 5.5181818181818185,
+    "active_total": 5.617424242424242,
+    "gain": 0.09924242424242369,
+    "active_dims": {
+      "originality": 5.183333333333333,
+      "feasibility": 6.4833333333333325,
+      "clarity": 6.7375,
+      "impact": 5.116666666666667,
+      "specificity": 6.004166666666667
+    }
+  },
+  "azure/anthropic/claude-opus-4-6": {
+    "short": "claude-opus-4-6",
+    "closed": true,
+    "static_total": 5.796969696969697,
+    "active_total": 6.033411033411034,
+    "gain": 0.23644133644133714,
+    "active_dims": {
+      "originality": 5.675213675213675,
+      "feasibility": 6.696581196581196,
+      "clarity": 7.222222222222222,
+      "impact": 5.517094017094018,
+      "specificity": 6.500000000000001
+    }
+  },
+  "azure/anthropic/claude-opus-4-7": {
+    "short": "claude-opus-4-7",
+    "closed": true,
+    "static_total": 5.828787878787879,
+    "active_total": 6.697746697746699,
+    "gain": 0.86895881895882,
+    "active_dims": {
+      "originality": 6.705128205128205,
+      "feasibility": 6.487179487179487,
+      "clarity": 7.696581196581196,
+      "impact": 6.294871794871795,
+      "specificity": 7.2991452991453
+    }
+  },
+  "azure/anthropic/claude-opus-4-8": {
+    "short": "claude-opus-4-8",
+    "closed": true,
+    "static_total": 5.782954545454546,
+    "active_total": 6.785795454545453,
+    "gain": 1.0028409090909074,
+    "active_dims": {
+      "originality": 6.8083333333333345,
+      "feasibility": 6.83125,
+      "clarity": 7.595833333333334,
+      "impact": 6.304166666666667,
+      "specificity": 7.239583333333333
+    }
+  },
+  "azure/anthropic/claude-opus-5": {
+    "short": "claude-opus-5",
+    "closed": true,
+    "static_total": 6.886363636363638,
+    "active_total": 7.135416666666666,
+    "gain": 0.2490530303030285,
+    "active_dims": {
+      "originality": 7.3,
+      "feasibility": 6.770833333333333,
+      "clarity": 7.872916666666667,
+      "impact": 6.747916666666666,
+      "specificity": 7.63125
+    }
+  },
+  "azure/anthropic/claude-sonnet-4-5": {
+    "short": "claude-sonnet-4-5",
+    "closed": true,
+    "static_total": 5.023751023751024,
+    "active_total": 5.500398724082935,
+    "gain": 0.4766477003319105,
+    "active_dims": {
+      "originality": 5.280701754385964,
+      "feasibility": 5.828947368421052,
+      "clarity": 6.504385964912281,
+      "impact": 5.184210526315789,
+      "specificity": 5.666666666666667
+    }
+  },
+  "azure/anthropic/claude-sonnet-4-6": {
+    "short": "claude-sonnet-4-6",
+    "closed": true,
+    "static_total": 5.360227272727274,
+    "active_total": 5.837995337995338,
+    "gain": 0.47776806526806403,
+    "active_dims": {
+      "originality": 5.555555555555555,
+      "feasibility": 6.102564102564103,
+      "clarity": 7.094017094017095,
+      "impact": 5.461538461538461,
+      "specificity": 6.311965811965812
+    }
+  },
+  "azure/anthropic/claude-sonnet-5": {
+    "short": "claude-sonnet-5",
+    "closed": true,
+    "static_total": 6.051136363636364,
+    "active_total": 6.662121212121212,
+    "gain": 0.6109848484848479,
+    "active_dims": {
+      "originality": 6.697916666666667,
+      "feasibility": 6.516666666666666,
+      "clarity": 7.59375,
+      "impact": 6.21875,
+      "specificity": 7.208333333333334
+    }
+  },
+  "azure/openai/gpt-4.1": {
+    "short": "gpt-4.1",
+    "closed": true,
+    "static_total": 4.923863636363636,
+    "active_total": 4.703030303030303,
+    "gain": -0.22083333333333321,
+    "active_dims": {
+      "originality": 3.795833333333333,
+      "feasibility": 6.6208333333333345,
+      "clarity": 5.883333333333334,
+      "impact": 4.258333333333334,
+      "specificity": 4.65
+    }
+  },
+  "azure/openai/gpt-4.1-mini": {
+    "short": "gpt-4.1-mini",
+    "closed": true,
+    "static_total": 4.915151515151515,
+    "active_total": 4.258712121212121,
+    "gain": -0.6564393939393938,
+    "active_dims": {
+      "originality": 3.1208333333333336,
+      "feasibility": 6.625,
+      "clarity": 5.5166666666666675,
+      "impact": 3.7791666666666672,
+      "specificity": 4.258333333333334
+    }
+  },
+  "azure/openai/gpt-4o": {
+    "short": "gpt-4o",
+    "closed": true,
+    "static_total": 4.710227272727273,
+    "active_total": 4.369696969696969,
+    "gain": -0.3405303030303042,
+    "active_dims": {
+      "originality": 3.3958333333333335,
+      "feasibility": 6.620833333333333,
+      "clarity": 5.470833333333333,
+      "impact": 3.875,
+      "specificity": 4.145833333333333
+    }
+  },
+  "azure/openai/gpt-4o-mini": {
+    "short": "gpt-4o-mini",
+    "closed": true,
+    "static_total": 4.092424242424242,
+    "active_total": 3.7643939393939396,
+    "gain": -0.32803030303030223,
+    "active_dims": {
+      "originality": 2.5791666666666666,
+      "feasibility": 6.6625,
+      "clarity": 4.758333333333333,
+      "impact": 3.2,
+      "specificity": 3.4083333333333337
+    }
+  },
+  "azure/openai/gpt-5": {
+    "short": "gpt-5",
+    "closed": true,
+    "static_total": 6.550378787878787,
+    "active_total": 6.39810606060606,
+    "gain": -0.15227272727272734,
+    "active_dims": {
+      "originality": 6.2875,
+      "feasibility": 6.458333333333334,
+      "clarity": 7.5125,
+      "impact": 5.9125,
+      "specificity": 7.0625
+    }
+  },
+  "azure/openai/gpt-5-mini": {
+    "short": "gpt-5-mini",
+    "closed": true,
+    "static_total": 5.883712121212121,
+    "active_total": 6.375757575757577,
+    "gain": 0.49204545454545556,
+    "active_dims": {
+      "originality": 6.125,
+      "feasibility": 6.7541666666666655,
+      "clarity": 7.4333333333333345,
+      "impact": 5.908333333333333,
+      "specificity": 6.966666666666667
+    }
+  },
+  "azure/openai/gpt-5-nano": {
+    "short": "gpt-5-nano",
+    "closed": true,
+    "static_total": 5.748863636363636,
+    "active_total": 5.359469696969697,
+    "gain": -0.38939393939393874,
+    "active_dims": {
+      "originality": 4.829166666666667,
+      "feasibility": 6.375,
+      "clarity": 6.5125,
+      "impact": 4.916666666666667,
+      "specificity": 5.625
+    }
+  },
+  "azure/openai/gpt-5.1": {
+    "short": "gpt-5.1",
+    "closed": true,
+    "static_total": 5.6625,
+    "active_total": 6.039772727272728,
+    "gain": 0.37727272727272876,
+    "active_dims": {
+      "originality": 5.9,
+      "feasibility": 6.225,
+      "clarity": 6.9,
+      "impact": 5.741666666666667,
+      "specificity": 6.2625
+    }
+  },
+  "azure/openai/gpt-5.2": {
+    "short": "gpt-5.2",
+    "closed": true,
+    "static_total": 6.159848484848484,
+    "active_total": 6.656060606060606,
+    "gain": 0.496212121212122,
+    "active_dims": {
+      "originality": 6.583333333333333,
+      "feasibility": 6.9958333333333345,
+      "clarity": 7.595833333333334,
+      "impact": 6.0625,
+      "specificity": 7.1083333333333325
+    }
+  },
+  "azure/openai/gpt-5.3-chat": {
+    "short": "gpt-5.3-chat",
+    "closed": true,
+    "static_total": 6.223484848484849,
+    "active_total": 6.911742424242425,
+    "gain": 0.688257575757576,
+    "active_dims": {
+      "originality": 6.9125,
+      "feasibility": 7.0625,
+      "clarity": 7.8583333333333325,
+      "impact": 6.3291666666666675,
+      "specificity": 7.408333333333333
+    }
+  },
+  "azure/openai/gpt-5.4": {
+    "short": "gpt-5.4",
+    "closed": true,
+    "static_total": 6.183712121212121,
+    "active_total": 6.623863636363637,
+    "gain": 0.4401515151515163,
+    "active_dims": {
+      "originality": 6.508333333333333,
+      "feasibility": 7.0041666666666655,
+      "clarity": 7.3916666666666675,
+      "impact": 6.145833333333334,
+      "specificity": 6.991666666666667
+    }
+  },
+  "azure/openai/gpt-5.4-mini": {
+    "short": "gpt-5.4-mini",
+    "closed": true,
+    "static_total": 6.061742424242423,
+    "active_total": 6.36060606060606,
+    "gain": 0.2988636363636372,
+    "active_dims": {
+      "originality": 6.2,
+      "feasibility": 6.854166666666666,
+      "clarity": 7.170833333333334,
+      "impact": 5.870833333333334,
+      "specificity": 6.675
+    }
+  },
+  "azure/openai/gpt-5.4-nano": {
+    "short": "gpt-5.4-nano",
+    "closed": true,
+    "static_total": 5.720454545454546,
+    "active_total": 5.819318181818182,
+    "gain": 0.09886363636363615,
+    "active_dims": {
+      "originality": 5.495833333333334,
+      "feasibility": 6.6375,
+      "clarity": 6.766666666666666,
+      "impact": 5.2875,
+      "specificity": 6.125
+    }
+  },
+  "azure/openai/gpt-5.5": {
+    "short": "gpt-5.5",
+    "closed": true,
+    "static_total": 6.696969696969697,
+    "active_total": 6.6833333333333345,
+    "gain": -0.01363636363636278,
+    "active_dims": {
+      "originality": 6.7,
+      "feasibility": 6.6291666666666655,
+      "clarity": 7.5125,
+      "impact": 6.275,
+      "specificity": 7.120833333333333
+    }
+  },
+  "azure/openai/gpt-5.6-luna": {
+    "short": "gpt-5.6-luna",
+    "closed": true,
+    "static_total": 6.6954545454545435,
+    "active_total": 6.42840909090909,
+    "gain": -0.26704545454545325,
+    "active_dims": {
+      "originality": 6.283333333333333,
+      "feasibility": 6.6291666666666655,
+      "clarity": 7.408333333333333,
+      "impact": 6.0,
+      "specificity": 6.9125
+    }
+  },
+  "azure/openai/gpt-5.6-sol": {
+    "short": "gpt-5.6-sol",
+    "closed": true,
+    "static_total": 6.9,
+    "active_total": 6.8753787878787875,
+    "gain": -0.02462121212121282,
+    "active_dims": {
+      "originality": 6.9333333333333345,
+      "feasibility": 6.720833333333334,
+      "clarity": 7.775,
+      "impact": 6.404166666666666,
+      "specificity": 7.466666666666667
+    }
+  },
+  "azure/openai/gpt-5.6-terra": {
+    "short": "gpt-5.6-terra",
+    "closed": true,
+    "static_total": 6.857575757575757,
+    "active_total": 6.799242424242425,
+    "gain": -0.05833333333333268,
+    "active_dims": {
+      "originality": 6.808333333333333,
+      "feasibility": 6.7625,
+      "clarity": 7.7125,
+      "impact": 6.316666666666667,
+      "specificity": 7.370833333333333
+    }
+  },
+  "azure/openai/o1": {
+    "short": "o1",
+    "closed": true,
+    "static_total": 4.553787878787879,
+    "active_total": 4.660606060606061,
+    "gain": 0.10681818181818237,
+    "active_dims": {
+      "originality": 4.029166666666667,
+      "feasibility": 6.025,
+      "clarity": 5.741666666666667,
+      "impact": 4.2333333333333325,
+      "specificity": 4.658333333333333
+    }
+  },
+  "azure/openai/o3": {
+    "short": "o3",
+    "closed": true,
+    "static_total": 5.564772727272727,
+    "active_total": 6.058712121212121,
+    "gain": 0.4939393939393941,
+    "active_dims": {
+      "originality": 5.941666666666666,
+      "feasibility": 6.095833333333333,
+      "clarity": 7.379166666666667,
+      "impact": 5.570833333333334,
+      "specificity": 6.595833333333333
+    }
+  },
+  "azure/openai/o3-mini": {
+    "short": "o3-mini",
+    "closed": true,
+    "static_total": 4.836363636363636,
+    "active_total": 4.820454545454545,
+    "gain": -0.01590909090909065,
+    "active_dims": {
+      "originality": 4.2666666666666675,
+      "feasibility": 6.204166666666667,
+      "clarity": 5.55,
+      "impact": 4.4875,
+      "specificity": 4.5375
+    }
+  },
+  "azure/openai/o4-mini": {
+    "short": "o4-mini",
+    "closed": true,
+    "static_total": 5.3946969696969695,
+    "active_total": 5.614772727272728,
+    "gain": 0.22007575757575815,
+    "active_dims": {
+      "originality": 5.308333333333334,
+      "feasibility": 6.116666666666667,
+      "clarity": 6.966666666666667,
+      "impact": 5.05,
+      "specificity": 6.179166666666667
+    }
+  },
+  "deepseek/deepseek-r1-0528": {
+    "short": "deepseek-r1-0528",
+    "closed": false,
+    "static_total": 4.863636363636363,
+    "active_total": 5.302651515151515,
+    "gain": 0.4390151515151519,
+    "active_dims": {
+      "originality": 5.079166666666667,
+      "feasibility": 5.504166666666667,
+      "clarity": 6.4875,
+      "impact": 4.945833333333333,
+      "specificity": 5.679166666666666
+    }
+  },
+  "deepseek/deepseek-v4-flash": {
+    "short": "deepseek-v4-flash",
+    "closed": false,
+    "static_total": 5.092045454545454,
+    "active_total": 5.515151515151516,
+    "gain": 0.42310606060606126,
+    "active_dims": {
+      "originality": 5.141666666666667,
+      "feasibility": 6.158333333333333,
+      "clarity": 6.7041666666666675,
+      "impact": 5.0875,
+      "specificity": 5.816666666666666
+    }
+  },
+  "deepseek/deepseek-v4-pro": {
+    "short": "deepseek-v4-pro",
+    "closed": false,
+    "static_total": 5.323106060606061,
+    "active_total": 5.918181818181818,
+    "gain": 0.5950757575757573,
+    "active_dims": {
+      "originality": 5.791666666666666,
+      "feasibility": 5.9375,
+      "clarity": 7.1375,
+      "impact": 5.525,
+      "specificity": 6.345833333333334
+    }
+  },
+  "google/gemini-2.5-flash": {
+    "short": "gemini-2.5-flash",
+    "closed": true,
+    "static_total": 5.1,
+    "active_total": 5.048863636363636,
+    "gain": -0.05113636363636331,
+    "active_dims": {
+      "originality": 4.529166666666667,
+      "feasibility": 6.070833333333333,
+      "clarity": 6.008333333333333,
+      "impact": 4.783333333333333,
+      "specificity": 4.920833333333333
+    }
+  },
+  "google/gemini-2.5-flash-lite": {
+    "short": "gemini-2.5-flash-lite",
+    "closed": true,
+    "static_total": 4.63219696969697,
+    "active_total": 4.265909090909091,
+    "gain": -0.3662878787878796,
+    "active_dims": {
+      "originality": 3.195833333333333,
+      "feasibility": 6.708333333333334,
+      "clarity": 5.466666666666667,
+      "impact": 3.7041666666666666,
+      "specificity": 4.145833333333334
+    }
+  },
+  "google/gemini-3-flash-preview": {
+    "short": "gemini-3-flash",
+    "closed": true,
+    "static_total": 5.592045454545454,
+    "active_total": 6.287121212121212,
+    "gain": 0.6950757575757578,
+    "active_dims": {
+      "originality": 6.333333333333334,
+      "feasibility": 6.1625,
+      "clarity": 7.120833333333333,
+      "impact": 5.925,
+      "specificity": 6.604166666666667
+    }
+  },
+  "google/gemini-3.1-pro-preview": {
+    "short": "gemini-3.1-pro",
+    "closed": true,
+    "static_total": 5.629924242424242,
+    "active_total": 6.196212121212122,
+    "gain": 0.5662878787878798,
+    "active_dims": {
+      "originality": 6.2,
+      "feasibility": 6.1375,
+      "clarity": 7.1375,
+      "impact": 5.825,
+      "specificity": 6.470833333333334
+    }
+  },
+  "google/gemini-3.5-flash": {
+    "short": "gemini-3.5-flash",
+    "closed": true,
+    "static_total": 5.867424242424241,
+    "active_total": 6.221969696969697,
+    "gain": 0.3545454545454554,
+    "active_dims": {
+      "originality": 6.0875,
+      "feasibility": 6.5125,
+      "clarity": 7.208333333333333,
+      "impact": 5.766666666666667,
+      "specificity": 6.558333333333333
+    }
+  },
+  "google/gemma-2-27b-it": {
+    "short": "gemma-2-27b",
+    "closed": false,
+    "static_total": 4.020833333333334,
+    "active_total": 3.1977272727272728,
+    "gain": -0.8231060606060612,
+    "active_dims": {
+      "originality": 2.2625,
+      "feasibility": 5.604166666666666,
+      "clarity": 3.9041666666666672,
+      "impact": 2.7541666666666664,
+      "specificity": 2.75
+    }
+  },
+  "google/gemma-3-27b-it": {
+    "short": "gemma-3-27b",
+    "closed": false,
+    "static_total": 4.681060606060607,
+    "active_total": 4.822348484848485,
+    "gain": 0.14128787878787818,
+    "active_dims": {
+      "originality": 4.158333333333333,
+      "feasibility": 6.3375,
+      "clarity": 6.091666666666667,
+      "impact": 4.208333333333334,
+      "specificity": 5.020833333333333
+    }
+  },
+  "google/gemma-4-31b-it": {
+    "short": "gemma-4-31b",
+    "closed": false,
+    "static_total": 5.1416666666666675,
+    "active_total": 5.491287878787879,
+    "gain": 0.3496212121212112,
+    "active_dims": {
+      "originality": 5.220833333333333,
+      "feasibility": 6.0458333333333325,
+      "clarity": 6.775,
+      "impact": 4.966666666666667,
+      "specificity": 5.754166666666667
+    }
+  },
+  "meta-llama/llama-3.1-8b-instruct": {
+    "short": "llama-3.1-8b",
+    "closed": false,
+    "static_total": 3.7965909090909093,
+    "active_total": 3.5409090909090906,
+    "gain": -0.2556818181818188,
+    "active_dims": {
+      "originality": 2.645833333333333,
+      "feasibility": 5.6625,
+      "clarity": 4.1083333333333325,
+      "impact": 3.2916666666666665,
+      "specificity": 3.0583333333333336
+    }
+  },
+  "meta-llama/llama-4-maverick": {
+    "short": "llama-4-maverick",
+    "closed": false,
+    "static_total": 4.3375,
+    "active_total": 3.8371212121212124,
+    "gain": -0.500378787878788,
+    "active_dims": {
+      "originality": 2.6333333333333333,
+      "feasibility": 6.870833333333333,
+      "clarity": 4.766666666666667,
+      "impact": 3.233333333333333,
+      "specificity": 3.4666666666666672
+    }
+  },
+  "minimax/minimax-m2.7": {
+    "short": "minimax-m2.7",
+    "closed": false,
+    "static_total": 4.703030303030303,
+    "active_total": 5.326893939393939,
+    "gain": 0.6238636363636356,
+    "active_dims": {
+      "originality": 4.954166666666667,
+      "feasibility": 6.033333333333333,
+      "clarity": 6.475,
+      "impact": 4.9125,
+      "specificity": 5.5
+    }
+  },
+  "mistralai/mistral-medium-3.1": {
+    "short": "mistral-medium-3.1",
+    "closed": false,
+    "static_total": 4.743560606060607,
+    "active_total": 5.36590909090909,
+    "gain": 0.6223484848484837,
+    "active_dims": {
+      "originality": 5.0,
+      "feasibility": 5.820833333333333,
+      "clarity": 6.516666666666666,
+      "impact": 5.079166666666667,
+      "specificity": 5.629166666666666
+    }
+  },
+  "mistralai/mistral-small-24b-instruct-2501": {
+    "short": "mistral-small-24b",
+    "closed": false,
+    "static_total": 4.193560606060606,
+    "active_total": 3.9314393939393937,
+    "gain": -0.2621212121212122,
+    "active_dims": {
+      "originality": 2.875,
+      "feasibility": 6.245833333333333,
+      "clarity": 5.0125,
+      "impact": 3.475,
+      "specificity": 3.8166666666666664
+    }
+  },
+  "mistralai/mistral-small-2603": {
+    "short": "mistral-small-2603",
+    "closed": false,
+    "static_total": 4.606818181818182,
+    "active_total": 5.161742424242425,
+    "gain": 0.5549242424242422,
+    "active_dims": {
+      "originality": 4.654166666666667,
+      "feasibility": 5.933333333333333,
+      "clarity": 6.6,
+      "impact": 4.716666666666667,
+      "specificity": 5.5458333333333325
+    }
+  },
+  "moonshotai/kimi-k2.5": {
+    "short": "kimi-k2.5",
+    "closed": false,
+    "static_total": 4.90530303030303,
+    "active_total": 5.9208333333333325,
+    "gain": 1.0155303030303022,
+    "active_dims": {
+      "originality": 5.8375,
+      "feasibility": 6.004166666666666,
+      "clarity": 6.8583333333333325,
+      "impact": 5.579166666666667,
+      "specificity": 6.175
+    }
+  },
+  "moonshotai/kimi-k2.6": {
+    "short": "kimi-k2.6",
+    "closed": false,
+    "static_total": 5.096969696969697,
+    "active_total": 6.172348484848485,
+    "gain": 1.0753787878787886,
+    "active_dims": {
+      "originality": 6.075,
+      "feasibility": 6.375,
+      "clarity": 7.216666666666666,
+      "impact": 5.7,
+      "specificity": 6.529166666666667
+    }
+  },
+  "qwen/qwen-2.5-72b-instruct": {
+    "short": "qwen-2.5-72b",
+    "closed": false,
+    "static_total": 4.199621212121212,
+    "active_total": 3.9666666666666672,
+    "gain": -0.23295454545454453,
+    "active_dims": {
+      "originality": 2.675,
+      "feasibility": 6.770833333333333,
+      "clarity": 5.333333333333334,
+      "impact": 3.366666666666667,
+      "specificity": 3.958333333333333
+    }
+  },
+  "qwen/qwen-2.5-7b-instruct": {
+    "short": "qwen-2.5-7b",
+    "closed": false,
+    "static_total": 3.9655303030303033,
+    "active_total": 3.6666666666666665,
+    "gain": -0.2988636363636368,
+    "active_dims": {
+      "originality": 2.6208333333333336,
+      "feasibility": 6.116666666666665,
+      "clarity": 4.454166666666667,
+      "impact": 3.2833333333333337,
+      "specificity": 3.3125
+    }
+  },
+  "qwen/qwen3-30b-a3b-instruct-2507": {
+    "short": "qwen3-30b-instruct",
+    "closed": false,
+    "static_total": 4.933712121212121,
+    "active_total": 4.9393939393939394,
+    "gain": 0.005681818181818343,
+    "active_dims": {
+      "originality": 4.4875,
+      "feasibility": 5.645833333333333,
+      "clarity": 6.1708333333333325,
+      "impact": 4.5791666666666675,
+      "specificity": 5.183333333333333
+    }
+  },
+  "qwen/qwen3-32b": {
+    "short": "qwen3-32b",
+    "closed": false,
+    "static_total": 4.534090909090909,
+    "active_total": 4.4378787878787875,
+    "gain": -0.09621212121212164,
+    "active_dims": {
+      "originality": 4.133333333333333,
+      "feasibility": 5.0375,
+      "clarity": 5.3125,
+      "impact": 4.145833333333333,
+      "specificity": 4.458333333333333
+    }
+  },
+  "qwen/qwen3-8b": {
+    "short": "qwen3-8b",
+    "closed": false,
+    "static_total": 4.244696969696969,
+    "active_total": 4.213257575757575,
+    "gain": -0.03143939393939377,
+    "active_dims": {
+      "originality": 3.8416666666666672,
+      "feasibility": 5.095833333333333,
+      "clarity": 4.945833333333333,
+      "impact": 3.9041666666666672,
+      "specificity": 4.129166666666667
+    }
+  },
+  "qwen/qwen3-coder": {
+    "short": "qwen3-coder",
+    "closed": false,
+    "static_total": 4.868939393939394,
+    "active_total": 4.723863636363636,
+    "gain": -0.14507575757575797,
+    "active_dims": {
+      "originality": 3.8208333333333337,
+      "feasibility": 6.5458333333333325,
+      "clarity": 6.154166666666667,
+      "impact": 4.1375,
+      "specificity": 5.020833333333333
+    }
+  },
+  "qwen/qwen3.5-27b": {
+    "short": "qwen3.5-27b",
+    "closed": false,
+    "static_total": 4.713636363636363,
+    "active_total": 5.528787878787878,
+    "gain": 0.8151515151515154,
+    "active_dims": {
+      "originality": 5.2666666666666675,
+      "feasibility": 5.816666666666666,
+      "clarity": 6.6375,
+      "impact": 5.216666666666667,
+      "specificity": 5.8291666666666675
+    }
+  },
+  "qwen/qwen3.5-397b-a17b": {
+    "short": "qwen3.5-397b",
+    "closed": false,
+    "static_total": 5.060984848484848,
+    "active_total": 5.948106060606061,
+    "gain": 0.8871212121212126,
+    "active_dims": {
+      "originality": 5.791666666666666,
+      "feasibility": 6.279166666666666,
+      "clarity": 6.8125,
+      "impact": 5.566666666666667,
+      "specificity": 6.191666666666667
+    }
+  },
+  "qwen/qwen3.5-9b": {
+    "short": "qwen3.5-9b",
+    "closed": false,
+    "static_total": 4.229924242424242,
+    "active_total": 4.868560606060607,
+    "gain": 0.6386363636363646,
+    "active_dims": {
+      "originality": 4.75,
+      "feasibility": 4.895833333333333,
+      "clarity": 6.029166666666667,
+      "impact": 4.533333333333333,
+      "specificity": 5.133333333333334
+    }
+  },
+  "us/azure/openai/gpt-4.1-nano": {
+    "short": "gpt-4.1-nano",
+    "closed": true,
+    "static_total": 4.664015151515152,
+    "active_total": 4.317424242424243,
+    "gain": -0.3465909090909083,
+    "active_dims": {
+      "originality": 3.429166666666667,
+      "feasibility": 6.383333333333333,
+      "clarity": 5.2041666666666675,
+      "impact": 3.9541666666666666,
+      "specificity": 3.9416666666666664
+    }
+  },
+  "xiaomi/mimo-v2.5": {
+    "short": "mimo-v2.5",
+    "closed": false,
+    "static_total": 4.903030303030303,
+    "active_total": 5.4625,
+    "gain": 0.5594696969696971,
+    "active_dims": {
+      "originality": 5.1416666666666675,
+      "feasibility": 6.054166666666667,
+      "clarity": 6.35,
+      "impact": 5.170833333333333,
+      "specificity": 5.55
+    }
+  },
+  "xiaomi/mimo-v2.5-pro": {
+    "short": "mimo-v2.5-pro",
+    "closed": false,
+    "static_total": 5.1068181818181815,
+    "active_total": 5.9147727272727275,
+    "gain": 0.807954545454546,
+    "active_dims": {
+      "originality": 5.633333333333334,
+      "feasibility": 6.4625,
+      "clarity": 6.970833333333334,
+      "impact": 5.458333333333334,
+      "specificity": 6.258333333333333
+    }
+  },
+  "z-ai/glm-4.5-air": {
+    "short": "glm-4.5-air",
+    "closed": false,
+    "static_total": 4.3098484848484855,
+    "active_total": 4.820833333333334,
+    "gain": 0.5109848484848483,
+    "active_dims": {
+      "originality": 4.4875,
+      "feasibility": 5.595833333333333,
+      "clarity": 5.5625,
+      "impact": 4.5875,
+      "specificity": 4.5625
+    }
+  },
+  "z-ai/glm-4.6": {
+    "short": "glm-4.6",
+    "closed": false,
+    "static_total": 4.834090909090909,
+    "active_total": 5.780681818181819,
+    "gain": 0.9465909090909097,
+    "active_dims": {
+      "originality": 5.6375,
+      "feasibility": 6.141666666666667,
+      "clarity": 6.841666666666666,
+      "impact": 5.308333333333334,
+      "specificity": 5.9875
+    }
+  },
+  "z-ai/glm-5.1": {
+    "short": "glm-5.1",
+    "closed": false,
+    "static_total": 5.125757575757577,
+    "active_total": 6.332575757575758,
+    "gain": 1.2068181818181811,
+    "active_dims": {
+      "originality": 6.308333333333333,
+      "feasibility": 6.316666666666667,
+      "clarity": 7.370833333333333,
+      "impact": 5.904166666666667,
+      "specificity": 6.708333333333333
+    }
+  }
+}

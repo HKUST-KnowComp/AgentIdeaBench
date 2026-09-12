@@ -1,0 +1,674 @@
+{
+  "note": "lit8d 3-seed (lit8d_scores_3seed), all scored subdomains (40 per model, nB=nC=40); same recipe as old F1/F3/F0 but new data+critic",
+  "per_model": [
+    {
+      "model": "azure/anthropic/claude-haiku-4-5",
+      "cutoff": 2025.2464065708418,
+      "log_params": null,
+      "static": 5.203409090909091,
+      "active": 5.374621212121212,
+      "nB": 40,
+      "nC": 40
+    },
+    {
+      "model": "azure/anthropic/claude-opus-4-5",
+      "cutoff": 2025.2464065708418,
+      "log_params": null,
+      "static": 5.5181818181818185,
+      "active": 5.617424242424242,
+      "nB": 40,
+      "nC": 40
+    },
+    {
+      "model": "azure/anthropic/claude-opus-4-6",
+      "cutoff": 2025.3668720054757,
+      "log_params": null,
+      "static": 5.796969696969697,
+      "active": 6.033411033411034,
+      "nB": 40,
+      "nC": 39
+    },
+    {
+      "model": "azure/anthropic/claude-opus-4-7",
+      "cutoff": null,
+      "log_params": null,
+      "static": 5.828787878787879,
+      "active": 6.697746697746699,
+      "nB": 40,
+      "nC": 39
+    },
+    {
+      "model": "azure/anthropic/claude-opus-4-8",
+      "cutoff": null,
+      "log_params": null,
+      "static": 5.782954545454546,
+      "active": 6.785795454545453,
+      "nB": 40,
+      "nC": 40
+    },
+    {
+      "model": "azure/anthropic/claude-opus-5",
+      "cutoff": null,
+      "log_params": null,
+      "static": 6.886363636363638,
+      "active": 7.135416666666666,
+      "nB": 40,
+      "nC": 40
+    },
+    {
+      "model": "azure/anthropic/claude-sonnet-4-5",
+      "cutoff": 2025.2464065708418,
+      "log_params": null,
+      "static": 5.023751023751024,
+      "active": 5.500398724082935,
+      "nB": 37,
+      "nC": 38
+    },
+    {
+      "model": "azure/anthropic/claude-sonnet-4-6",
+      "cutoff": 2025.3668720054757,
+      "log_params": null,
+      "static": 5.360227272727274,
+      "active": 5.837995337995338,
+      "nB": 40,
+      "nC": 39
+    },
+    {
+      "model": "azure/anthropic/claude-sonnet-5",
+      "cutoff": null,
+      "log_params": null,
+      "static": 6.051136363636364,
+      "active": 6.662121212121212,
+      "nB": 40,
+      "nC": 40
+    },
+    {
+      "model": "azure/openai/gpt-4.1",
+      "cutoff": 2024.454483230664,
+      "log_params": null,
+      "static": 4.923863636363636,
+      "active": 4.703030303030303,
+      "nB": 40,
+      "nC": 40
+    },
+    {
+      "model": "azure/openai/gpt-4.1-mini",
+      "cutoff": 2024.454483230664,
+      "log_params": null,
+      "static": 4.915151515151515,
+      "active": 4.258712121212121,
+      "nB": 40,
+      "nC": 40
+    },
+    {
+      "model": "azure/openai/gpt-4o",
+      "cutoff": 2023.7474332648871,
+      "log_params": null,
+      "static": 4.710227272727273,
+      "active": 4.369696969696969,
+      "nB": 40,
+      "nC": 40
+    },
+    {
+      "model": "azure/openai/gpt-4o-mini",
+      "cutoff": 2023.7474332648871,
+      "log_params": null,
+      "static": 4.092424242424242,
+      "active": 3.7643939393939396,
+      "nB": 40,
+      "nC": 40
+    },
+    {
+      "model": "azure/openai/gpt-5",
+      "cutoff": 2024.7474332648871,
+      "log_params": null,
+      "static": 6.550378787878787,
+      "active": 6.39810606060606,
+      "nB": 40,
+      "nC": 40
+    },
+    {
+      "model": "azure/openai/gpt-5-chat",
+      "cutoff": null,
+      "log_params": null,
+      "static": 6.147348484848484,
+      "active": null,
+      "nB": 40,
+      "nC": 0
+    },
+    {
+      "model": "azure/openai/gpt-5-mini",
+      "cutoff": 2024.4106776180697,
+      "log_params": null,
+      "static": 5.883712121212121,
+      "active": 6.375757575757577,
+      "nB": 40,
+      "nC": 40
+    },
+    {
+      "model": "azure/openai/gpt-5-nano",
+      "cutoff": 2024.4106776180697,
+      "log_params": null,
+      "static": 5.748863636363636,
+      "active": 5.359469696969697,
+      "nB": 40,
+      "nC": 40
+    },
+    {
+      "model": "azure/openai/gpt-5.1",
+      "cutoff": null,
+      "log_params": null,
+      "static": 5.6625,
+      "active": 6.039772727272728,
+      "nB": 40,
+      "nC": 40
+    },
+    {
+      "model": "azure/openai/gpt-5.2",
+      "cutoff": null,
+      "log_params": null,
+      "static": 6.159848484848484,
+      "active": 6.656060606060606,
+      "nB": 40,
+      "nC": 40
+    },
+    {
+      "model": "azure/openai/gpt-5.3-chat",
+      "cutoff": null,
+      "log_params": null,
+      "static": 6.223484848484849,
+      "active": 6.911742424242425,
+      "nB": 40,
+      "nC": 40
+    },
+    {
+      "model": "azure/openai/gpt-5.4",
+      "cutoff": 2025.662559890486,
+      "log_params": null,
+      "static": 6.183712121212121,
+      "active": 6.623863636363637,
+      "nB": 40,
+      "nC": 40
+    },
+    {
+      "model": "azure/openai/gpt-5.4-mini",
+      "cutoff": 2025.662559890486,
+      "log_params": null,
+      "static": 6.061742424242423,
+      "active": 6.36060606060606,
+      "nB": 40,
+      "nC": 40
+    },
+    {
+      "model": "azure/openai/gpt-5.4-nano",
+      "cutoff": 2025.662559890486,
+      "log_params": null,
+      "static": 5.720454545454546,
+      "active": 5.819318181818182,
+      "nB": 40,
+      "nC": 40
+    },
+    {
+      "model": "azure/openai/gpt-5.5",
+      "cutoff": 2025.914442162902,
+      "log_params": null,
+      "static": 6.696969696969697,
+      "active": 6.6833333333333345,
+      "nB": 40,
+      "nC": 40
+    },
+    {
+      "model": "azure/openai/gpt-5.6-luna",
+      "cutoff": null,
+      "log_params": null,
+      "static": 6.6954545454545435,
+      "active": 6.42840909090909,
+      "nB": 40,
+      "nC": 40
+    },
+    {
+      "model": "azure/openai/gpt-5.6-sol",
+      "cutoff": null,
+      "log_params": null,
+      "static": 6.9,
+      "active": 6.8753787878787875,
+      "nB": 40,
+      "nC": 40
+    },
+    {
+      "model": "azure/openai/gpt-5.6-terra",
+      "cutoff": null,
+      "log_params": null,
+      "static": 6.857575757575757,
+      "active": 6.799242424242425,
+      "nB": 40,
+      "nC": 40
+    },
+    {
+      "model": "azure/openai/o1",
+      "cutoff": 2023.7474332648871,
+      "log_params": null,
+      "static": 4.553787878787879,
+      "active": 4.660606060606061,
+      "nB": 40,
+      "nC": 40
+    },
+    {
+      "model": "azure/openai/o3",
+      "cutoff": 2024.416153319644,
+      "log_params": null,
+      "static": 5.564772727272727,
+      "active": 6.058712121212121,
+      "nB": 40,
+      "nC": 40
+    },
+    {
+      "model": "azure/openai/o3-mini",
+      "cutoff": 2023.7474332648871,
+      "log_params": null,
+      "static": 4.836363636363636,
+      "active": 4.820454545454545,
+      "nB": 40,
+      "nC": 40
+    },
+    {
+      "model": "azure/openai/o4-mini",
+      "cutoff": 2024.416153319644,
+      "log_params": null,
+      "static": 5.3946969696969695,
+      "active": 5.614772727272728,
+      "nB": 40,
+      "nC": 40
+    },
+    {
+      "model": "deepseek/deepseek-r1-0528",
+      "cutoff": 2024.536618754278,
+      "log_params": 2.826722520168992,
+      "static": 4.863636363636363,
+      "active": 5.302651515151515,
+      "nB": 40,
+      "nC": 40
+    },
+    {
+      "model": "deepseek/deepseek-v4-flash",
+      "cutoff": 2026.03832991102,
+      "log_params": null,
+      "static": 5.092045454545454,
+      "active": 5.515151515151516,
+      "nB": 40,
+      "nC": 40
+    },
+    {
+      "model": "deepseek/deepseek-v4-pro",
+      "cutoff": 2026.03832991102,
+      "log_params": 2.826722520168992,
+      "static": 5.323106060606061,
+      "active": 5.918181818181818,
+      "nB": 40,
+      "nC": 40
+    },
+    {
+      "model": "google/gemini-2.5-flash",
+      "cutoff": 2025.03832991102,
+      "log_params": null,
+      "static": 5.1,
+      "active": 5.048863636363636,
+      "nB": 40,
+      "nC": 40
+    },
+    {
+      "model": "google/gemini-2.5-flash-lite",
+      "cutoff": 2025.03832991102,
+      "log_params": null,
+      "static": 4.63219696969697,
+      "active": 4.265909090909091,
+      "nB": 40,
+      "nC": 40
+    },
+    {
+      "model": "google/gemini-3-flash-preview",
+      "cutoff": 2025.03832991102,
+      "log_params": null,
+      "static": 5.592045454545454,
+      "active": 6.287121212121212,
+      "nB": 40,
+      "nC": 40
+    },
+    {
+      "model": "google/gemini-3.1-pro-preview",
+      "cutoff": 2025.03832991102,
+      "log_params": null,
+      "static": 5.629924242424242,
+      "active": 6.196212121212122,
+      "nB": 40,
+      "nC": 40
+    },
+    {
+      "model": "google/gemini-3.5-flash",
+      "cutoff": 2025.03832991102,
+      "log_params": null,
+      "static": 5.867424242424241,
+      "active": 6.221969696969697,
+      "nB": 40,
+      "nC": 40
+    },
+    {
+      "model": "google/gemma-2-27b-it",
+      "cutoff": 2024.454483230664,
+      "log_params": 1.4313637641589874,
+      "static": 4.020833333333334,
+      "active": 3.1977272727272728,
+      "nB": 40,
+      "nC": 40
+    },
+    {
+      "model": "google/gemma-3-27b-it",
+      "cutoff": 2024.621492128679,
+      "log_params": 1.4313637641589874,
+      "static": 4.681060606060607,
+      "active": 4.822348484848485,
+      "nB": 40,
+      "nC": 40
+    },
+    {
+      "model": "google/gemma-4-31b-it",
+      "cutoff": 2025.03832991102,
+      "log_params": 1.4913616938342726,
+      "static": 5.1416666666666675,
+      "active": 5.491287878787879,
+      "nB": 40,
+      "nC": 40
+    },
+    {
+      "model": "meta-llama/llama-3.1-8b-instruct",
+      "cutoff": 2023.952772073922,
+      "log_params": 0.9030899869919435,
+      "static": 3.7965909090909093,
+      "active": 3.5409090909090906,
+      "nB": 40,
+      "nC": 40
+    },
+    {
+      "model": "meta-llama/llama-4-maverick",
+      "cutoff": 2024.621492128679,
+      "log_params": 2.6020599913279625,
+      "static": 4.3375,
+      "active": 3.8371212121212124,
+      "nB": 40,
+      "nC": 40
+    },
+    {
+      "model": "minimax/minimax-m2.7",
+      "cutoff": null,
+      "log_params": null,
+      "static": 4.703030303030303,
+      "active": 5.326893939393939,
+      "nB": 40,
+      "nC": 40
+    },
+    {
+      "model": "mistralai/mistral-medium-3.1",
+      "cutoff": 2025.3668720054757,
+      "log_params": null,
+      "static": 4.743560606060607,
+      "active": 5.36590909090909,
+      "nB": 40,
+      "nC": 40
+    },
+    {
+      "model": "mistralai/mistral-small-24b-instruct-2501",
+      "cutoff": 2023.7857631759068,
+      "log_params": 1.380211241711606,
+      "static": 4.193560606060606,
+      "active": 3.9314393939393937,
+      "nB": 40,
+      "nC": 40
+    },
+    {
+      "model": "mistralai/mistral-small-2603",
+      "cutoff": 2025.4517453798767,
+      "log_params": 1.380211241711606,
+      "static": 4.606818181818182,
+      "active": 5.161742424242425,
+      "nB": 40,
+      "nC": 40
+    },
+    {
+      "model": "moonshotai/kimi-k2.5",
+      "cutoff": 2025.03832991102,
+      "log_params": 3.0,
+      "static": 4.90530303030303,
+      "active": 5.9208333333333325,
+      "nB": 40,
+      "nC": 40
+    },
+    {
+      "model": "moonshotai/kimi-k2.6",
+      "cutoff": 2025.03832991102,
+      "log_params": 3.0,
+      "static": 5.096969696969697,
+      "active": 6.172348484848485,
+      "nB": 40,
+      "nC": 40
+    },
+    {
+      "model": "qwen/qwen-2.5-72b-instruct",
+      "cutoff": 2024.495550992471,
+      "log_params": 1.8573324964312685,
+      "static": 4.199621212121212,
+      "active": 3.9666666666666672,
+      "nB": 40,
+      "nC": 40
+    },
+    {
+      "model": "qwen/qwen-2.5-7b-instruct",
+      "cutoff": 2024.495550992471,
+      "log_params": 0.8450980400142568,
+      "static": 3.9655303030303033,
+      "active": 3.6666666666666665,
+      "nB": 40,
+      "nC": 40
+    },
+    {
+      "model": "qwen/qwen3-235b-a22b-thinking-2507",
+      "cutoff": 2025.2436687200548,
+      "log_params": 2.3710678622717363,
+      "static": null,
+      "active": 5.545454545454545,
+      "nB": 0,
+      "nC": 36
+    },
+    {
+      "model": "qwen/qwen3-30b-a3b-instruct-2507",
+      "cutoff": 2025.2847364818617,
+      "log_params": 1.4771212547196624,
+      "static": 4.933712121212121,
+      "active": 4.9393939393939394,
+      "nB": 40,
+      "nC": 40
+    },
+    {
+      "model": "qwen/qwen3-32b",
+      "cutoff": 2024.7885010266941,
+      "log_params": 1.505149978319906,
+      "static": 4.534090909090909,
+      "active": 4.4378787878787875,
+      "nB": 40,
+      "nC": 40
+    },
+    {
+      "model": "qwen/qwen3-8b",
+      "cutoff": 2024.7885010266941,
+      "log_params": 0.9030899869919435,
+      "static": 4.244696969696969,
+      "active": 4.213257575757575,
+      "nB": 40,
+      "nC": 40
+    },
+    {
+      "model": "qwen/qwen3-coder",
+      "cutoff": null,
+      "log_params": null,
+      "static": 4.868939393939394,
+      "active": 4.723863636363636,
+      "nB": 40,
+      "nC": 40
+    },
+    {
+      "model": "qwen/qwen3-vl-8b-thinking",
+      "cutoff": 2025.2436687200548,
+      "log_params": 0.9030899869919435,
+      "static": null,
+      "active": 4.460606060606061,
+      "nB": 0,
+      "nC": 40
+    },
+    {
+      "model": "qwen/qwen3.5-27b",
+      "cutoff": 2025.2847364818617,
+      "log_params": 1.4313637641589874,
+      "static": 4.713636363636363,
+      "active": 5.528787878787878,
+      "nB": 40,
+      "nC": 40
+    },
+    {
+      "model": "qwen/qwen3.5-397b-a17b",
+      "cutoff": 2025.2847364818617,
+      "log_params": 2.598790506763115,
+      "static": 5.060984848484848,
+      "active": 5.948106060606061,
+      "nB": 40,
+      "nC": 40
+    },
+    {
+      "model": "qwen/qwen3.5-9b",
+      "cutoff": 2025.2847364818617,
+      "log_params": 0.9542425094393249,
+      "static": 4.229924242424242,
+      "active": 4.868560606060607,
+      "nB": 40,
+      "nC": 40
+    },
+    {
+      "model": "us/azure/openai/gpt-4.1-nano",
+      "cutoff": 2024.454483230664,
+      "log_params": null,
+      "static": 4.664015151515152,
+      "active": 4.317424242424243,
+      "nB": 40,
+      "nC": 40
+    },
+    {
+      "model": "xiaomi/mimo-v2.5",
+      "cutoff": 2025.3668720054757,
+      "log_params": 0.8450980400142568,
+      "static": 4.903030303030303,
+      "active": 5.4625,
+      "nB": 40,
+      "nC": 40
+    },
+    {
+      "model": "xiaomi/mimo-v2.5-pro",
+      "cutoff": null,
+      "log_params": null,
+      "static": 5.1068181818181815,
+      "active": 5.9147727272727275,
+      "nB": 40,
+      "nC": 40
+    },
+    {
+      "model": "z-ai/glm-4.5-air",
+      "cutoff": 2025.1998631074607,
+      "log_params": 1.0791812460476249,
+      "static": 4.3098484848484855,
+      "active": 4.820833333333334,
+      "nB": 40,
+      "nC": 40
+    },
+    {
+      "model": "z-ai/glm-4.6",
+      "cutoff": null,
+      "log_params": null,
+      "static": 4.834090909090909,
+      "active": 5.780681818181819,
+      "nB": 40,
+      "nC": 40
+    },
+    {
+      "model": "z-ai/glm-5.1",
+      "cutoff": 2025.952772073922,
+      "log_params": 2.041392685158225,
+      "static": 5.125757575757577,
+      "active": 6.332575757575758,
+      "nB": 40,
+      "nC": 40
+    }
+  ],
+  "F1_static_vs_cutoff": {
+    "n": 50,
+    "slope_per_yr": 0.4882764764597222,
+    "intercept": -983.6912423718413,
+    "r": 0.4525112286196989,
+    "r2": 0.2047664120269094,
+    "p": 0.0009689599955260163
+  },
+  "F1_yearly_spread": {
+    "2023": {
+      "n": 6,
+      "mean": 4.363825757575757,
+      "min": 3.7965909090909093,
+      "max": 4.836363636363636,
+      "spread": 1.0397727272727266
+    },
+    "2024": {
+      "n": 16,
+      "mean": 4.905776515151516,
+      "min": 3.9655303030303033,
+      "max": 6.550378787878787,
+      "spread": 2.584848484848484
+    },
+    "2025": {
+      "n": 26,
+      "mean": 5.236854643104643,
+      "min": 4.229924242424242,
+      "max": 6.696969696969697,
+      "spread": 2.467045454545455
+    },
+    "2026": {
+      "n": 2,
+      "mean": 5.207575757575757,
+      "min": 5.092045454545454,
+      "max": 5.323106060606061,
+      "spread": 0.2310606060606064
+    }
+  },
+  "F3_slopes_vs_cutoff": {
+    "static": {
+      "n": 50,
+      "slope_per_yr": 0.4882764764597222,
+      "r2": 0.2047664120269094,
+      "p": 0.0009689599955260163
+    },
+    "active": {
+      "n": 52,
+      "slope_per_yr": 0.8917199163890691,
+      "r2": 0.36385423148436313,
+      "p": 2.2139014855417325e-06
+    },
+    "active_over_static_slope_ratio": 1.8262602426693533,
+    "boost_vs_cutoff_spearman": {
+      "n": 50,
+      "rho": 0.5734277204881069,
+      "p": 1.344205249957026e-05
+    }
+  },
+  "F0_partial_corr": {
+    "n": 22,
+    "r_cutoff_score": 0.7182952700801611,
+    "r_logparams_score": 0.5991705869810311,
+    "r_cutoff_logparams": 0.23700054921640795,
+    "partial_r_cutoff_score_given_logparams": 0.7409142984340731,
+    "partial_r_logparams_score_given_cutoff": 0.6345964860299216
+  }
+}

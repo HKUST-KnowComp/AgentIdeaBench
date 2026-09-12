@@ -1,0 +1,53 @@
+{
+  "base_mean_overall": 4.8159,
+  "wm": {
+    "n_pairs": 39,
+    "base_mean": 4.8159,
+    "wm_mean": 4.8939,
+    "delta_mean": 0.0781,
+    "delta_win_rate": 0.5128,
+    "wilcoxon_p": 0.6066,
+    "delta_ci95": [
+      -0.2763,
+      0.4337
+    ],
+    "per_dim_delta": {
+      "originality": 0.0641,
+      "feasibility": 0.3205,
+      "clarity": -0.1667,
+      "impact": 0.0641,
+      "specificity": -0.0641
+    },
+    "per_model_delta": {
+      "qwen/qwen3.5-27b": 0.0591,
+      "qwen/qwen3.5-397b-a17b": 0.3788,
+      "qwen/qwen3.5-9b": -0.0591,
+      "xiaomi/mimo-v2.5-pro": -0.0364
+    }
+  },
+  "analogy": {
+    "n_pairs": 37,
+    "base_mean": 4.699,
+    "analogy_mean": 4.7813,
+    "delta_mean": 0.0823,
+    "delta_win_rate": 0.5676,
+    "wilcoxon_p": 0.8137,
+    "delta_ci95": [
+      -0.4486,
+      0.6317
+    ],
+    "per_dim_delta": {
+      "originality": 0.2973,
+      "feasibility": -0.1081,
+      "clarity": -0.0811,
+      "impact": 0.0135,
+      "specificity": -0.027
+    },
+    "per_model_delta": {
+      "qwen/qwen3.5-27b": 0.1591,
+      "qwen/qwen3.5-397b-a17b": 1.0714,
+      "qwen/qwen3.5-9b": -0.3364,
+      "xiaomi/mimo-v2.5-pro": -0.2682
+    }
+  }
+}

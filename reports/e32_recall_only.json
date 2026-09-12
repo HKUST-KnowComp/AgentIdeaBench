@@ -1,0 +1,217 @@
+{
+  "note": "Track R = recall-only (broad domain + subdomain name, no refs, no tools). B/C recomputed on the SAME 10 subdomains and 28 models for exact pairing. Cell = (model, subdomain), mean of 3 ideas' weighted trimmed lit8d scores.",
+  "n_models": 28,
+  "n_subdomains": 10,
+  "n_shared_cells": 280,
+  "means": {
+    "R": 4.817,
+    "B": 4.7239,
+    "C": 5.0509
+  },
+  "cell_level": {
+    "B_minus_R": {
+      "n": 280,
+      "delta_mean": -0.0931,
+      "win_rate": 0.4464,
+      "wilcoxon_p": 0.1106,
+      "delta_ci95": [
+        -0.2002,
+        0.013
+      ]
+    },
+    "C_minus_R": {
+      "n": 280,
+      "delta_mean": 0.2339,
+      "win_rate": 0.5857,
+      "wilcoxon_p": 0.0,
+      "delta_ci95": [
+        0.1228,
+        0.3446
+      ]
+    },
+    "C_minus_B": {
+      "n": 280,
+      "delta_mean": 0.327,
+      "win_rate": 0.6536,
+      "wilcoxon_p": 0.0,
+      "delta_ci95": [
+        0.2206,
+        0.4291
+      ]
+    }
+  },
+  "model_level": {
+    "B_minus_R": {
+      "n": 28,
+      "delta_mean": -0.0931,
+      "win_rate": 0.4286,
+      "wilcoxon_p": 0.1438,
+      "delta_ci95": [
+        -0.201,
+        0.0152
+      ]
+    },
+    "C_minus_R": {
+      "n": 28,
+      "delta_mean": 0.2339,
+      "win_rate": 0.75,
+      "wilcoxon_p": 0.0089,
+      "delta_ci95": [
+        0.0518,
+        0.3933
+      ]
+    },
+    "C_minus_B": {
+      "n": 28,
+      "delta_mean": 0.327,
+      "win_rate": 0.75,
+      "wilcoxon_p": 0.0024,
+      "delta_ci95": [
+        0.1351,
+        0.5094
+      ]
+    }
+  },
+  "per_model": {
+    "deepseek/deepseek-r1-0528": {
+      "R": 5.2273,
+      "B": 4.9485,
+      "C": 5.4197
+    },
+    "deepseek/deepseek-v4-flash": {
+      "R": 5.4667,
+      "B": 4.897,
+      "C": 5.5409
+    },
+    "deepseek/deepseek-v4-pro": {
+      "R": 5.3439,
+      "B": 5.7288,
+      "C": 5.6242
+    },
+    "google/gemma-2-27b-it": {
+      "R": 4.3576,
+      "B": 4.0439,
+      "C": 3.2227
+    },
+    "google/gemma-3-27b-it": {
+      "R": 4.5939,
+      "B": 4.6818,
+      "C": 5.1136
+    },
+    "google/gemma-4-31b-it": {
+      "R": 5.8045,
+      "B": 5.2636,
+      "C": 5.5242
+    },
+    "meta-llama/llama-3.1-8b-instruct": {
+      "R": 3.5879,
+      "B": 3.6803,
+      "C": 3.7591
+    },
+    "meta-llama/llama-4-maverick": {
+      "R": 4.7348,
+      "B": 4.453,
+      "C": 3.8848
+    },
+    "minimax/minimax-m2.7": {
+      "R": 5.3258,
+      "B": 4.6788,
+      "C": 5.5424
+    },
+    "mistralai/mistral-medium-3.1": {
+      "R": 4.947,
+      "B": 4.6182,
+      "C": 5.6197
+    },
+    "mistralai/mistral-small-24b-instruct-2501": {
+      "R": 4.2636,
+      "B": 4.3894,
+      "C": 4.0167
+    },
+    "mistralai/mistral-small-2603": {
+      "R": 4.4985,
+      "B": 4.9803,
+      "C": 5.1455
+    },
+    "moonshotai/kimi-k2.5": {
+      "R": 5.2985,
+      "B": 5.0364,
+      "C": 6.05
+    },
+    "moonshotai/kimi-k2.6": {
+      "R": 5.4061,
+      "B": 5.1727,
+      "C": 6.1833
+    },
+    "qwen/qwen-2.5-72b-instruct": {
+      "R": 4.1288,
+      "B": 4.3242,
+      "C": 3.9758
+    },
+    "qwen/qwen-2.5-7b-instruct": {
+      "R": 3.9,
+      "B": 3.8553,
+      "C": 3.6909
+    },
+    "qwen/qwen3-30b-a3b-instruct-2507": {
+      "R": 4.9061,
+      "B": 4.8015,
+      "C": 5.0091
+    },
+    "qwen/qwen3-32b": {
+      "R": 4.4439,
+      "B": 4.7182,
+      "C": 4.8091
+    },
+    "qwen/qwen3-8b": {
+      "R": 3.7712,
+      "B": 4.1606,
+      "C": 4.1803
+    },
+    "qwen/qwen3-coder": {
+      "R": 4.8136,
+      "B": 4.7212,
+      "C": 4.6894
+    },
+    "qwen/qwen3.5-27b": {
+      "R": 4.8818,
+      "B": 4.9273,
+      "C": 5.3591
+    },
+    "qwen/qwen3.5-397b-a17b": {
+      "R": 5.6258,
+      "B": 5.3015,
+      "C": 5.7879
+    },
+    "qwen/qwen3.5-9b": {
+      "R": 4.4788,
+      "B": 4.1636,
+      "C": 4.9333
+    },
+    "xiaomi/mimo-v2.5": {
+      "R": 4.953,
+      "B": 5.0379,
+      "C": 5.4348
+    },
+    "xiaomi/mimo-v2.5-pro": {
+      "R": 5.0652,
+      "B": 5.0182,
+      "C": 5.8061
+    },
+    "z-ai/glm-4.5-air": {
+      "R": 4.5015,
+      "B": 4.5667,
+      "C": 4.9667
+    },
+    "z-ai/glm-4.6": {
+      "R": 5.0015,
+      "B": 5.0409,
+      "C": 5.8667
+    },
+    "z-ai/glm-5.1": {
+      "R": 5.55,
+      "B": 5.0606,
+      "C": 6.2697
+    }
+  }
+}
