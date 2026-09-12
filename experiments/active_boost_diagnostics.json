@@ -1,0 +1,583 @@
+{
+  "d1_overlap": [
+    {
+      "model": "qwen/qwen3.5-9b",
+      "n_papers": 25,
+      "mean_visited": 6.64,
+      "mean_static": 5,
+      "mean_intersect": 0.04,
+      "mean_jaccard": 0.002857142857142857,
+      "coverage": 0.008
+    },
+    {
+      "model": "qwen/qwen3.5-397b-a17b",
+      "n_papers": 25,
+      "mean_visited": 7.08,
+      "mean_static": 5,
+      "mean_intersect": 0.04,
+      "mean_jaccard": 0.0036363636363636364,
+      "coverage": 0.008
+    },
+    {
+      "model": "qwen/qwen3.5-27b",
+      "n_papers": 25,
+      "mean_visited": 6.28,
+      "mean_static": 5,
+      "mean_intersect": 0,
+      "mean_jaccard": 0.0,
+      "coverage": 0.0
+    },
+    {
+      "model": "openai/gpt-5.4-mini",
+      "n_papers": 5,
+      "mean_visited": 4.8,
+      "mean_static": 5,
+      "mean_intersect": 0,
+      "mean_jaccard": 0.0,
+      "coverage": 0.0
+    },
+    {
+      "model": "openai/gpt-5.4-nano",
+      "n_papers": 4,
+      "mean_visited": 3.5,
+      "mean_static": 5,
+      "mean_intersect": 0,
+      "mean_jaccard": 0.0,
+      "coverage": 0.0
+    },
+    {
+      "model": "google/gemma-4-31b-it",
+      "n_papers": 25,
+      "mean_visited": 2.88,
+      "mean_static": 5,
+      "mean_intersect": 0,
+      "mean_jaccard": 0.0,
+      "coverage": 0.0
+    },
+    {
+      "model": "qwen/qwen3-235b-a22b-thinking-2507",
+      "n_papers": 25,
+      "mean_visited": 3.6,
+      "mean_static": 5,
+      "mean_intersect": 0,
+      "mean_jaccard": 0.0,
+      "coverage": 0.0
+    },
+    {
+      "model": "qwen/qwen3-vl-8b-thinking",
+      "n_papers": 25,
+      "mean_visited": 3.04,
+      "mean_static": 5,
+      "mean_intersect": 0,
+      "mean_jaccard": 0.0,
+      "coverage": 0.0
+    },
+    {
+      "model": "moonshotai/kimi-k2.6",
+      "n_papers": 25,
+      "mean_visited": 6.52,
+      "mean_static": 5,
+      "mean_intersect": 0,
+      "mean_jaccard": 0.0,
+      "coverage": 0.0
+    },
+    {
+      "model": "z-ai/glm-5.1",
+      "n_papers": 25,
+      "mean_visited": 6.6,
+      "mean_static": 5,
+      "mean_intersect": 0,
+      "mean_jaccard": 0.0,
+      "coverage": 0.0
+    },
+    {
+      "model": "openai/gpt-4",
+      "n_papers": 1,
+      "mean_visited": 70,
+      "mean_static": 5,
+      "mean_intersect": 0,
+      "mean_jaccard": 0.0,
+      "coverage": 0.0
+    },
+    {
+      "model": "qwen/qwen-2.5-72b-instruct",
+      "n_papers": 5,
+      "mean_visited": 45.6,
+      "mean_static": 5,
+      "mean_intersect": 0,
+      "mean_jaccard": 0.0,
+      "coverage": 0.0
+    },
+    {
+      "model": "meta-llama/llama-3.1-8b-instruct",
+      "n_papers": 4,
+      "mean_visited": 38.25,
+      "mean_static": 5,
+      "mean_intersect": 0,
+      "mean_jaccard": 0.0,
+      "coverage": 0.0
+    },
+    {
+      "model": "google/gemma-3-27b-it",
+      "n_papers": 5,
+      "mean_visited": 37,
+      "mean_static": 5,
+      "mean_intersect": 0,
+      "mean_jaccard": 0.0,
+      "coverage": 0.0
+    },
+    {
+      "model": "deepseek/deepseek-r1-0528",
+      "n_papers": 5,
+      "mean_visited": 52.2,
+      "mean_static": 5,
+      "mean_intersect": 0,
+      "mean_jaccard": 0.0,
+      "coverage": 0.0
+    },
+    {
+      "model": "mistralai/mistral-7b-instruct-v0.1",
+      "n_papers": 5,
+      "mean_visited": 22.2,
+      "mean_static": 5,
+      "mean_intersect": 0,
+      "mean_jaccard": 0.0,
+      "coverage": 0.0
+    }
+  ],
+  "d2_per_dim": [
+    {
+      "model": "z-ai/glm-5.1",
+      "per_dim": {
+        "originality": 1.7558130081300813,
+        "feasibility": 1.0532926829268296,
+        "clarity": 1.3236178861788623,
+        "impact": 1.26739837398374,
+        "specificity": 1.8008536585365853
+      },
+      "per_dim_weighted_contrib": {
+        "originality": 0.6384774575018478,
+        "feasibility": 0.19150776053215085,
+        "clarity": 0.12032889874353293,
+        "impact": 0.34565410199556545,
+        "specificity": 0.16371396895787138
+      },
+      "total_weighted_boost": 1.4596821877309685
+    },
+    {
+      "model": "qwen/qwen3.5-9b",
+      "per_dim": {
+        "originality": 1.1764001197963454,
+        "feasibility": 0.6456274333632823,
+        "clarity": 1.1020515124288712,
+        "impact": 1.0339173405211142,
+        "specificity": 1.7053009883198564
+      },
+      "per_dim_weighted_contrib": {
+        "originality": 0.4277818617441256,
+        "feasibility": 0.11738680606605133,
+        "clarity": 0.10018650112989738,
+        "impact": 0.2819774565057584,
+        "specificity": 0.1550273625745324
+      },
+      "total_weighted_boost": 1.0823599880203651
+    },
+    {
+      "model": "qwen/qwen3.5-397b-a17b",
+      "per_dim": {
+        "originality": 0.9294308943089433,
+        "feasibility": 0.8134959349593496,
+        "clarity": 1.0843902439024387,
+        "impact": 0.8856910569105692,
+        "specificity": 1.9400000000000004
+      },
+      "per_dim_weighted_contrib": {
+        "originality": 0.3379748706577976,
+        "feasibility": 0.14790835181079084,
+        "clarity": 0.09858093126385806,
+        "impact": 0.24155210643015523,
+        "specificity": 0.1763636363636364
+      },
+      "total_weighted_boost": 1.002379896526238
+    },
+    {
+      "model": "moonshotai/kimi-k2.6",
+      "per_dim": {
+        "originality": 1.4577777777777783,
+        "feasibility": 0.27111111111111086,
+        "clarity": 0.977777777777777,
+        "impact": 0.7199999999999998,
+        "specificity": 1.017777777777777
+      },
+      "per_dim_weighted_contrib": {
+        "originality": 0.5301010101010103,
+        "feasibility": 0.04929292929292925,
+        "clarity": 0.08888888888888881,
+        "impact": 0.1963636363636363,
+        "specificity": 0.09252525252525245
+      },
+      "total_weighted_boost": 0.9571717171717171
+    },
+    {
+      "model": "qwen/qwen3.5-27b",
+      "per_dim": {
+        "originality": 0.8741655540720963,
+        "feasibility": 1.0090120160213614,
+        "clarity": 0.9956608811749001,
+        "impact": 0.7688028482421014,
+        "specificity": 1.6456386292834893
+      },
+      "per_dim_weighted_contrib": {
+        "originality": 0.3178783832989441,
+        "feasibility": 0.18345673018570208,
+        "clarity": 0.09051462556135456,
+        "impact": 0.20967350406602767,
+        "specificity": 0.14960351175304448
+      },
+      "total_weighted_boost": 0.951126754865073
+    },
+    {
+      "model": "google/gemma-4-31b-it",
+      "per_dim": {
+        "originality": 1.0630252100840334,
+        "feasibility": 0.6743697478991599,
+        "clarity": 0.719887955182072,
+        "impact": 0.7670401493930905,
+        "specificity": 1.2861811391223155
+      },
+      "per_dim_weighted_contrib": {
+        "originality": 0.3865546218487394,
+        "feasibility": 0.1226126814362109,
+        "clarity": 0.06544435956200655,
+        "impact": 0.2091927680162974,
+        "specificity": 0.11692555810202868
+      },
+      "total_weighted_boost": 0.9007299889652829
+    },
+    {
+      "model": "deepseek/deepseek-r1-0528",
+      "per_dim": {
+        "originality": 0.6266666666666669,
+        "feasibility": 1.7333333333333334,
+        "clarity": 0.8933333333333335,
+        "impact": 0.4222222222222225,
+        "specificity": 1.1911111111111117
+      },
+      "per_dim_weighted_contrib": {
+        "originality": 0.227878787878788,
+        "feasibility": 0.3151515151515152,
+        "clarity": 0.08121212121212124,
+        "impact": 0.11515151515151523,
+        "specificity": 0.10828282828282833
+      },
+      "total_weighted_boost": 0.847676767676768
+    },
+    {
+      "model": "qwen/qwen3-235b-a22b-thinking-2507",
+      "per_dim": {
+        "originality": 0.822222222222222,
+        "feasibility": 0.40888888888888886,
+        "clarity": 0.8977777777777778,
+        "impact": 0.6844444444444449,
+        "specificity": 1.0533333333333337
+      },
+      "per_dim_weighted_contrib": {
+        "originality": 0.2989898989898989,
+        "feasibility": 0.07434343434343434,
+        "clarity": 0.08161616161616161,
+        "impact": 0.1866666666666668,
+        "specificity": 0.09575757575757579
+      },
+      "total_weighted_boost": 0.7373737373737375
+    },
+    {
+      "model": "qwen/qwen-2.5-72b-instruct",
+      "per_dim": {
+        "originality": -0.12936507936507935,
+        "feasibility": 1.3357142857142854,
+        "clarity": 1.6674603174603178,
+        "impact": -0.10317460317460281,
+        "specificity": 1.7111111111111112
+      },
+      "per_dim_weighted_contrib": {
+        "originality": -0.04704184704184704,
+        "feasibility": 0.2428571428571428,
+        "clarity": 0.1515873015873016,
+        "impact": -0.02813852813852804,
+        "specificity": 0.15555555555555556
+      },
+      "total_weighted_boost": 0.4748196248196249
+    },
+    {
+      "model": "mistralai/mistral-7b-instruct-v0.1",
+      "per_dim": {
+        "originality": -0.253488372093023,
+        "feasibility": 0.31782945736434076,
+        "clarity": 0.1217054263565891,
+        "impact": 0.8387596899224814,
+        "specificity": 0.07751937984496093
+      },
+      "per_dim_weighted_contrib": {
+        "originality": -0.09217758985200836,
+        "feasibility": 0.05778717406624378,
+        "clarity": 0.011064129668780827,
+        "impact": 0.2287526427061313,
+        "specificity": 0.0070472163495419035
+      },
+      "total_weighted_boost": 0.21247357293868943
+    },
+    {
+      "model": "qwen/qwen3-vl-8b-thinking",
+      "per_dim": {
+        "originality": 0.3600000000000003,
+        "feasibility": -0.41777777777777825,
+        "clarity": 0.3377777777777782,
+        "impact": 0.137777777777778,
+        "specificity": 0.39111111111111097
+      },
+      "per_dim_weighted_contrib": {
+        "originality": 0.13090909090909103,
+        "feasibility": -0.07595959595959605,
+        "clarity": 0.030707070707070742,
+        "impact": 0.03757575757575764,
+        "specificity": 0.03555555555555554
+      },
+      "total_weighted_boost": 0.1587878787878789
+    },
+    {
+      "model": "meta-llama/llama-3.1-8b-instruct",
+      "per_dim": {
+        "originality": -0.5333333333333332,
+        "feasibility": 0.7490196078431377,
+        "clarity": 0.530392156862745,
+        "impact": 0.412745098039216,
+        "specificity": 0.4715686274509805
+      },
+      "per_dim_weighted_contrib": {
+        "originality": -0.19393939393939388,
+        "feasibility": 0.13618538324420684,
+        "clarity": 0.04821746880570409,
+        "impact": 0.11256684491978618,
+        "specificity": 0.042869875222816406
+      },
+      "total_weighted_boost": 0.14590017825311963
+    },
+    {
+      "model": "google/gemma-3-27b-it",
+      "per_dim": {
+        "originality": -0.7469879518072293,
+        "feasibility": 0.5076305220883537,
+        "clarity": 0.43614457831325293,
+        "impact": -0.0409638554216869,
+        "specificity": 0.5526104417670687
+      },
+      "per_dim_weighted_contrib": {
+        "originality": -0.27163198247535614,
+        "feasibility": 0.09229645856151886,
+        "clarity": 0.03964950711938663,
+        "impact": -0.011171960569550972,
+        "specificity": 0.05023731288791534
+      },
+      "total_weighted_boost": -0.10062066447608628
+    }
+  ],
+  "d3_calls_vs_boost": {
+    "rows": [
+      [
+        "openai/gpt-5.4-nano",
+        1,
+        5.69092,
+        6.4182,
+        0.7272799999999995,
+        5
+      ],
+      [
+        "google/gemma-4-31b-it",
+        1,
+        6.340904,
+        6.742428,
+        0.4015240000000002,
+        25
+      ],
+      [
+        "qwen/qwen3-235b-a22b-thinking-2507",
+        1.36,
+        6.329088,
+        6.407272,
+        0.07818400000000025,
+        25
+      ],
+      [
+        "qwen/qwen3-vl-8b-thinking",
+        1.36,
+        5.816364,
+        5.320008,
+        -0.49635600000000046,
+        25
+      ],
+      [
+        "qwen/qwen3.5-9b",
+        1.72,
+        5.379696,
+        6.1403039999999995,
+        0.7606079999999995,
+        25
+      ],
+      [
+        "openai/gpt-5.4-mini",
+        2.2,
+        6.01818,
+        6.36364,
+        0.3454600000000001,
+        5
+      ],
+      [
+        "qwen/qwen3.5-27b",
+        4.6,
+        5.8109079999999995,
+        6.357276,
+        0.5463680000000002,
+        25
+      ],
+      [
+        "qwen/qwen3.5-397b-a17b",
+        6.12,
+        6.330912,
+        6.760004,
+        0.4290920000000007,
+        25
+      ],
+      [
+        "z-ai/glm-5.1",
+        6.24,
+        6.11152,
+        7.02728,
+        0.9157600000000006,
+        25
+      ],
+      [
+        "moonshotai/kimi-k2.6",
+        6.36,
+        6.229088,
+        6.709092,
+        0.4800040000000001,
+        25
+      ]
+    ],
+    "spearman": 0.34146976265869833
+  },
+  "d4_topic_alignment": [
+    {
+      "model": "openai/gpt-4",
+      "n_papers": 1,
+      "topic_coverage": 0.5,
+      "mean_tgt_tokens": 18,
+      "mean_visited_tokens": 322
+    },
+    {
+      "model": "google/gemma-3-27b-it",
+      "n_papers": 5,
+      "topic_coverage": 0.2196969696969697,
+      "mean_tgt_tokens": 12.2,
+      "mean_visited_tokens": 165.2
+    },
+    {
+      "model": "meta-llama/llama-3.1-8b-instruct",
+      "n_papers": 4,
+      "topic_coverage": 0.2067550505050505,
+      "mean_tgt_tokens": 12.25,
+      "mean_visited_tokens": 211
+    },
+    {
+      "model": "deepseek/deepseek-r1-0528",
+      "n_papers": 5,
+      "topic_coverage": 0.19444444444444445,
+      "mean_tgt_tokens": 12.2,
+      "mean_visited_tokens": 241.4
+    },
+    {
+      "model": "qwen/qwen-2.5-72b-instruct",
+      "n_papers": 5,
+      "topic_coverage": 0.19166666666666665,
+      "mean_tgt_tokens": 12.2,
+      "mean_visited_tokens": 224.4
+    },
+    {
+      "model": "z-ai/glm-5.1",
+      "n_papers": 25,
+      "topic_coverage": 0.1611076701076701,
+      "mean_tgt_tokens": 10.48,
+      "mean_visited_tokens": 51.2
+    },
+    {
+      "model": "moonshotai/kimi-k2.6",
+      "n_papers": 25,
+      "topic_coverage": 0.13288933288933288,
+      "mean_tgt_tokens": 10.48,
+      "mean_visited_tokens": 53.6
+    },
+    {
+      "model": "qwen/qwen3.5-27b",
+      "n_papers": 25,
+      "topic_coverage": 0.09953868353868353,
+      "mean_tgt_tokens": 10.48,
+      "mean_visited_tokens": 42.44
+    },
+    {
+      "model": "qwen/qwen3.5-9b",
+      "n_papers": 25,
+      "topic_coverage": 0.09590564990564991,
+      "mean_tgt_tokens": 10.48,
+      "mean_visited_tokens": 41.52
+    },
+    {
+      "model": "qwen/qwen3.5-397b-a17b",
+      "n_papers": 25,
+      "topic_coverage": 0.09406105006105006,
+      "mean_tgt_tokens": 10.48,
+      "mean_visited_tokens": 53.08
+    },
+    {
+      "model": "mistralai/mistral-7b-instruct-v0.1",
+      "n_papers": 5,
+      "topic_coverage": 0.09166666666666666,
+      "mean_tgt_tokens": 12.2,
+      "mean_visited_tokens": 107.8
+    },
+    {
+      "model": "google/gemma-4-31b-it",
+      "n_papers": 25,
+      "topic_coverage": 0.06806105006105007,
+      "mean_tgt_tokens": 10.48,
+      "mean_visited_tokens": 24.08
+    },
+    {
+      "model": "qwen/qwen3-235b-a22b-thinking-2507",
+      "n_papers": 25,
+      "topic_coverage": 0.06501731601731602,
+      "mean_tgt_tokens": 10.48,
+      "mean_visited_tokens": 25.32
+    },
+    {
+      "model": "openai/gpt-5.4-mini",
+      "n_papers": 5,
+      "topic_coverage": 0.06111111111111111,
+      "mean_tgt_tokens": 12.2,
+      "mean_visited_tokens": 39.2
+    },
+    {
+      "model": "qwen/qwen3-vl-8b-thinking",
+      "n_papers": 25,
+      "topic_coverage": 0.04183782883782884,
+      "mean_tgt_tokens": 10.48,
+      "mean_visited_tokens": 21
+    },
+    {
+      "model": "openai/gpt-5.4-nano",
+      "n_papers": 5,
+      "topic_coverage": 0.03888888888888889,
+      "mean_tgt_tokens": 12.2,
+      "mean_visited_tokens": 22.2
+    }
+  ]
+}

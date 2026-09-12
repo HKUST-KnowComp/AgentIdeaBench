@@ -1,0 +1,255 @@
+"""E41 — Frontier closed-source extension via the internal NVIDIA gateway.
+
+Generate Static(B) + Active(C) ideas for the 2026 frontier closed models on the
+SAME 40 scored subdomains (e19 idx {0,5,10,15} + e24 idx {2,7,12,17}),
+idea_index 1..3, reusing the v3 subdomain pipeline verbatim. Writes
+`subdomain_ideas` (INSERT OR IGNORE — idempotent, raw-data safe). Scoring is done
+AFTERWARDS by `e21_pilot20_3seed.py` + `e24_extend_scoring.py`, which auto-include
+any model with >50 ideas (open-weight critics, unaffected by the gateway).
+
+Routing: the gateway is OpenAI-compatible; set NV_INTERNAL_BASE_URL to its endpoint
+with env `API_KEY` (a LiteLLM virtual key). See Inference_Tutorial.md and
+config.use_nv_internal. Gateway ids are ROUTING names — azure/openai/gpt-5.6-sol
+and openai/openai/gpt-5.6-sol are different routes and are not interchangeable.
+We standardise on the azure/* routes (the tutorial's curated catalog).
+
+Version check (2026-08-12, live GET /v1/models, 227 routes): gpt-5.x tops out at
+5.6 (sol/terra/luna); Claude tops out at opus-5 / sonnet-5. `--check-routes`
+re-verifies this before any batch — run it first, the catalog moves.
+
+Parameter quirks verified against the live gateway on 2026-08-12:
+  * claude-opus-5 / claude-sonnet-5 reject `temperature` with HTTP 400
+    ("`temperature` is deprecated for this model"). config.nv_internal_no_temperature
+    makes both the static and the active path omit it. `seed` is accepted.
+  * gpt-5.6-* are listed with reported mode `responses`, but /v1/chat/completions
+    answers 200 for all three, so the existing chat pipeline is used unchanged.
+
+Scope caveat (honest): these are 2026 frontier models whose knowledge cutoffs are
+not publicly disclosed and probably postdate the benchmark's reference window
+(2025-04..2026-01), the same risk that got gemini-3.6-flash excluded in E33.
+They are therefore a HELD-OUT closed frontier group, reported separately and
+marked closed in the leaderboard; they do not enter the 28-model headline
+statistics or the cutoff regression.
+
+Usage:
+  e41_frontier_extend.py --check-routes                       # verify ids are live
+  e41_frontier_extend.py --gen --smoke                        # 1 model x 2 subs
+  e41_frontier_extend.py --gen --track B --workers 4          # static (no SS)
+  e41_frontier_extend.py --gen --track C --workers 2          # active (SS-bound)
+  e41_frontier_extend.py --status
+"""
+import argparse
+import json
+import sqlite3
+import sys
+from concurrent.futures import ThreadPoolExecutor, as_completed
+from datetime import datetime, timezone
+from pathlib import Path
+
+ROOT = Path(__file__).parent.parent
+sys.path.insert(0, str(ROOT))
+import config as cfg
+from experiments.v3_subdomain_ideation import (
+    _synthetic_paper, _build_generation_payload,
+    _clean_idea_text, ensure_tables, MIN_WORDS, ACTIVE_BUDGET,
+)
+from experiments.e19_pilot20_lit8d import pick_subdomains   # idx (0,5,10,15)
+from experiments.e24_extend_scoring import pick_ext          # idx (2,7,12,17)
+from generation.active_agent import run_active_agent
+
+# The five frontier routes (all verified 200 OK on /v1/chat/completions,
+# 2026-08-12). Ordered OpenAI tiers first, then Anthropic tiers.
+FRONTIER_MODELS = [
+    "azure/openai/gpt-5.6-sol",
+    "azure/openai/gpt-5.6-terra",
+    "azure/openai/gpt-5.6-luna",
+    "azure/anthropic/claude-opus-5",
+    "azure/anthropic/claude-sonnet-5",
+]
+N_IDX = 3
+
+
+def check_routes(models):
+    """Verify every id is still a live route, and report sibling versions so a
+    newer release is visible rather than silently missed."""
+    import urllib.request
+    req = urllib.request.Request(
+        cfg.NV_INTERNAL_BASE_URL.rstrip("/") + "/models",
+        headers={"Authorization": f"Bearer {cfg.NV_INTERNAL_API_KEY}"})
+    with urllib.request.urlopen(req, timeout=60) as r:
+        live = sorted(m["id"] for m in json.load(r).get("data", []))
+    print(f"gateway routes: {len(live)}")
+    ok = True
+    for m in models:
+        present = m in live
+        ok &= present
+        print(f"  {'OK ' if present else 'MISSING'} {m}")
+    for fam, pat in (("gpt-5.x", "openai/gpt-5"), ("claude", "anthropic/claude")):
+        sibs = sorted({i.split("/", 1)[1] for i in live if pat in i})
+        print(f"  [{fam}] live variants: {', '.join(sibs)}")
+    return ok
+
+
+def scored_subs(conn):
+    """The 40 scored (domain, subdomain) cells — e19 picks + e24 picks, deduped,
+    order-preserving. Identical selection to the main lit8d_scores_3seed set."""
+    picks = list(pick_subdomains(conn)) + list(pick_ext(conn))
+    seen, out = set(), []
+    for d, s in picks:
+        if (d, s) not in seen:
+            seen.add((d, s))
+            out.append((d, s))
+    return out
+
+
+def _refs_map(conn):
+    return {r[0]: (r[1], json.loads(r[2])) for r in
+            conn.execute("SELECT subdomain, domain, refs_json FROM subdomain_refs")}
+
+
+def _done_set(conn, track):
+    return {(r[0], r[1], r[2]) for r in conn.execute(
+        "SELECT idea_model, subdomain, idea_index FROM subdomain_ideas "
+        "WHERE track=? AND TRIM(idea_text)!=''", (track,))}
+
+
+def gen(models, workers, limit, smoke, track_filter="both"):
+    conn = sqlite3.connect(str(cfg.RESULTS_DB), timeout=60)
+    conn.execute("PRAGMA busy_timeout=60000")
+    ensure_tables(conn)
+    subs = scored_subs(conn)
+    refs = _refs_map(conn)
+    if smoke:
+        models = models[:1]
+        subs = subs[:2]
+    doneB = _done_set(conn, "B")
+    doneC = _done_set(conn, "C")
+
+    want_b = track_filter in ("both", "B")
+    want_c = track_filter in ("both", "C")
+    tasks = []   # (model, dom, sub, track, idx)
+    for m in models:
+        for dom, sub in subs:
+            for idx in range(1, N_IDX + 1):
+                if want_b and sub in refs and (m, sub, idx) not in doneB:
+                    tasks.append((m, dom, sub, "B", idx))
+                if want_c and (m, sub, idx) not in doneC:
+                    tasks.append((m, dom, sub, "C", idx))
+
+    total = len(tasks)
+    if limit:
+        tasks = tasks[:limit]
+    print(f"gen tasks remaining: {total}; running {len(tasks)} this batch "
+          f"(limit={limit}, models={len(models)}, subs={len(subs)})", flush=True)
+    if not tasks:
+        print("gen: nothing to do.")
+        conn.close()
+        return
+
+    def _w(task):
+        m, dom, sub, track, idx = task
+        try:
+            if track == "B":
+                from utils.LLM import IdeaLLM
+                paper = _synthetic_paper(dom, sub, refs[sub][1])
+                prompt, fb, system = _build_generation_payload(paper, "B")
+                out = IdeaLLM(model_name=m).generate_idea(
+                    prompt, fallback_prompt=fb, system_prompt=system)
+                txt = _clean_idea_text(out["idea"])
+                tele = None
+            else:
+                res = run_active_agent(sub, m, max_iters=ACTIVE_BUDGET)
+                err = res.get("error") or ""
+                if "limit exceeded" in err.lower():
+                    return (task, "KEYLIMIT", None)
+                # Retrieval-quality gate (same as E33): require >=1 non-empty SS
+                # result. When SS is down (504/429) the agent falls back to
+                # parametric-only generation, which is NOT valid Active-mode data
+                # — skip it so a later batch regenerates the cell.
+                _tr = res.get("trace", [])
+                if sum(1 for s in _tr if len((s.get("result_preview") or "")) > 5) == 0:
+                    return (task, None, "NORETR")
+                txt = _clean_idea_text(res.get("hypothesis") or "")
+                # `turns` carries per-turn prompt/completion token counts. E33
+                # dropped it, which made the run's real token volume impossible
+                # to audit from the DB afterwards; keep it here.
+                tele = json.dumps({"trace": res.get("trace", []),
+                                   "n_tool_calls": res.get("n_tool_calls"),
+                                   "iters_used": res.get("iters_used"),
+                                   "turns": res.get("turns", []),
+                                   "error": res.get("error")}, ensure_ascii=False)
+            if not txt or len(txt.split()) < MIN_WORDS:
+                return (task, None, None)
+            return (task, txt, tele)
+        except Exception as e:
+            return (task, None, "ERR:" + str(e)[:120])
+
+    ts = datetime.now(timezone.utc).isoformat()
+    g = b = e = 0
+    with ThreadPoolExecutor(max_workers=workers) as ex:
+        futs = [ex.submit(_w, t) for t in tasks]
+        for i, f in enumerate(as_completed(futs), 1):
+            task, txt, tele = f.result()
+            m, dom, sub, track, idx = task
+            if txt == "KEYLIMIT":
+                print("!!! key limit exceeded; stopping batch.", flush=True)
+                break
+            if txt and not (isinstance(tele, str) and tele.startswith("ERR:")):
+                conn.execute(
+                    "INSERT OR IGNORE INTO subdomain_ideas VALUES (?,?,?,?,?,?,?,?)",
+                    (m, dom, sub, track, idx, txt, tele, ts))
+                conn.commit()
+                g += 1
+            elif isinstance(tele, str) and tele.startswith("ERR:"):
+                e += 1
+                if e <= 5:
+                    print(f"  ERR {m} {sub[:28]} {track}{idx}: {tele[:110]}", flush=True)
+            else:
+                b += 1
+            if i % 20 == 0 or i == len(tasks):
+                print(f"  [{i}/{len(tasks)}] gen={g} blank/noretr={b} err={e}", flush=True)
+    conn.close()
+    print(f"done gen: gen={g} blank/noretr={b} err={e}")
+
+
+def status(models):
+    conn = sqlite3.connect(str(cfg.RESULTS_DB))
+    subs = scored_subs(conn)
+    tgt = len(subs) * N_IDX
+    print(f"scored subdomains: {len(subs)}  (target per model per track = {tgt})")
+    for m in models:
+        b = conn.execute("SELECT COUNT(*) FROM subdomain_ideas WHERE idea_model=? "
+                         "AND track='B' AND TRIM(idea_text)!=''", (m,)).fetchone()[0]
+        c = conn.execute("SELECT COUNT(*) FROM subdomain_ideas WHERE idea_model=? "
+                         "AND track='C' AND TRIM(idea_text)!=''", (m,)).fetchone()[0]
+        s = conn.execute("SELECT COUNT(*) FROM lit8d_scores_3seed WHERE idea_model=?",
+                         (m,)).fetchone()[0]
+        print(f"  {m:34s} B={b}/{tgt}  C={c}/{tgt}  scored_rows={s}")
+    conn.close()
+
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--gen", action="store_true")
+    ap.add_argument("--status", action="store_true")
+    ap.add_argument("--check-routes", action="store_true",
+                    help="verify the model ids against the live gateway catalog")
+    ap.add_argument("--models", nargs="*", default=None,
+                    help="subset of FRONTIER_MODELS (default: all 5)")
+    ap.add_argument("--workers", type=int, default=4)
+    ap.add_argument("--limit", type=int, default=0, help="cap tasks this batch (0=all)")
+    ap.add_argument("--smoke", action="store_true", help="1 model x 2 subs")
+    ap.add_argument("--track", choices=["both", "B", "C"], default="both",
+                    help="B=static only (no SS needed), C=active only, both=default")
+    a = ap.parse_args()
+    models = a.models if a.models else FRONTIER_MODELS
+    if a.check_routes:
+        check_routes(models)
+    if a.status:
+        status(models)
+    if a.gen:
+        gen(models, a.workers, a.limit, a.smoke, a.track)
+
+
+if __name__ == "__main__":
+    main()

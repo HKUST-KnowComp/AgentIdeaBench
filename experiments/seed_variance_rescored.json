@@ -1,0 +1,1863 @@
+{
+  "runs": [
+    {
+      "condition": "B_flash_newrubric",
+      "critic": "google/gemini-2.5-flash",
+      "model": "qwen/qwen3.5-397b-a17b",
+      "paper_id": "050675de50181e735c187cb612b5f83e62d31cbe",
+      "domain": "CS",
+      "seed": 42,
+      "scores": {
+        "originality": {
+          "score": 8,
+          "reasoning": "The proposal introduces a novel concept of a 'Cognitive Budget Controller' that dynamically allocates recursive depths to attention heads based on semantic ambiguity, which is not directly covered or implied by the background literature. While dynamic computation (e.g., early exit, MoE) is discussed in the broader LLM context, the specific mechanism of using a lightweight gating mechanism to predict future attention entropy for 'anticipatory computation' and variable recursive depth is new. Papers like [11] and [12] discuss compute-optimal training and scaling, but not this specific dynamic architectural modification. The idea of 'anticipatory computation' based on semantic ambiguity is a creative reframing not seen in the provided references."
+        },
+        "feasibility": {
+          "score": 6,
+          "reasoning": "The core idea is plausible, but implementing a 'lightweight gating mechanism to predict the entropy of future attention distributions' and dynamically adjusting 'recursive depths' for specific attention heads would require non-trivial architectural modifications and careful engineering, likely within a custom framework like PyTorch [16]."
+        },
+        "clarity": {
+          "score": 7,
+          "reasoning": "The hypothesis is clearly stated, and the proposed mechanism (gating mechanism predicting future attention entropy for dynamic recursive depth) is understandable. The expected outcome (FLOP reduction, accuracy maintenance) and comparison to existing methods (early-exit, MoE) are also clear. However, the exact implementation details of 'variable recursive depths' and how 'semantic ambiguity' is precisely measured and linked to attention entropy could use more elaboration."
+        },
+        "impact": {
+          "score": 8,
+          "reasoning": "If successful, this approach could significantly improve the efficiency of large language models, addressing a major challenge in the field (computational cost, as highlighted in [8], [9], [10], [11], [14]). A 40% FLOP reduction on complex reasoning tasks while maintaining accuracy would be a high-impact finding, influencing future model architectures and training strategies across multiple fields that use LLMs."
+        },
+        "specificity": {
+          "score": 6,
+          "reasoning": "The proposal specifies the target architecture (Transformer), the mechanism ('Cognitive Budget Controller' with a lightweight gating mechanism predicting future attention entropy), the dynamic allocation strategy (variable recursive depths to attention heads), the goal (reduce FLOPs by 40% while maintaining accuracy), and the benchmark (GSM8K). It also identifies what it aims to outperform (reactive early-exit, static MoE). However, it lacks specific details on how 'semantic ambiguity' is quantified, the exact architecture of the gating mechanism, or how 'variable recursive depths' would be implemented in practice (e.g., how many recursive steps, how they are applied)."
+        }
+      },
+      "factual_check": {
+        "claims": [
+          {
+            "claim": "Transformer architecture equipped with a 'Cognitive Budget Controller' will achieve superior reasoning efficiency by dynamically allocating variable recursive depths to specific attention heads based on real-time measures of semantic ambiguity.",
+            "label": "SPECULATIVE",
+            "note": "This is the core hypothesis, plausible but unverified."
+          },
+          {
+            "claim": "reducing total FLOPs by 40% on complex reasoning benchmarks like GSM8K while maintaining accuracy.",
+            "label": "SPECULATIVE",
+            "note": "A specific quantitative prediction, plausible but unverified."
+          }
+        ],
+        "verdict": "speculative"
+      },
+      "score_secs": 6.8
+    },
+    {
+      "condition": "B_flash_newrubric",
+      "critic": "google/gemini-2.5-flash",
+      "model": "qwen/qwen3.5-397b-a17b",
+      "paper_id": "050675de50181e735c187cb612b5f83e62d31cbe",
+      "domain": "CS",
+      "seed": 1337,
+      "scores": {
+        "originality": {
+          "score": 7,
+          "reasoning": "The proposal identifies a specific gap in existing sparse attention mechanisms (suboptimal allocation due to ignoring temporal dynamics of information density). While sparse attention is a known technique (implied by the need for 'long-context Transformers' and mentioned in the context of LLMs in general), and RL is used for optimization (e.g., [2], [5] for human preferences), the specific combination of a meta-learned RL agent (MLSAC) dynamically assigning layer-wise sparsity budgets based on Key-Value cache entropy for compute optimization in long-context Transformers is not explicitly covered or directly implied by the provided background literature. Papers like [1], [4], [13], [14] discuss LLMs and their capabilities, and [9], [11], [12] discuss scaling and efficiency, but none propose this specific dynamic, entropy-driven sparse attention control mechanism. The idea of 'temporal dynamics of information density' and using KV cache entropy as a signal for dynamic sparsity is novel in this context."
+        },
+        "feasibility": {
+          "score": 6,
+          "reasoning": "The approach is achievable with current methods, but developing and training a meta-learned RL agent for dynamic sparsity control will require non-trivial engineering and careful hyperparameter tuning."
+        },
+        "clarity": {
+          "score": 8,
+          "reasoning": "The hypothesis is clear, the proposed mechanism (MLSAC, KV cache entropy, RL agent) is well-defined, and the evaluation metrics (perplexity, FLOPs, latency, accuracy) and benchmarks (RULER, LongBench) are specified."
+        },
+        "impact": {
+          "score": 7,
+          "reasoning": "If successful, dynamically optimizing sparse attention could significantly improve the efficiency and scalability of long-context Transformers, influencing research directions in LLM architecture and deployment, especially for real-time applications."
+        },
+        "specificity": {
+          "score": 7,
+          "reasoning": "The proposal specifies the core mechanism (MLSAC, RL agent, KV cache entropy), the optimization targets (perplexity, FLOPs), the evaluation metrics (latency, accuracy), and the benchmarks (RULER, LongBench), along with a quantitative prediction (40% latency reduction, <1% accuracy degradation). It also names a baseline (SnapKV). However, it lacks details on the RL agent's architecture, specific reward function formulation, or training methodology."
+        }
+      },
+      "factual_check": {
+        "claims": [
+          {
+            "claim": "static or heuristic-driven sparse attention patterns in long-context Transformers suboptimally allocate compute by ignoring the temporal dynamics of information density",
+            "label": "SPECULATIVE",
+            "note": "This is the core hypothesis, plausible but not an established fact. It's the problem the proposal aims to address."
+          },
+          {
+            "claim": "MLSAC will achieve a 40% reduction in pre-fill latency with less than 1% accuracy degradation on complex multi-hop retrieval tasks compared to state-of-the-art baselines like SnapKV",
+            "label": "SPECULATIVE",
+            "note": "This is a specific, testable prediction, but it's a future outcome, not an established fact. It's the expected result of the proposed work."
+          }
+        ],
+        "verdict": "speculative"
+      },
+      "score_secs": 5.1
+    },
+    {
+      "condition": "B_flash_newrubric",
+      "critic": "google/gemini-2.5-flash",
+      "model": "qwen/qwen3.5-397b-a17b",
+      "paper_id": "050675de50181e735c187cb612b5f83e62d31cbe",
+      "domain": "CS",
+      "seed": 2024,
+      "scores": {
+        "originality": {
+          "score": 8,
+          "reasoning": "The proposal introduces a novel mechanism for silent multi-step deductive reasoning by enforcing geometric consistency in a 'Latent Logical Manifold' and mapping logical operations to vector arithmetic within a low-dimensional simplex. While Chain-of-Thought (CoT) reasoning is discussed in [3] as a method to improve performance, it relies on explicit intermediate tokens. The idea of achieving CoT-like accuracy *without* generating intermediate tokens, by regularizing the latent space, is not directly suggested or implied by any of the background papers. Papers like [1, 4] focus on code generation, [2, 5] on RLHF, and [3, 6, 7, 13, 14, 19] on instruction tuning and scaling, all of which operate on explicit token sequences. The concept of a 'Latent Logical Manifold' and its geometric manipulation for silent reasoning is a genuinely new angle."
+        },
+        "feasibility": {
+          "score": 5,
+          "reasoning": "The proposal outlines a clear experimental path using established LLM architectures and datasets, but the core mechanism of defining and optimizing a 'Latent Logical Manifold' with geometric consistency for silent reasoning presents significant, though not insurmountable, technical challenges in formulation and implementation."
+        },
+        "clarity": {
+          "score": 7,
+          "reasoning": "The hypothesis is clearly stated, and the proposed mechanism (projection head, low-dimensional simplex, loss function) is outlined. The target datasets and expected outcomes are also specified, making it a good starting point for a grant proposal."
+        },
+        "impact": {
+          "score": 8,
+          "reasoning": "If successful, this approach could significantly reduce inference latency for complex reasoning tasks in LLMs, decoupling computational depth from sequence length. This would have a high impact on the efficiency and applicability of LLMs, potentially influencing research directions in model architecture and reasoning mechanisms across the field."
+        },
+        "specificity": {
+          "score": 7,
+          "reasoning": "The proposal specifies the target (Transformer hidden states), the mechanism (projection head, low-dimensional simplex, loss function minimizing distance to a solution vector), and evaluation datasets (GSM8K, ProofNet), along with clear metrics (accuracy matching CoT, 80% latency reduction). However, it lacks precise details on the exact mathematical formulation of the 'geometric consistency constraints' or the 'logically deduced solution vector' and how it would be constructed for training."
+        }
+      },
+      "factual_check": {
+        "claims": [
+          {
+            "claim": "enforcing geometric consistency constraints on the trajectory of hidden state activations within a specific subspace of a Transformer's latent manifold—termed a \"Latent Logical Manifold\"—will enable large language models to perform multi-step deductive reasoning silently without generating intermediate tokens",
+            "label": "SPECULATIVE",
+            "note": "This is the core hypothesis and is unproven. While LLMs have latent spaces, the idea of a 'Latent Logical Manifold' where geometric consistency directly enables silent deductive reasoning is novel and speculative."
+          },
+          {
+            "claim": "optimizing a loss function that minimizes the distance between the final state and the logically deduced solution vector",
+            "label": "SPECULATIVE",
+            "note": "The existence and computability of a 'logically deduced solution vector' in a latent space, especially one that can be directly compared via distance to a final hidden state, is a speculative claim central to the proposed mechanism."
+          }
+        ],
+        "verdict": "speculative"
+      },
+      "score_secs": 4.9
+    },
+    {
+      "condition": "B_flash_newrubric",
+      "critic": "google/gemini-2.5-flash",
+      "model": "qwen/qwen3.5-397b-a17b",
+      "paper_id": "05f31ad3176a5df162e4d041b8736bf123f4b628",
+      "domain": "Biology",
+      "seed": 42,
+      "scores": {
+        "originality": {
+          "score": 8,
+          "reasoning": "The proposal introduces a highly novel approach by combining CRISPR-mediated combinatorial epigenetic editing (H3K23me3 deposition and DNA hypomethylation) at a specific super-enhancer (*Ucp1*) to achieve transgenerational epigenetic inheritance in mammals. While CRISPR-based epigenome editing is a known technique, and the concept of epigenetic inheritance exists, the specific combination of these two marks, the proposed mechanism involving nuclear RNAi machinery, and the explicit goal of bypassing mammalian germline reprogramming for adaptive metabolic phenotypes is not directly covered or implied by the background literature. The background papers focus on ML in biocatalysis [1], protein databases [2,4], protein structure prediction [3,5,8,10,11,12,14,15,16], protein language models [6,7], biosensors [13], and ubiquitin system pharmacology [17], NMR [18], and attention mechanisms [19], and protein complex modeling [20]. None of these directly address combinatorial epigenetic editing for transgenerational inheritance in mammals. The idea of 'engineered combinatorial histone-DNA signatures' for heritable therapeutic editing is a significant conceptual leap beyond the provided literature."
+        },
+        "feasibility": {
+          "score": 6,
+          "reasoning": "The proposed CRISPR-mediated epigenetic editing is technically challenging but generally achievable with current molecular biology tools, though precise targeting and stable transgenerational inheritance are non-trivial."
+        },
+        "clarity": {
+          "score": 7,
+          "reasoning": "The hypothesis is clearly stated, the methods (dCas9 fusions, cold challenges, Hi-C) are mentioned, and the expected outcome is described, providing a good starting point for a grant proposal."
+        },
+        "impact": {
+          "score": 9,
+          "reasoning": "Demonstrating engineered transgenerational epigenetic inheritance in mammals for adaptive phenotypes would be a paradigm shift, opening new avenues for therapeutic editing and understanding heredity beyond genetics."
+        },
+        "specificity": {
+          "score": 7,
+          "reasoning": "The proposal specifies the target gene (*Ucp1* super-enhancer), the epigenetic marks (H3K23me3, DNA hypomethylation), the tools (dCas9 fusions with methyltransferases and TET1), the organism (mice), the generations (F1-F3), and the readouts (metabolic rates, Hi-C), making it quite specific and testable."
+        }
+      },
+      "factual_check": {
+        "claims": [
+          {
+            "claim": "simultaneous CRISPR-mediated deposition of H3K23me3 and DNA hypomethylation at the Ucp1 brown adipose super-enhancer will generate a stable epigenetic allele resistant to germline reprogramming in mice.",
+            "label": "SPECULATIVE",
+            "note": "The proposal hypothesizes this outcome, but it is not an established fact that this specific combinatorial epigenetic modification will resist germline reprogramming in mammals. The transgenerational memory in C. elegans and interchromosomal contacts in Drosophila are cited as supporting evidence, but these are different organisms and contexts."
+          },
+          {
+            "claim": "this dual-mark configuration recruits conserved nuclear RNAi machinery to maintain an open chromatin state across three generations without further editing.",
+            "label": "SPECULATIVE",
+            "note": "This is a proposed mechanism, not an established fact. While RNAi machinery is involved in epigenetic regulation, its specific recruitment by this dual-mark configuration to maintain an open chromatin state transgenerationally in mammals is a hypothesis to be tested."
+          }
+        ],
+        "verdict": "speculative"
+      },
+      "score_secs": 5.1
+    },
+    {
+      "condition": "B_flash_newrubric",
+      "critic": "google/gemini-2.5-flash",
+      "model": "qwen/qwen3.5-397b-a17b",
+      "paper_id": "05f31ad3176a5df162e4d041b8736bf123f4b628",
+      "domain": "Biology",
+      "seed": 1337,
+      "scores": {
+        "originality": {
+          "score": 9,
+          "reasoning": "The proposal introduces a highly creative and novel hypothesis connecting mitochondrial ultrastructure (cristae junctions, MICOS complex) and metabolic regulation (citrate efflux, nuclear acetyl-CoA) to epigenetic control (histone acetylation at replication origins) and cell cycle progression (G1/S checkpoint). None of the provided background literature (which focuses on ML in biocatalysis, protein databases, protein structure prediction, and general AI/biosensors) touches upon this specific biological mechanism or its proposed regulatory role. The idea of mitochondrial ultrastructure acting as a direct, phosphorylation-dependent structural checkpoint for S-phase entry via metabolic gating is a significant reframing of cell cycle control and metabolic-epigenetic crosstalk."
+        },
+        "feasibility": {
+          "score": 5,
+          "reasoning": "Testing this hypothesis would require advanced cell biology techniques, including high-resolution microscopy (electron microscopy, super-resolution fluorescence), metabolic flux analysis, targeted protein manipulation (CRISPR, inducible expression), and epigenetic assays, which are feasible but require substantial effort and specialized expertise."
+        },
+        "clarity": {
+          "score": 8,
+          "reasoning": "The hypothesis is clearly stated, and the proposed mechanism is detailed, outlining specific proteins (MICOS, Cyclin E-CDK2, ACLY), molecules (citrate, acetyl-CoA), and epigenetic marks (H4K12ac) involved, making it easy to understand the intended experimental direction."
+        },
+        "impact": {
+          "score": 9,
+          "reasoning": "If proven, this hypothesis would fundamentally reshape our understanding of cell cycle regulation, metabolic-epigenetic coupling, and the role of mitochondrial dynamics in cell fate decisions. It could open new avenues for therapeutic intervention in diseases involving cell proliferation, such as cancer, by targeting mitochondrial ultrastructure or metabolic pathways."
+        },
+        "specificity": {
+          "score": 7,
+          "reasoning": "The proposal specifies the proteins, enzymes, and molecular events involved (MICOS complex, Cyclin E-CDK2 phosphorylation, citrate efflux, nuclear ACLY, H4K12ac at DNA replication origins), providing a clear mechanistic pathway. While it doesn't include exact experimental parameters or controls, the level of detail is sufficient to formulate testable predictions."
+        }
+      },
+      "factual_check": {
+        "claims": [
+          {
+            "claim": "mitochondrial cristae junctions during late G1 phase acts as a structural checkpoint for S-phase entry by gating the efflux of citrate required for nuclear acetyl-CoA synthesis.",
+            "label": "SPECULATIVE",
+            "note": "This is the core hypothesis, plausible but not established as a direct regulatory mechanism."
+          },
+          {
+            "claim": "mitochondrial inner membrane protein MICOS complex undergoes a phosphorylation-dependent conformational change triggered by Cyclin E-CDK2, which widens cristae junctions to facilitate the rapid release of citrate into the cytosol.",
+            "label": "SPECULATIVE",
+            "note": "This is a specific mechanistic prediction, plausible given known roles of CDK2 and MICOS, but not established."
+          },
+          {
+            "claim": "localized citrate burst is then converted by nuclear ATP-citrate lyase (ACLY) to generate a transient pool of acetyl-CoA essential for the hyperacetylation of histone H4 at lysine 12 (H4K12ac) specifically at DNA replication origins.",
+            "label": "SPECULATIVE",
+            "note": "While ACLY produces acetyl-CoA and H4K12ac is linked to replication, the direct, localized 'burst' and its specific role in origin licensing via this pathway is a novel, unverified connection."
+          }
+        ],
+        "verdict": "speculative"
+      },
+      "score_secs": 5.5
+    },
+    {
+      "condition": "B_flash_newrubric",
+      "critic": "google/gemini-2.5-flash",
+      "model": "qwen/qwen3.5-397b-a17b",
+      "paper_id": "05f31ad3176a5df162e4d041b8736bf123f4b628",
+      "domain": "Biology",
+      "seed": 2024,
+      "scores": {
+        "originality": {
+          "score": 8,
+          "reasoning": "The proposal introduces a highly original hypothesis connecting mitochondrial age and asymmetric inheritance to epigenetic remodeling via α-KG microdomains in stem cell division. None of the provided background literature (which focuses on ML in biocatalysis, protein structure prediction, and general AI/biosensors) directly addresses this specific biological mechanism. While the concept of epigenetic remodeling and stem cell division are known, the proposed causal link involving chronologically old mitochondria, localized α-KG, and its specific impact on pluripotency loci is novel and not implied by any of the references. It connects ideas from cell biology, metabolism, and epigenetics in a way not suggested by the provided literature."
+        },
+        "feasibility": {
+          "score": 7,
+          "reasoning": "The proposed methods (live-cell imaging of mitochondrial age reporters, single-cell ATAC-seq, bisulfite sequencing, Miro1/2 knockdown) are established techniques in cell biology and epigenetics, making the experimental path clear."
+        },
+        "clarity": {
+          "score": 8,
+          "reasoning": "The hypothesis is clearly stated, and the experimental approach is well-structured, outlining specific techniques and targets (e.g., Sox2, Oct4, 5hmC, H3K27me3, Miro1/2 knockdown)."
+        },
+        "impact": {
+          "score": 8,
+          "reasoning": "Uncovering a novel mechanism linking mitochondrial dynamics to epigenetic regulation and stem cell fate determination would be a high-impact finding, potentially reshaping understanding of stem cell biology, aging, and disease."
+        },
+        "specificity": {
+          "score": 7,
+          "reasoning": "The proposal specifies the mechanism (α-KG microdomain, TET/JmjC activity), target genes (Sox2, Oct4), epigenetic marks (5hmC, H3K27me3), and a specific manipulation (Miro1/2 knockdown) with clear readouts (α-KG levels, epigenetic states), providing a testable prediction."
+        }
+      },
+      "factual_check": {
+        "claims": [
+          {
+            "claim": "asymmetric stem cell division, the selective inheritance of chronologically old mitochondria by one daughter cell creates a localized α-ketoglutarate (α-KG) microdomain that drives daughter-specific epigenetic remodeling via TET-mediated DNA demethylation and JmjC-domain histone demethylase activity",
+            "label": "SPECULATIVE",
+            "note": "This is the core hypothesis of the proposal, connecting mitochondrial age, α-KG microdomains, and specific epigenetic modifications in a causal chain. While individual components (e.g., α-KG's role in TET/JmjC activity) are established, their specific interplay in asymmetric stem cell division and selective inheritance is a novel, unverified claim."
+          },
+          {
+            "claim": "old mitochondria, which exhibit elevated α-KG production due to accumulated metabolic rewiring, will be asymmetrically segregated into the self-renewing daughter cell",
+            "label": "SPECULATIVE",
+            "note": "The link between 'old mitochondria' and 'elevated α-KG production due to accumulated metabolic rewiring' is plausible but not an established fact. The specific prediction of their asymmetric segregation into the self-renewing daughter cell is also a key, unverified part of the hypothesis."
+          }
+        ],
+        "verdict": "speculative"
+      },
+      "score_secs": 5.0
+    },
+    {
+      "condition": "B_flash_newrubric",
+      "critic": "google/gemini-2.5-flash",
+      "model": "qwen/qwen3.5-397b-a17b",
+      "paper_id": "0142bf7cfaac534da831178cf27e49c31c16b70c",
+      "domain": "Physics",
+      "seed": 42,
+      "scores": {
+        "originality": {
+          "score": 9,
+          "reasoning": "The proposal introduces a highly novel concept of 'gradient Floquet code' by combining Floquet engineering with spatially varying frequencies on a hyperbolic lattice for adaptive error suppression. This goes significantly beyond the general concepts of physics-informed neural networks (e.g., [1], [2], [10], [13], [14], [15], [18], [20]), Hamiltonian neural networks (e.g., [4]), or even general GANs (e.g., [6], [7]) or transfer learning (e.g., [5], [16]). While the background literature touches on integrating physics into ML, none of it suggests this specific, complex, and highly theoretical quantum computing error correction mechanism. The idea of dynamically modulating effective distance based on local error rates in a Floquet-engineered topological code is not present or implied in any of the provided references. The 'XYZ Ruby Code formalism extended to time-periodic Hamiltonians' is also a novel theoretical extension."
+        },
+        "feasibility": {
+          "score": 3,
+          "reasoning": "The proposal relies on highly advanced and likely non-existent experimental capabilities, such as precise spatially varying circularly polarized light fields on a hyperbolic lattice of superconducting qubits, and real-time syndrome extraction for dynamic modulation, making it theoretically possible but with major unresolved obstacles."
+        },
+        "clarity": {
+          "score": 7,
+          "reasoning": "The hypothesis is clearly stated, and the proposed mechanism (gradient Floquet code, spatially varying frequencies, local noise susceptibility, dynamic modulation) is well-articulated, though the 'XYZ Ruby Code formalism' is a bit opaque without further explanation."
+        },
+        "impact": {
+          "score": 9,
+          "reasoning": "If successful, this proposal would represent a significant breakthrough in quantum error correction, potentially enabling more robust quantum computers and reshaping the field of fault-tolerant quantum computing."
+        },
+        "specificity": {
+          "score": 7,
+          "reasoning": "The proposal specifies the type of code (Floquet-engineered topological codes, 'gradient Floquet code'), the physical implementation (2D array of superconducting qubits in a hyperbolic lattice, circularly polarized light fields), the mechanism (spatially varying frequencies, local noise susceptibility, dynamic modulation), the expected outcome (40% improvement in logical error rates), and the verification method (tensor network simulations, experimental validation on 127-qubit processors with all-microwave leakage suppression protocols)."
+        }
+      },
+      "factual_check": {
+        "claims": [
+          {
+            "claim": "Floquet-engineered topological codes can achieve adaptive error suppression in heterogeneous noise environments by dynamically modulating the code's effective distance based on local error rates.",
+            "label": "SPECULATIVE",
+            "note": "This is the core hypothesis, which is plausible but not yet established in the literature as a proven mechanism for adaptive error suppression."
+          },
+          {
+            "claim": "tensor network simulations of the XYZ Ruby Code formalism extended to time-periodic Hamiltonians",
+            "label": "SPECULATIVE",
+            "note": "While tensor network simulations are established, the 'XYZ Ruby Code formalism extended to time-periodic Hamiltonians' is a highly specific and likely novel theoretical construct proposed within this hypothesis, making its existence and applicability speculative without further context."
+          }
+        ],
+        "verdict": "speculative"
+      },
+      "score_secs": 4.4
+    },
+    {
+      "condition": "B_flash_newrubric",
+      "critic": "google/gemini-2.5-flash",
+      "model": "qwen/qwen3.5-397b-a17b",
+      "paper_id": "0142bf7cfaac534da831178cf27e49c31c16b70c",
+      "domain": "Physics",
+      "seed": 1337,
+      "scores": {
+        "originality": {
+          "score": 8,
+          "reasoning": "The proposal introduces a novel combination of concepts not directly addressed in the background literature. While [1], [2], [3], [4], [10], [13], [14], [18], [20] discuss physics-informed neural networks and integrating physical laws, none propose using a 'hybrid quantum-classical architecture, specifically a Variational Quantum Circuit parameterized by a differentiable Lie Algebra' for 'autonomous discovery of hidden continuous symmetries in high-dimensional chaotic dynamical systems'. [4] mentions Hamiltonian Neural Networks for learning conservation laws, but this is a classical approach. The idea of embedding 'infinitesimal generators of symmetry transformations directly into the quantum ansatz' is a specific mechanism not found in the provided references. The comparison to 'classical Lie Algebra Convolutional Networks' implies an awareness of existing classical methods, but the quantum approach is new. The proposal identifies a gap in automated physical law discovery where classical ML might struggle, which goes beyond incremental improvements."
+        },
+        "feasibility": {
+          "score": 3,
+          "reasoning": "The proposal relies on a 'hybrid quantum-classical architecture' and 'Variational Quantum Circuit parameterized by a differentiable Lie Algebra', which are cutting-edge and still largely theoretical/experimental concepts, making implementation highly challenging with current quantum hardware limitations and software maturity."
+        },
+        "clarity": {
+          "score": 6,
+          "reasoning": "The hypothesis is clear, and the proposed mechanism (embedding generators into quantum ansatz) is stated. However, details on the specific architecture of the Variational Quantum Circuit, how the Lie Algebra parameterization would be implemented, the 'differentiable' aspect, and the exact training methodology for 'faster convergence and higher fidelity' are not elaborated."
+        },
+        "impact": {
+          "score": 9,
+          "reasoning": "If successful, discovering hidden continuous symmetries in chaotic systems using a quantum-classical approach would be a paradigm shift in automated physical law discovery, potentially impacting multiple fields from fluid dynamics to fundamental physics."
+        },
+        "specificity": {
+          "score": 5,
+          "reasoning": "The proposal names specific components like 'Variational Quantum Circuit', 'differentiable Lie Algebra', and 'Kuramoto-Sivashinsky equation' and mentions 'conserved quantities' and 'unknown symmetries'. However, it lacks details on the specific quantum gates, the exact form of the Lie Algebra parameterization, the loss function, the training algorithm, or how 'significantly faster convergence and higher fidelity' would be quantitatively measured."
+        }
+      },
+      "factual_check": {
+        "claims": [
+          {
+            "claim": "Variational Quantum Circuit parameterized by a differentiable Lie Algebra, will autonomously discover hidden continuous symmetries in high-dimensional chaotic dynamical systems more efficiently than classical neural networks.",
+            "label": "SPECULATIVE",
+            "note": "This is the core hypothesis and is unproven. While quantum circuits offer potential for expressivity, the specific claim about efficiency in discovering hidden symmetries in chaotic systems via Lie Algebra parameterization is a research question, not an established fact."
+          },
+          {
+            "claim": "By embedding infinitesimal generators of symmetry transformations directly into the quantum ansatz, we will exploit the Hilbert space's exponential expressivity to navigate the non-convex loss landscape of symmetry discovery.",
+            "label": "SPECULATIVE",
+            "note": "The idea of embedding generators into a quantum ansatz is a proposed mechanism, and the claim that this will 'exploit the Hilbert space's exponential expressivity' to 'navigate the non-convex loss landscape' for symmetry discovery is a theoretical assertion that needs to be demonstrated. While quantum systems can have exponential expressivity, its utility for this specific problem and landscape navigation is speculative."
+          }
+        ],
+        "verdict": "speculative"
+      },
+      "score_secs": 6.5
+    },
+    {
+      "condition": "B_flash_newrubric",
+      "critic": "google/gemini-2.5-flash",
+      "model": "qwen/qwen3.5-397b-a17b",
+      "paper_id": "0142bf7cfaac534da831178cf27e49c31c16b70c",
+      "domain": "Physics",
+      "seed": 2024,
+      "scores": {
+        "originality": {
+          "score": 8,
+          "reasoning": "The proposal introduces a highly novel connection between gravitational wave diffraction patterns (albeit speculative) and quantum error correction decoding. While PINNs (e.g., [2, 3, 4, 10, 13, 14, 18, 20]) and GANs (e.g., [6, 7, 13]) are discussed for physics-informed models and data generation, and transfer learning (e.g., [5, 16]) is mentioned, none of the background papers suggest using gravitational wave signatures or 'Wavelet Convolution Detector' architectures for quantum error correction. The idea of using 'interference-pattern-inspired auxiliary channels' for topological codes is genuinely new and not implied by any of the references. The closest related concepts are physics-informed neural networks (PINNs) for incorporating physical laws (e.g., [2, 10, 13, 14, 18, 20]) and wavelet-based networks for signal processing (e.g., [11]), but the specific application and cross-domain inspiration are novel."
+        },
+        "feasibility": {
+          "score": 3,
+          "reasoning": "The proposal relies on highly speculative theoretical constructs (gravitational wave diffraction from microlensing) for synthetic data generation and an unverified 'AlphaQubit 2 framework', posing major unresolved obstacles to implementation and validation."
+        },
+        "clarity": {
+          "score": 6,
+          "reasoning": "The hypothesis is clearly stated, and the general approach of adapting a detector architecture and using synthetic data is understandable, but the specifics of how 'interference-pattern-inspired auxiliary channels' are constructed and integrated are not detailed."
+        },
+        "impact": {
+          "score": 8,
+          "reasoning": "If successful, this highly interdisciplinary approach could significantly advance quantum error correction by providing a novel decoding strategy, potentially influencing both quantum computing and theoretical physics by demonstrating unexpected cross-domain utility."
+        },
+        "specificity": {
+          "score": 6,
+          "reasoning": "The proposal names specific techniques (Wavelet Convolution Detector, AlphaQubit 2, topological surface codes, correlated noise models, superconducting qubits) and metrics (logical error rates, code distances 5-15) but lacks details on the exact mathematical formulation of the 'mathematical similarity' or the precise architecture of the 'hybrid decoder' and how the auxiliary channels are generated."
+        }
+      },
+      "factual_check": {
+        "claims": [
+          {
+            "claim": "gravitational wave diffraction patterns caused by compact dark matter microlensing",
+            "label": "SPECULATIVE",
+            "note": "While gravitational waves and dark matter microlensing are established concepts, the existence and detectability of 'gravitational wave diffraction patterns' specifically caused by 'compact dark matter microlensing' is highly speculative and not an established phenomenon. It's a theoretical construct that hasn't been observed or widely accepted as a direct observational signature."
+          },
+          {
+            "claim": "mathematical similarity between wave-optics diffraction signatures and multi-qubit error propagation in 2D topological lattices",
+            "label": "SPECULATIVE",
+            "note": "This claim posits a 'mathematical similarity' that is not immediately obvious or widely established in the literature. While both involve wave phenomena and lattices, the specific mapping between diffraction patterns from gravitational lensing and error propagation in topological codes is a novel, and thus speculative, connection that would need rigorous mathematical justification."
+          },
+          {
+            "claim": "AlphaQubit 2 framework",
+            "label": "SPECULATIVE",
+            "note": "This framework is not a widely known or established platform in quantum computing literature. It appears to be a hypothetical or internal framework, making its capabilities and existence speculative in the context of a general scientific proposal."
+          }
+        ],
+        "verdict": "speculative"
+      },
+      "score_secs": 7.4
+    },
+    {
+      "condition": "B_flash_newrubric",
+      "critic": "google/gemini-2.5-flash",
+      "model": "qwen/qwen3.5-9b",
+      "paper_id": "050675de50181e735c187cb612b5f83e62d31cbe",
+      "domain": "CS",
+      "seed": 42,
+      "scores": {
+        "originality": {
+          "score": 7,
+          "reasoning": "The proposal introduces a novel combination of 'dynamic, context-aware spatial tokenization' and 'hierarchical graph-based neural fields' for 3D scene understanding, explicitly contrasting it with 'standard 2D-vision-language model projections'. While LLMs (e.g., [1], [4], [13], [14], [15]) and their finetuning (e.g., [2], [3], [6], [19]) are extensively covered, and some mention of multimodal capabilities exists (e.g., [15] for image inputs), none of the background papers delve into the specific mechanisms proposed here for 3D spatial reasoning. The idea of 'learnable spatial attention mechanisms that dynamically modulate token resolution based on query semantics' and 'encoding scene geometry into differentiable neural fields that interact with LLM token embeddings through cross-modal graph convolutions' is not directly present or implied in the provided literature. The background focuses on general LLM capabilities, code generation, instruction tuning, and RLHF, not on detailed architectural innovations for 3D vision-language integration beyond basic multimodal input. The proposal identifies a specific gap (Gestalt principles, 3D grounding) and proposes a mechanism to address it."
+        },
+        "feasibility": {
+          "score": 6,
+          "reasoning": "The proposed approach involves combining advanced techniques (dynamic tokenization, neural fields, graph convolutions, LLM integration) which are individually feasible but their synergistic integration presents non-trivial engineering challenges and computational demands."
+        },
+        "clarity": {
+          "score": 7,
+          "reasoning": "The hypothesis is clearly stated, and the proposed mechanisms (dynamic spatial attention, neural fields, cross-modal graph convolutions) are described with sufficient detail to understand the core idea and differentiate it from existing methods. The target benchmarks and expected improvements are also specified."
+        },
+        "impact": {
+          "score": 8,
+          "reasoning": "If successful, this approach could significantly advance 3D scene understanding for AI, moving beyond current limitations of 2D projections and potentially influencing fields like robotics, augmented reality, and human-computer interaction by enabling more robust spatial reasoning and reducing common errors like hallucinations."
+        },
+        "specificity": {
+          "score": 7,
+          "reasoning": "The proposal names specific techniques (dynamic spatial tokenization, hierarchical graph-based neural fields, learnable spatial attention, cross-modal graph convolutions) and target benchmarks (ScanQA, SQA3D, ScanNet-derived datasets) with quantitative predictions for improvement (15-20% grounding accuracy, 30% hallucination reduction), providing a clear direction for research and evaluation."
+        }
+      },
+      "factual_check": {
+        "claims": [
+          {
+            "claim": "integrating dynamic, context-aware spatial tokenization with hierarchical graph-based neural fields will significantly outperform standard 2D-vision-language model projections in 3D scene understanding tasks.",
+            "label": "SPECULATIVE",
+            "note": "This is the core hypothesis, which is by definition speculative until tested."
+          },
+          {
+            "claim": "explicitly models the Gestalt principles of perceptual grouping and figure-ground organization that current models neglect",
+            "label": "SPECULATIVE",
+            "note": "While current models might implicitly struggle with these, claiming they 'neglect' them and that this approach 'explicitly models' them is a strong, unproven assertion about the mechanism and its effect."
+          }
+        ],
+        "verdict": "speculative"
+      },
+      "score_secs": 7.0
+    },
+    {
+      "condition": "B_flash_newrubric",
+      "critic": "google/gemini-2.5-flash",
+      "model": "qwen/qwen3.5-9b",
+      "paper_id": "050675de50181e735c187cb612b5f83e62d31cbe",
+      "domain": "CS",
+      "seed": 1337,
+      "scores": {
+        "originality": {
+          "score": 8,
+          "reasoning": "The proposal combines several existing concepts (LLM-guided NAS, Chain-of-Thought (CoT) from [3], self-consistency validation, and training-free evaluation) in a novel architectural framework (MS-FAR) specifically for resource-constrained NAS. While LLM-guided NAS exists, the explicit multi-stage reasoning with problem-signature analysis, constraint-aware synthesis with multiple CoT paths, and particularly the self-consistency verification where divergent CoT paths *must converge* on identical architecture specifications before evaluation, is not directly covered or implied by the background literature. Papers like [1], [4] discuss LLMs for code generation, and [3], [13], [14], [19] discuss instruction tuning and CoT, but none propose this specific multi-stage, self-validating CoT architecture for NAS. The emphasis on 'faithfulness validation mechanisms' as a critical gap is also a novel angle."
+        },
+        "feasibility": {
+          "score": 6,
+          "reasoning": "The proposal outlines a clear experimental path using established techniques (LLMs, CoT, NAS benchmarks, training-free evaluation), but the 'curated dataset of architecturally-justified design decisions' and the implementation of the multi-stage reasoning and self-consistency validation would require non-trivial engineering and data collection efforts."
+        },
+        "clarity": {
+          "score": 7,
+          "reasoning": "The hypothesis is clear, and the three-stage reasoning process is well-defined. The proposal identifies specific benchmarks and evaluation metrics, making it a good starting point for a grant proposal, though some details on the 'curated dataset' and the exact implementation of 'self-consistency verification' could be elaborated."
+        },
+        "impact": {
+          "score": 7,
+          "reasoning": "Addressing the efficiency and performance of NAS in resource-constrained domains is an important problem. If successful, this framework could significantly influence how neural architectures are designed and optimized, especially in areas where computational resources are limited, potentially impacting various applied AI fields."
+        },
+        "specificity": {
+          "score": 7,
+          "reasoning": "The proposal specifies the core method (MS-FAR with three-stage CoT and self-consistency), target domain (resource-constrained NAS), specific benchmarks (NAS-Bench201), and a dataset framework (62-dataset from learning-curve estimation literature). It also provides specific predicted numerical outcomes (60% search space reduction, 95% performance of exhaustive search), making it highly testable."
+        }
+      },
+      "factual_check": {
+        "claims": [
+          {
+            "claim": "MS-FAR will reduce search space by 60% while achieving 95% of the performance of exhaustive search",
+            "label": "SPECULATIVE",
+            "note": "These are specific numerical predictions for a novel method, which are inherently speculative until tested."
+          },
+          {
+            "claim": "LLM chain-of-thought generation with self-consistency validation gates will significantly improve neural architecture search efficiency and performance in resource-constrained domains.",
+            "label": "SPECULATIVE",
+            "note": "This is the core hypothesis of the proposal, which is unverified at this stage."
+          }
+        ],
+        "verdict": "speculative"
+      },
+      "score_secs": 5.0
+    },
+    {
+      "condition": "B_flash_newrubric",
+      "critic": "google/gemini-2.5-flash",
+      "model": "qwen/qwen3.5-9b",
+      "paper_id": "050675de50181e735c187cb612b5f83e62d31cbe",
+      "domain": "CS",
+      "seed": 2024,
+      "scores": {
+        "originality": {
+          "score": 8,
+          "reasoning": "The proposal introduces a novel combination of Neural Architecture Search (NAS) with a differentiable reasoning cost estimator specifically for Chain-of-Thought (CoT) generation in LLMs. While NAS (e.g., optimizing architectures) and CoT (e.g., [3]) are known, and efficiency in LLMs is a concern (e.g., [11]), the idea of treating CoT generation as a differentiable optimization problem to guide architectural search based on 'perplexity-based step importance' is not explicitly covered or directly implied by the background literature. Papers like [1, 4] discuss code generation and multi-turn synthesis, and [3] discusses CoT finetuning, but none propose a NAS framework that directly optimizes architecture for efficient CoT generation via a differentiable reasoning cost. The 'perplexity-based step importance' as a guiding signal for NAS is also a novel mechanism. This goes beyond simply combining two known techniques (which would be a 5) by proposing a specific, unaddressed mechanism for improving CoT efficiency through architectural design."
+        },
+        "feasibility": {
+          "score": 5,
+          "reasoning": "The core idea of differentiable CoT optimization for NAS is theoretically interesting but presents significant implementation challenges, making it a substantial 3-5 year project."
+        },
+        "clarity": {
+          "score": 6,
+          "reasoning": "The hypothesis is clear, and the general approach is outlined, but the specifics of how 'perplexity-based step importance' is calculated and made differentiable for architectural search are not detailed."
+        },
+        "impact": {
+          "score": 7,
+          "reasoning": "If successful, this approach could significantly improve the efficiency and performance of LLMs on complex reasoning tasks, influencing research directions in both NAS and LLM reasoning."
+        },
+        "specificity": {
+          "score": 6,
+          "reasoning": "The proposal names specific benchmarks (GSM8K, MATH, ScienceQA) and a framework (CE-NAS) and provides quantitative predictions, but lacks details on the exact formulation of the differentiable reasoning cost estimator and the 'perplexity-based step importance' mechanism."
+        }
+      },
+      "factual_check": {
+        "claims": [
+          {
+            "claim": "treating chain-of-thought generation as a differentiable optimization problem where architectural components (attention heads, feed-forward dimensions, gating mechanisms) are parameters of the search space guided by perplexity-based step importance",
+            "label": "SPECULATIVE",
+            "note": "While NAS can optimize architectural components and CoT involves sequential steps, framing CoT generation itself as a differentiable optimization problem with perplexity-based step importance guiding architectural search is a novel, unproven concept. Differentiating through the entire CoT generation process to optimize architecture is not an established technique."
+          },
+          {
+            "claim": "NAS-discovered architectures will outperform manually-designed CoT-enhanced models by 8-12% in accuracy while reducing token generation costs by 35-40%",
+            "label": "SPECULATIVE",
+            "note": "These are specific quantitative predictions for a novel, unproven method. While plausible as a goal, they are not established facts or direct extrapolations from existing work."
+          }
+        ],
+        "verdict": "speculative"
+      },
+      "score_secs": 6.3
+    },
+    {
+      "condition": "B_flash_newrubric",
+      "critic": "google/gemini-2.5-flash",
+      "model": "qwen/qwen3.5-9b",
+      "paper_id": "05f31ad3176a5df162e4d041b8736bf123f4b628",
+      "domain": "Biology",
+      "seed": 42,
+      "scores": {
+        "originality": {
+          "score": 8,
+          "reasoning": "The proposal introduces a novel hypothesis regarding 'nested enhancer-enhancer crosstalk failures' as a limiting factor in cellular reprogramming, which is not directly discussed or implied in the provided background literature. While CRISPRa/CRISPRi (bidirectional CRISPR perturbations) and single-cell multi-omics (scRNA-seq and scATAC-seq) are established techniques, their application in a large-scale, systematic manner to specifically investigate nested enhancer networks and their role in reprogramming efficiency, followed by engineering synthetic epigenetic circuits to bypass these bottlenecks, represents a creative and unaddressed angle. The background papers focus on protein structure prediction, ML in biocatalysis, and general AI in healthcare, none of which delve into the specific epigenetic mechanisms of cellular reprogramming at this level of detail or propose this particular intervention strategy. The idea of 'epigenetic state incompatibility in nested enhancer networks' as a bottleneck is genuinely new in this context."
+        },
+        "feasibility": {
+          "score": 6,
+          "reasoning": "The proposed experimental scale (5,000 enhancer-promoter pairs across 2 million cells) is ambitious but potentially achievable with current high-throughput single-cell technologies and CRISPR screening platforms, though it would require significant resources and expertise."
+        },
+        "clarity": {
+          "score": 7,
+          "reasoning": "The hypothesis is clearly stated, and the experimental approach (CRISPRa/CRISPRi, Perturb-seq 2.0, scRNA-seq, scATAC-seq) is well-defined, along with a specific predicted outcome and a follow-up engineering step. Some details on the 'tunable chromatin remodelers and methylation-sensitive promoters' could be elaborated."
+        },
+        "impact": {
+          "score": 9,
+          "reasoning": "If successful, establishing a comprehensive epigenetic regulatory atlas and achieving programmable cell fate engineering would have a transformative impact on regenerative medicine and our fundamental understanding of cell biology, potentially reshaping how cell reprogramming is approached."
+        },
+        "specificity": {
+          "score": 7,
+          "reasoning": "The proposal specifies the target (enhancer accessibility and promoter methylation), the methods (bidirectional CRISPRa/CRISPRi, Perturb-seq 2.0, scRNA-seq, scATAC-seq), the scale (5,000 pairs, 2 million cells), and a quantitative prediction (~15% failure, 2-3 fold improvement). It also outlines the follow-up engineering step. However, the exact design of the 'synthetic epigenetic circuits' and the specific metrics for 'epigenetic state incompatibility' could be more detailed."
+        }
+      },
+      "factual_check": {
+        "claims": [
+          {
+            "claim": "cellular reprogramming efficiency is limited by nested enhancer-enhancer crosstalk failures rather than individual enhancer-promoter connections.",
+            "label": "SPECULATIVE",
+            "note": "This is the core hypothesis of the proposal, which is plausible but unverified."
+          },
+          {
+            "claim": "~15% of reprogramming transitions will fail due to epigenetic state incompatibility in nested enhancer networks.",
+            "label": "SPECULATIVE",
+            "note": "This is a specific prediction based on the hypothesis, which is plausible but unverified."
+          }
+        ],
+        "verdict": "speculative"
+      },
+      "score_secs": 3.9
+    },
+    {
+      "condition": "B_flash_newrubric",
+      "critic": "google/gemini-2.5-flash",
+      "model": "qwen/qwen3.5-9b",
+      "paper_id": "05f31ad3176a5df162e4d041b8736bf123f4b628",
+      "domain": "Biology",
+      "seed": 1337,
+      "scores": {
+        "originality": {
+          "score": 7,
+          "reasoning": "The proposal introduces a specific mechanistic hypothesis regarding the cooperation of OCT4 and BRD4 at distal enhancers to form a bistable chromatin switch for pluripotency memory. While the background literature touches on machine learning for biocatalysis, protein structure prediction, and general AI in healthcare, none of the provided references directly address the specific molecular mechanism of pluripotency regulation involving OCT4, BRD4, and distal enhancers in human stem cells, nor do they propose disrupting this axis with dCas9-p300 for therapeutic reprogramming. The idea of a 'bistable chromatin switch' and 'memory of pluripotency' linked to this specific molecular interaction goes beyond the general concepts of protein function or ML applications in the provided papers. It identifies a specific gap in understanding the stability of pluripotency states."
+        },
+        "feasibility": {
+          "score": 7,
+          "reasoning": "The proposed experimental approach using dCas9-p300 for epigenome editing, snATAC-seq, and scRNA-seq are established techniques in stem cell biology and epigenetics, making the core experiments feasible for a well-equipped lab."
+        },
+        "clarity": {
+          "score": 8,
+          "reasoning": "The hypothesis is clearly stated, the specific molecular players (OCT4, BRD4, distal enhancers), the proposed mechanism (positive feedback, bistable switch, pluripotency memory), the experimental intervention (dCas9-p300 at specific enhancer clusters), and the readouts (snATAC-seq, scRNA-seq, 60% reduction in accessibility, premature differentiation) are all well-defined."
+        },
+        "impact": {
+          "score": 7,
+          "reasoning": "Understanding the mechanisms governing pluripotency stability and differentiation is a fundamental problem in stem cell biology. If validated, this proposal could significantly influence research directions in regenerative medicine and therapeutic reprogramming by providing a specific target for modulating cell fate."
+        },
+        "specificity": {
+          "score": 7,
+          "reasoning": "The proposal specifies the target cells (human pluripotent stem cells), the specific factors (OCT4, BRD4), the genomic locations (distal enhancer clusters, e.g., SOX2, NANOG, KLF4-associated regions), the intervention (dCas9-p300 fusion), the expected quantitative outcome (over 60% reduction in chromatin accessibility), the measurement techniques (snATAC-seq, scRNA-seq), and the timeframe (day 14 embryoid bodies). It also suggests a therapeutic implication (BET inhibitors)."
+        }
+      },
+      "factual_check": {
+        "claims": [
+          {
+            "claim": "OCT4 cooperates with BRD4 to establish a positive feedback loop at distal enhancers, creating a 'memory' of pluripotency.",
+            "label": "SPECULATIVE",
+            "note": "While OCT4 is a known pioneer factor in pluripotency and BRD4 is a chromatin remodeler, their specific cooperation in a positive feedback loop at distal enhancers to create a 'memory' of pluripotency is a hypothesis presented here, not an established fact in the provided literature or general knowledge."
+          },
+          {
+            "claim": "Disrupting this OCT4-BRD4-Enhancer axis using targeted CRISPR-Cas9 epigenome editing (dCas9-p300 fusion) at default pluripotency enhancer clusters (e.g., SOX2, NANOG, and KLF4-associated regions) will reduce chromatin accessibility by over 60% and force premature differentiation.",
+            "label": "SPECULATIVE",
+            "note": "CRISPR-Cas9 epigenome editing (dCas9-p300) is an established technique for modulating chromatin, and SOX2, NANOG, KLF4 are known pluripotency factors. However, the specific quantitative effect (over 60% reduction in accessibility) and the direct consequence of 'forcing premature differentiation' even with high OCT4 levels, as a result of disrupting this specific axis, is a prediction of the hypothesis, not an established fact."
+          }
+        ],
+        "verdict": "speculative"
+      },
+      "score_secs": 5.7
+    },
+    {
+      "condition": "B_flash_newrubric",
+      "critic": "google/gemini-2.5-flash",
+      "model": "qwen/qwen3.5-9b",
+      "paper_id": "0142bf7cfaac534da831178cf27e49c31c16b70c",
+      "domain": "Physics",
+      "seed": 42,
+      "scores": {
+        "originality": {
+          "score": 9,
+          "reasoning": "The proposal introduces a highly novel hypothesis connecting the violation of the area law for entanglement entropy at critical points to topological susceptibility and scattering cross-sections in 2+1D quantum critical systems. None of the background papers (which are primarily on AI/ML methods like TGDS, PINNs, GANs, transfer learning, and digital twins) touch upon quantum field theory, topological order, entanglement entropy, or scattering cross-sections in this context. The core idea of unifying holographic principles with observable scattering signatures via entanglement entropy and topological response functions is a creative reframing of problems in theoretical physics, not covered or implied by the provided literature."
+        },
+        "feasibility": {
+          "score": 2,
+          "reasoning": "The proposal requires significant theoretical breakthroughs to establish the predicted proportionality and scaling relationships, and experimental verification in ultracold atomic quantum simulators for 'cross-section measurements' of 'entanglement structure' is at the very edge of current experimental capabilities, if not beyond."
+        },
+        "clarity": {
+          "score": 4,
+          "reasoning": "The hypothesis is stated clearly, using precise terminology from theoretical physics. However, the proposal lacks any experimental plan or specific theoretical framework to test these predictions, making it difficult to discern the exact methodology."
+        },
+        "impact": {
+          "score": 9,
+          "reasoning": "If proven, this hypothesis would be paradigm-shifting, unifying concepts from quantum information theory, condensed matter physics, and high-energy physics (holography), potentially leading to new experimental probes of fundamental quantum phenomena and reshaping how multiple fields approach the problem of quantum gravity and emergent spacetime."
+        },
+        "specificity": {
+          "score": 3,
+          "reasoning": "The proposal names specific theoretical concepts (e.g., '2+1 dimensional quantum critical systems', 'fractional quantum Hall states', 'symmetry-protected topological phases', 'central charge', 'topological entanglement entropy') and a general experimental platform ('ultracold atomic quantum simulators'). However, it lacks specific details on how 'topological susceptibility' or 'topological response functions' would be precisely defined and measured, what 'scattering cross-section enhancement' entails experimentally, or how the 'volume-law coefficient' would be extracted and correlated. There are no operationalized variables, controls, or metrics."
+        }
+      },
+      "factual_check": {
+        "claims": [
+          {
+            "claim": "violation of the area law for entanglement entropy at critical points is directly proportional to the topological susceptibility",
+            "label": "SPECULATIVE",
+            "note": "This is a highly speculative claim. While entanglement entropy and topological susceptibility are both relevant in quantum field theories, a direct proportionality at critical points, especially linking area law violation to topological susceptibility, is not an established result and would be a significant theoretical finding if true. It's plausible but unverified."
+          },
+          {
+            "claim": "entanglement entropy's volume-law coefficient should scale linearly with the topological response functions",
+            "label": "SPECULATIVE",
+            "note": "This is also a speculative claim. Entanglement entropy typically follows an area law in gapped phases and can have logarithmic or volume law corrections at critical points or in certain exotic phases. A linear scaling of a 'volume-law coefficient' with 'topological response functions' is not a standard theoretical prediction and would require significant theoretical justification. It's plausible in the context of a novel hypothesis but not established."
+          }
+        ],
+        "verdict": "speculative"
+      },
+      "score_secs": 5.1
+    },
+    {
+      "condition": "B_flash_newrubric",
+      "critic": "google/gemini-2.5-flash",
+      "model": "qwen/qwen3.5-9b",
+      "paper_id": "0142bf7cfaac534da831178cf27e49c31c16b70c",
+      "domain": "Physics",
+      "seed": 1337,
+      "scores": {
+        "originality": {
+          "score": 4,
+          "reasoning": "The proposal combines several established concepts (Weyl semimetals, higher-order topology, axial anomaly, fractional quantum Hall effect, non-Abelian anyons, Moore-Read Pfaffian states, interferometry, shot noise, thermal Hall measurements). While the specific combination of these elements in 1D hinge states of higher-order Weyl semimetals is not explicitly detailed in the provided background literature (which focuses on machine learning), the core physical concepts are well-established in condensed matter physics. The proposal does not introduce a fundamentally new physical mechanism or theoretical framework, but rather applies known concepts to a specific, albeit complex, material system. The dimensional inconsistency ('4D surface intersections') also limits its originality score, as it suggests a misunderstanding rather than a novel insight. It's a minor twist on existing work in topological phases of matter, not a reframing of the problem."
+        },
+        "feasibility": {
+          "score": 3,
+          "reasoning": "The proposal relies on the existence and pristine fabrication of 1D hinge states in specific Weyl semimetals, which is experimentally challenging. The proposed measurements (interferometry, shot noise, thermal Hall) are extremely difficult to perform on such nanoscale 1D systems, especially at the low temperatures and high magnetic fields required for FQH physics."
+        },
+        "clarity": {
+          "score": 4,
+          "reasoning": "The proposal uses highly technical language, but the '4D surface intersections' claim introduces a significant factual inconsistency that undermines the clarity of the proposed physical system. While the overall goal is discernible, this fundamental error makes the description of the experimental setup and the underlying physics unclear and potentially flawed."
+        },
+        "impact": {
+          "score": 6,
+          "reasoning": "If the hypothesis were correct and experimentally verified, observing non-Abelian anyons in a 1D platform derived from topological semimetals would be a significant contribution to condensed matter physics and quantum computing, potentially influencing research directions in topological quantum computation. However, the factual inconsistency reduces the perceived impact."
+        },
+        "specificity": {
+          "score": 4,
+          "reasoning": "The proposal names specific materials (TaAs, Cd3As2), specific FQH states (Moore-Read Pfaffian), filling factors (ν = 1/2, 3/2), measurement techniques (interferometry, shot noise, thermal Hall), and expected outcomes (statistical phase θ = π/4, fractional charge e/2, e/4, chiral central charge c = 3/2). However, the fundamental dimensional error regarding '4D surface intersections' makes the proposed experimental setup and the physical mechanism underspecified and conceptually flawed, capping the specificity score."
+        }
+      },
+      "factual_check": {
+        "claims": [
+          {
+            "claim": "higher-order Weyl semimetals subjected to strong perpendicular magnetic fields, the hinge states (protected by higher-order topology and emergent axial anomaly) will host fractional quantum Hall physics with non-Abelian anyonic excitations propagating along the 1D hinge interfaces.",
+            "label": "SPECULATIVE",
+            "note": "This is the core hypothesis of the proposal, which is currently unverified in the literature. While individual concepts like Weyl semimetals, higher-order topology, axial anomaly, and fractional quantum Hall physics are established, their specific combination leading to non-Abelian anyons on 1D hinges in this context is a novel prediction."
+          },
+          {
+            "claim": "in cubic Weyl semimetals like TaAs or Cd3As2, the hinge states at 4D surface intersections will support Moore-Read-type Pfaffian states at filling factors ν = 1/2 and 3/2.",
+            "label": "INCORRECT",
+            "note": "Surface intersections are 2D or 3D, not 4D. This is a fundamental dimensional inconsistency. Weyl semimetals exist in 3D bulk, and their surfaces are 2D. Intersections of surfaces would be 1D (hinges) or 0D (corners). The concept of '4D surface intersections' is dimensionally inconsistent within the context of 3D materials."
+          },
+          {
+            "claim": "interferometry measurements along pristine hinge samples (using micro-fabricated edge contacts) will reveal Fabry-Pérot interference patterns with anyonic statistical phase of θ = π/4 for Fibonacci anyons, while shot-noise measurements will detect fractional charge e/2 and e/4.",
+            "label": "SPECULATIVE",
+            "note": "While Fabry-Pérot interferometry and shot-noise measurements are established techniques for probing fractional charge and statistics in FQH systems, the specific prediction of θ = π/4 for Fibonacci anyons and fractional charges e/2 and e/4 in this particular system (1D hinges of higher-order Weyl semimetals) is a theoretical prediction that has not been experimentally verified."
+          },
+          {
+            "claim": "thermal Hall measurements detecting chiral central charge c = 3/2.",
+            "label": "SPECULATIVE",
+            "note": "Thermal Hall measurements are a known method to detect chiral central charge in FQH systems. However, the specific prediction of c=3/2 for the proposed system is a theoretical prediction, not an established experimental fact for this specific material and topological state."
+          }
+        ],
+        "verdict": "factually_incoherent"
+      },
+      "score_secs": 7.1
+    },
+    {
+      "condition": "B_flash_newrubric",
+      "critic": "google/gemini-2.5-flash",
+      "model": "qwen/qwen3.5-9b",
+      "paper_id": "0142bf7cfaac534da831178cf27e49c31c16b70c",
+      "domain": "Physics",
+      "seed": 2024,
+      "scores": {
+        "originality": {
+          "score": 8,
+          "reasoning": "The proposal combines concepts from quantum many-body physics (topological phase transitions, Kitaev model, SSH chain, entanglement entropy) with machine learning (autoregressive neural networks, loss landscape analysis, Hessian eigenvalue spectrum, variational Monte Carlo). While PINNs (e.g., [2, 3, 10, 13, 14, 18, 20]) and Hamiltonian Neural Networks [4] incorporate physics into ML, and TGDS [1] is a general paradigm, none of the background papers specifically propose analyzing the *training dynamics* or *loss landscape geometry* (specifically Hessian eigenvalue spectra and bifurcation patterns) of autoregressive NNs to *detect topological phase transitions* and *encode topological invariants*. The idea of using entanglement entropy from network coefficients is also novel in this context. The closest related work might be the general idea of 'interpretable deep neural networks' [11] or 'understanding underlying mechanisms' [17], but this proposal offers a very specific, testable hypothesis about a novel signature. It goes beyond simply applying an existing ML technique to a physics problem (which would be a 5); it hypothesizes a specific, non-obvious connection between the ML training process and fundamental physical properties."
+        },
+        "feasibility": {
+          "score": 6,
+          "reasoning": "Generating 10,000 quantum ground states via exact diagonalization for L=20 is computationally intensive but feasible, and variational Monte Carlo is an established method. Analyzing Hessian eigenvalue spectra can be complex for large networks but is computationally tractable. The main challenge lies in the interpretation and validation of the predicted 'bifurcation patterns' and 'non-analytic scaling' in the context of topological invariants, which requires careful theoretical and numerical work."
+        },
+        "clarity": {
+          "score": 8,
+          "reasoning": "The hypothesis is clearly stated, identifying specific models (Kitaev, SSH), predicted phenomena (Hessian bifurcation, entanglement entropy scaling), and methods (exact diagonalization, VMC, autoregressive NNs). The expected outcomes are well-defined, making it a strong starting point for a research project."
+        },
+        "impact": {
+          "score": 8,
+          "reasoning": "If successful, this proposal could provide a fundamentally new way to detect and characterize topological phases using machine learning, potentially accelerating the discovery of new topological materials. It would bridge theoretical condensed matter physics with machine learning in a novel and impactful way, attracting attention across both fields."
+        },
+        "specificity": {
+          "score": 7,
+          "reasoning": "The proposal specifies the type of neural network (autoregressive), the physical systems (Kitaev, SSH), the data generation method (exact diagonalization, VMC), the dataset size (10,000 states, L=20), and the specific metrics to be analyzed (Hessian eigenvalue spectrum, entanglement entropy, critical exponents). While it doesn't detail the exact NN architecture or hyperparameter tuning, it provides sufficient detail for a clear experimental direction."
+        }
+      },
+      "factual_check": {
+        "claims": [
+          {
+            "claim": "autoregressive neural networks learning to represent quantum many-body ground states across topological quantum phase transitions",
+            "label": "ESTABLISHED",
+            "note": "Neural networks, including autoregressive ones, have been used to represent quantum many-body states, and topological phase transitions are a well-established concept in condensed matter physics."
+          },
+          {
+            "claim": "Hessian eigenvalue spectrum of the loss function will display characteristic bifurcation patterns at critical points that mirror the closing of the bulk energy gap",
+            "label": "SPECULATIVE",
+            "note": "While the closing of the bulk energy gap is a known signature of quantum phase transitions, the direct mapping to bifurcation patterns in the Hessian eigenvalue spectrum of a neural network's loss function is a novel and unverified prediction. It's plausible but not established."
+          },
+          {
+            "claim": "learned wavefunction representation's entanglement entropy, computed from the network's autoregressive coefficients, will exhibit non-analytic scaling behavior with a critical exponent distinct from conventional order parameters",
+            "label": "SPECULATIVE",
+            "note": "Entanglement entropy is a known diagnostic for quantum phase transitions, and its non-analytic scaling is expected. However, computing it directly from autoregressive coefficients and predicting a 'critical exponent distinct from conventional order parameters' is a specific, unverified claim about the neural network's representation. It's plausible but not established."
+          }
+        ],
+        "verdict": "speculative"
+      },
+      "score_secs": 6.2
+    },
+    {
+      "condition": "C_gpt5_newrubric",
+      "critic": "openai/gpt-5",
+      "model": "qwen/qwen3.5-397b-a17b",
+      "paper_id": "050675de50181e735c187cb612b5f83e62d31cbe",
+      "domain": "CS",
+      "seed": 42,
+      "scores": {
+        "originality": {
+          "score": 8,
+          "reasoning": ""
+        },
+        "feasibility": {
+          "score": 6,
+          "reasoning": ""
+        },
+        "clarity": {
+          "score": 5,
+          "reasoning": ""
+        },
+        "impact": {
+          "score": 7,
+          "reasoning": ""
+        },
+        "specificity": {
+          "score": 5,
+          "reasoning": ""
+        }
+      },
+      "factual_check": {
+        "claims": [
+          {
+            "claim": "Early-layer attention variance correlates with downstream reasoning difficulty.",
+            "label": "SPECULATIVE",
+            "note": "Some works study attention interpretability/uncertainty, but a robust, general correlation with reasoning difficulty is not established as a textbook fact."
+          },
+          {
+            "claim": "A lightweight gate can predict the entropy of future attention distributions to trigger additional computation selectively.",
+            "label": "SPECULATIVE",
+            "note": "Predicting future attention entropy is plausible (e.g., via auxiliary heads), but its reliability and utility for dynamic compute are not established."
+          },
+          {
+            "claim": "Selective expansion of the computational graph for ambiguous token interactions can reduce total FLOPs by 40% on GSM8K while maintaining accuracy.",
+            "label": "SPECULATIVE",
+            "note": "This is a quantitative performance claim that would require empirical validation; no established evidence supports this specific magnitude."
+          },
+          {
+            "claim": "The proposed approach will outperform reactive early-exit and static Mixture-of-Experts in energy efficiency and convergence speed during pretraining.",
+            "label": "SPECULATIVE",
+            "note": "Comparative superiority across both efficiency and convergence is an untested claim; MoE and early-exit behaviors depend heavily on implementation details."
+          },
+          {
+            "claim": "GSM8K is a complex reasoning benchmark.",
+            "label": "ESTABLISHED",
+            "note": "GSM8K is widely used for multi-step arithmetic/word-problem reasoning."
+          }
+        ],
+        "verdict": "speculative"
+      },
+      "score_secs": 38.4
+    },
+    {
+      "condition": "C_gpt5_newrubric",
+      "critic": "openai/gpt-5",
+      "model": "qwen/qwen3.5-397b-a17b",
+      "paper_id": "050675de50181e735c187cb612b5f83e62d31cbe",
+      "domain": "CS",
+      "seed": 1337,
+      "scores": {
+        "originality": {
+          "score": 8,
+          "reasoning": ""
+        },
+        "feasibility": {
+          "score": 6,
+          "reasoning": ""
+        },
+        "clarity": {
+          "score": 6,
+          "reasoning": ""
+        },
+        "impact": {
+          "score": 6,
+          "reasoning": ""
+        },
+        "specificity": {
+          "score": 6,
+          "reasoning": ""
+        }
+      },
+      "factual_check": {
+        "claims": [
+          {
+            "claim": "RULER and LongBench are established long-context evaluation benchmarks suitable for measuring accuracy/perplexity and task performance.",
+            "label": "ESTABLISHED",
+            "note": "Both are widely used in recent long-context LLM evaluations."
+          },
+          {
+            "claim": "The instantaneous rate of change in Key-Value (KV) cache entropy is a meaningful signal for the temporal dynamics of information density/ambiguity in a Transformer.",
+            "label": "SPECULATIVE",
+            "note": "A plausible proxy but not a standard or validated metric in the literature."
+          },
+          {
+            "claim": "A reinforcement learning controller can dynamically assign layer-wise attention sparsity budgets during inference to trade off FLOPs and accuracy.",
+            "label": "SPECULATIVE",
+            "note": "Feasible in principle (related to adaptive compute ideas) but not yet a validated approach for long-context sparse attention."
+          },
+          {
+            "claim": "Reducing attention operations (FLOPs) in the prefill phase typically reduces pre-fill latency roughly proportionally on modern accelerators.",
+            "label": "ESTABLISHED",
+            "note": "Compute-bound prefill is dominated by attention and MLP FLOPs; fewer attention operations generally shorten latency given similar memory/batch conditions."
+          },
+          {
+            "claim": "SnapKV represents a state-of-the-art baseline for KV cache pruning/sparse attention in long-context Transformers.",
+            "label": "SPECULATIVE",
+            "note": "SnapKV is a recent and competitive approach, but ‘state-of-the-art’ can vary by task and setup; acceptable as a strong baseline rather than universally SOTA."
+          }
+        ],
+        "verdict": "speculative"
+      },
+      "score_secs": 58.9
+    },
+    {
+      "condition": "C_gpt5_newrubric",
+      "critic": "openai/gpt-5",
+      "model": "qwen/qwen3.5-397b-a17b",
+      "paper_id": "050675de50181e735c187cb612b5f83e62d31cbe",
+      "domain": "CS",
+      "seed": 2024,
+      "scores": {
+        "originality": {
+          "score": 7,
+          "reasoning": ""
+        },
+        "feasibility": {
+          "score": 5,
+          "reasoning": ""
+        },
+        "clarity": {
+          "score": 6,
+          "reasoning": ""
+        },
+        "impact": {
+          "score": 7,
+          "reasoning": ""
+        },
+        "specificity": {
+          "score": 6,
+          "reasoning": ""
+        }
+      },
+      "factual_check": {
+        "claims": [
+          {
+            "claim": "A projection head can map hidden states to a low-dimensional simplex where logical operations correspond to vector arithmetic, enabling multi-step deductive reasoning internally.",
+            "label": "SPECULATIVE",
+            "note": "There is suggestive evidence that some concepts are linearly representable in LLMs, but a validated low-dimensional simplex supporting compositional logical operators for multi-step deduction is not established."
+          },
+          {
+            "claim": "Enforcing geometric consistency constraints on hidden-state trajectories will match Chain-of-Thought (CoT) accuracy without generating intermediate tokens.",
+            "label": "SPECULATIVE",
+            "note": "No established results show parity with CoT purely via latent regularization; existing CoT benefits typically rely on explicit text rationales or specialized training."
+          },
+          {
+            "claim": "This method will reduce inference latency by over 80% compared to explicit CoT.",
+            "label": "SPECULATIVE",
+            "note": "Plausible if token generation is avoided, but the magnitude is unvalidated and depends on decoding setup, model size, and caching/parallelism."
+          },
+          {
+            "claim": "Latent space regularization can replace token-based reasoning steps, effectively decoupling computational depth from sequence length in autoregressive models.",
+            "label": "SPECULATIVE",
+            "note": "Avoiding longer CoT reduces sequence length, but whether it preserves or improves reasoning quality while ‘decoupling’ effective depth is unproven."
+          },
+          {
+            "claim": "GSM8K is an appropriate benchmark for multi-step arithmetic reasoning.",
+            "label": "ESTABLISHED",
+            "note": "Widely used math word problem benchmark for multi-step reasoning."
+          }
+        ],
+        "verdict": "speculative"
+      },
+      "score_secs": 46.3
+    },
+    {
+      "condition": "C_gpt5_newrubric",
+      "critic": "openai/gpt-5",
+      "model": "qwen/qwen3.5-397b-a17b",
+      "paper_id": "05f31ad3176a5df162e4d041b8736bf123f4b628",
+      "domain": "Biology",
+      "seed": 42,
+      "scores": {
+        "originality": {
+          "score": 7,
+          "reasoning": ""
+        },
+        "feasibility": {
+          "score": 3,
+          "reasoning": ""
+        },
+        "clarity": {
+          "score": 6,
+          "reasoning": ""
+        },
+        "impact": {
+          "score": 8,
+          "reasoning": ""
+        },
+        "specificity": {
+          "score": 5,
+          "reasoning": ""
+        }
+      },
+      "factual_check": {
+        "claims": [
+          {
+            "claim": "H3K23me3 stabilizes transgenerational memory in C. elegans",
+            "label": "SPECULATIVE",
+            "note": "Most established transgenerational chromatin marks in C. elegans involve H3K9me3/H3K27me3 and small-RNA pathways; a specific, causal role for H3K23me3 in transgenerational memory is not broadly established."
+          },
+          {
+            "claim": "H3K23me3 mediates interchromosomal contacts in Drosophila",
+            "label": "SPECULATIVE",
+            "note": "Polycomb/H3K27me3 and homolog pairing are well documented in Drosophila; a defined role for H3K23me3 in interchromosomal contacts is not established."
+          },
+          {
+            "claim": "A dual configuration of H3K23me3 deposition and DNA hypomethylation at a super-enhancer will recruit conserved nuclear RNAi machinery to maintain open chromatin across three mouse generations",
+            "label": "SPECULATIVE",
+            "note": "Nuclear RNAi-driven chromatin inheritance is well supported in C. elegans; analogous, conserved machinery and its recruitment by H3K23me3 at mammalian enhancers is unproven."
+          },
+          {
+            "claim": "Ucp1 contains a brown adipose super-enhancer",
+            "label": "ESTABLISHED",
+            "note": "Brown/beige adipocyte-specific H3K27ac clusters and enhancer elements at the Ucp1 locus have been reported and are widely used as a model for thermogenic enhancer regulation."
+          },
+          {
+            "claim": "dCas9–TET1 can induce targeted DNA hypomethylation at specific loci",
+            "label": "ESTABLISHED",
+            "note": "CRISPR epigenome editing with dCas9–TET1 to demethylate CpGs at defined genomic sites is well documented."
+          },
+          {
+            "claim": "An H3K23-specific histone methyltransferase suitable for dCas9 fusion is available in mice",
+            "label": "SPECULATIVE",
+            "note": "Well-characterized KMTs target H3K4/9/27/36/79; a mammalian enzyme with specific robust H3K23 trimethyltransferase activity and prior use in CRISPR epigenome editing is not established."
+          },
+          {
+            "claim": "Hi-C can track locus-scale chromatin conformation changes after editing",
+            "label": "ESTABLISHED",
+            "note": "Hi-C and targeted 3C-derived assays are standard for assessing chromatin architecture changes."
+          }
+        ],
+        "verdict": "speculative"
+      },
+      "score_secs": 76.8
+    },
+    {
+      "condition": "C_gpt5_newrubric",
+      "critic": "openai/gpt-5",
+      "model": "qwen/qwen3.5-397b-a17b",
+      "paper_id": "05f31ad3176a5df162e4d041b8736bf123f4b628",
+      "domain": "Biology",
+      "seed": 1337,
+      "scores": {
+        "originality": {
+          "score": 7,
+          "reasoning": ""
+        },
+        "feasibility": {
+          "score": 5,
+          "reasoning": ""
+        },
+        "clarity": {
+          "score": 4,
+          "reasoning": ""
+        },
+        "impact": {
+          "score": 7,
+          "reasoning": ""
+        },
+        "specificity": {
+          "score": 7,
+          "reasoning": ""
+        }
+      },
+      "factual_check": {
+        "claims": [
+          {
+            "claim": "The MICOS complex organizes mitochondrial cristae junctions and their remodeling can alter cristae junction width.",
+            "label": "ESTABLISHED",
+            "note": "MICOS (e.g., MIC60/Mitofilin, MIC10) is well known to shape and maintain cristae junctions; perturbing MICOS alters CJ architecture in many studies."
+          },
+          {
+            "claim": "Cyclin E–CDK2 directly phosphorylates MICOS to widen cristae junctions specifically in late G1.",
+            "label": "SPECULATIVE",
+            "note": "CDK2 activity peaks at the G1/S transition, but direct phosphorylation of MICOS by Cyclin E–CDK2 and consequent CJ widening has not, to my knowledge, been demonstrated."
+          },
+          {
+            "claim": "Widening cristae junctions facilitates a rapid efflux (‘burst’) of citrate from mitochondria into the cytosol.",
+            "label": "SPECULATIVE",
+            "note": "Citrate export primarily depends on the SLC25A1 citrate carrier across the inner membrane and VDAC across the outer membrane; whether CJ geometry rate-limits metabolite diffusion to the outer membrane is unclear and unproven."
+          },
+          {
+            "claim": "Nuclear ATP-citrate lyase (ACLY) generates acetyl-CoA used for histone acetylation important for S-phase entry.",
+            "label": "ESTABLISHED",
+            "note": "ACLY supplies acetyl-CoA for histone acetylation; nuclear/cytosolic ACLY’s role in supporting cell-cycle progression and chromatin acetylation is supported in multiple studies."
+          },
+          {
+            "claim": "Hyperacetylation of histone H4K12 specifically at DNA replication origins is essential for origin licensing.",
+            "label": "SPECULATIVE",
+            "note": "Histone acetylation facilitates origin activation in some systems, but specificity to H4K12 at origins and its necessity for licensing are not established."
+          },
+          {
+            "claim": "Failure to remodel cristae junctions will block origin licensing and arrest cells at G1/S.",
+            "label": "SPECULATIVE",
+            "note": "A causal link from CJ remodeling to replication origin licensing has not been shown; plausible but unverified."
+          }
+        ],
+        "verdict": "speculative"
+      },
+      "score_secs": 60.4
+    },
+    {
+      "condition": "C_gpt5_newrubric",
+      "critic": "openai/gpt-5",
+      "model": "qwen/qwen3.5-397b-a17b",
+      "paper_id": "05f31ad3176a5df162e4d041b8736bf123f4b628",
+      "domain": "Biology",
+      "seed": 2024,
+      "scores": {
+        "originality": {
+          "score": 7,
+          "reasoning": ""
+        },
+        "feasibility": {
+          "score": 6,
+          "reasoning": ""
+        },
+        "clarity": {
+          "score": 6,
+          "reasoning": ""
+        },
+        "impact": {
+          "score": 7,
+          "reasoning": ""
+        },
+        "specificity": {
+          "score": 6,
+          "reasoning": ""
+        }
+      },
+      "factual_check": {
+        "claims": [
+          {
+            "claim": "α-ketoglutarate (α-KG) serves as an essential cofactor for TET DNA demethylases and JmjC-domain histone demethylases, thereby promoting DNA and histone demethylation",
+            "label": "ESTABLISHED",
+            "note": "Well-documented biochemistry linking α-KG to 2-oxoglutarate–dependent dioxygenases that catalyze 5mC→5hmC and H3K27me3 demethylation."
+          },
+          {
+            "claim": "Asymmetric inheritance of mitochondria occurs in stem/progenitor divisions and can be tracked with mitochondrial age reporters in live cells",
+            "label": "ESTABLISHED",
+            "note": "Asymmetric apportioning of aged versus young mitochondria has been reported; reporters like MitoTimer enable live-cell assessment."
+          },
+          {
+            "claim": "Chronologically old mitochondria have elevated α-KG production due to accumulated metabolic rewiring",
+            "label": "SPECULATIVE",
+            "note": "Aging mitochondria show altered TCA/ETC function, but directionality of α-KG production is not established and may vary by context."
+          },
+          {
+            "claim": "Old mitochondria are preferentially segregated into the self-renewing daughter cell in intestinal stem cell divisions",
+            "label": "SPECULATIVE",
+            "note": "Direction of aged mitochondrial segregation varies across systems; specific evidence for intestinal stem cells is lacking."
+          },
+          {
+            "claim": "Miro1/2 knockdown will allow causal manipulation of mitochondrial inheritance patterns during asymmetric division",
+            "label": "SPECULATIVE",
+            "note": "Miro1/2 regulate mitochondrial motility; whether this reliably biases asymmetric inheritance in stem cells is unproven."
+          },
+          {
+            "claim": "Elevated α-KG increases 5hmC and reduces H3K27me3 to enhance chromatin accessibility at stemness loci",
+            "label": "ESTABLISHED",
+            "note": "α-KG promotes TET/JmjC activity; studies in pluripotent cells link α-KG to open chromatin and reduced repressive marks."
+          }
+        ],
+        "verdict": "speculative"
+      },
+      "score_secs": 61.7
+    },
+    {
+      "condition": "C_gpt5_newrubric",
+      "critic": "openai/gpt-5",
+      "model": "qwen/qwen3.5-397b-a17b",
+      "paper_id": "0142bf7cfaac534da831178cf27e49c31c16b70c",
+      "domain": "Physics",
+      "seed": 42,
+      "scores": {
+        "originality": {
+          "score": 5,
+          "reasoning": ""
+        },
+        "feasibility": {
+          "score": 5,
+          "reasoning": ""
+        },
+        "clarity": {
+          "score": 4,
+          "reasoning": ""
+        },
+        "impact": {
+          "score": 6,
+          "reasoning": ""
+        },
+        "specificity": {
+          "score": 4,
+          "reasoning": ""
+        }
+      },
+      "factual_check": {
+        "claims": [
+          {
+            "claim": "Floquet (periodic) driving can engineer effective Hamiltonians and even topological properties.",
+            "label": "ESTABLISHED",
+            "note": "Widely used in condensed matter and AMO systems to realize effective couplings and band topology."
+          },
+          {
+            "claim": "Cosmic rays induce burst-like, spatially inhomogeneous noise in superconducting qubit arrays that degrades logical performance.",
+            "label": "ESTABLISHED",
+            "note": "Observed quasiparticle bursts and correlated error events are documented in superconducting platforms."
+          },
+          {
+            "claim": "Spatially varying Floquet drives can dynamically change a code’s effective distance locally and suppress logical error rates accordingly.",
+            "label": "SPECULATIVE",
+            "note": "Code distance is a stabilizer/combinatorial property; linking local drive frequency to an increased effective distance is not standard and would require a precise mechanism."
+          },
+          {
+            "claim": "A 2D superconducting-qubit array arranged as a hyperbolic lattice is practical on current ∼127‑qubit processors.",
+            "label": "SPECULATIVE",
+            "note": "Hyperbolic tilings require high-connectivity/nonlocal couplers; present planar devices typically support nearest-neighbor layouts."
+          },
+          {
+            "claim": "Applying circularly polarized light fields to superconducting qubits is an appropriate means to implement the proposed Floquet engineering.",
+            "label": "SPECULATIVE",
+            "note": "SC qubits are normally driven by near-field microwave control lines; polarization of free-space light is not standard in dilution refrigerators."
+          },
+          {
+            "claim": "An 'XYZ Ruby Code' formalism can be extended to time-periodic Hamiltonians and validated by tensor-network simulations at relevant scales.",
+            "label": "SPECULATIVE",
+            "note": "The specific formalism is uncommon in QEC literature; feasibility of accurate tensor-network simulation for driven 2D codes at these sizes is not established."
+          }
+        ],
+        "verdict": "speculative"
+      },
+      "score_secs": 74.0
+    },
+    {
+      "condition": "C_gpt5_newrubric",
+      "critic": "openai/gpt-5",
+      "model": "qwen/qwen3.5-397b-a17b",
+      "paper_id": "0142bf7cfaac534da831178cf27e49c31c16b70c",
+      "domain": "Physics",
+      "seed": 1337,
+      "scores": {
+        "originality": {
+          "score": 8,
+          "reasoning": ""
+        },
+        "feasibility": {
+          "score": 3,
+          "reasoning": ""
+        },
+        "clarity": {
+          "score": 4,
+          "reasoning": ""
+        },
+        "impact": {
+          "score": 7,
+          "reasoning": ""
+        },
+        "specificity": {
+          "score": 4,
+          "reasoning": ""
+        }
+      },
+      "factual_check": {
+        "claims": [
+          {
+            "claim": "A variational quantum circuit (VQC) can be parameterized by Lie algebra generators to represent infinitesimal symmetry transformations and trained with differentiable methods.",
+            "label": "ESTABLISHED",
+            "note": "Unitary groups form Lie groups; parameterizations via exp(i θ G) with generators G are standard in quantum control/variational algorithms, and gradients can be computed via parameter-shift/AD."
+          },
+          {
+            "claim": "The exponential dimension of Hilbert space provides an expressivity that will enable more efficient navigation of non-convex loss landscapes than classical neural networks for symmetry discovery.",
+            "label": "SPECULATIVE",
+            "note": "While Hilbert space dimension scales exponentially with qubits, no general theorem links this to superior training efficiency; barren plateaus and noise often hinder VQC training."
+          },
+          {
+            "claim": "The Kuramoto–Sivashinsky (KS) equation yields high-dimensional spatiotemporal chaos and is a standard testbed for turbulence-like dynamics.",
+            "label": "ESTABLISHED",
+            "note": "KS is a canonical PDE exhibiting spatiotemporal chaos and is widely used as a model system for instability-driven, turbulence-like behavior."
+          },
+          {
+            "claim": "There exist hidden continuous symmetries in KS with associated conserved quantities that can be discovered from data.",
+            "label": "SPECULATIVE",
+            "note": "KS is dissipative and non-variational; while the spatial mean is conserved under periodic BCs and discrete/continuous symmetries (e.g., translations) are known, the existence of additional unknown continuous symmetries with conserved quantities is not established."
+          },
+          {
+            "claim": "The proposed quantum model will converge faster and achieve higher fidelity than state-of-the-art classical Lie algebra convolutional networks on this task.",
+            "label": "SPECULATIVE",
+            "note": "No demonstrated quantum advantage for symmetry discovery in chaotic PDEs relative to strong classical baselines; outcome is unproven."
+          }
+        ],
+        "verdict": "coherent"
+      },
+      "score_secs": 74.1
+    },
+    {
+      "condition": "C_gpt5_newrubric",
+      "critic": "openai/gpt-5",
+      "model": "qwen/qwen3.5-397b-a17b",
+      "paper_id": "0142bf7cfaac534da831178cf27e49c31c16b70c",
+      "domain": "Physics",
+      "seed": 2024,
+      "scores": {
+        "originality": {
+          "score": 5,
+          "reasoning": ""
+        },
+        "feasibility": {
+          "score": 5,
+          "reasoning": ""
+        },
+        "clarity": {
+          "score": 5,
+          "reasoning": ""
+        },
+        "impact": {
+          "score": 6,
+          "reasoning": ""
+        },
+        "specificity": {
+          "score": 4,
+          "reasoning": ""
+        }
+      },
+      "factual_check": {
+        "claims": [
+          {
+            "claim": "Wave-optics diffraction/interference signatures can arise in gravitational-wave microlensing by compact dark matter objects.",
+            "label": "ESTABLISHED",
+            "note": "Predicted by gravitational-wave lensing theory for lens masses comparable to GW wavelengths; widely discussed in the literature though observational confirmation is limited."
+          },
+          {
+            "claim": "There is a mathematical similarity between wave-optics diffraction patterns and multi-qubit error propagation in 2D topological surface codes that can be exploited for decoder design.",
+            "label": "SPECULATIVE",
+            "note": "No standard or widely accepted mapping exists between surface-code error processes (typically modeled via stochastic/local correlated noise and combinatorial matching) and wave-optics diffraction; plausible analogy but unproven."
+          },
+          {
+            "claim": "Training neural QEC decoders on synthetic datasets inspired by gravitational-wave diffraction will improve correlated-error decoding accuracy by 15–20% over syndrome-only training.",
+            "label": "SPECULATIVE",
+            "note": "A quantitative performance gain is a hypothesis; no prior evidence provided."
+          },
+          {
+            "claim": "Validation will be done on the AlphaQubit 2 framework supporting surface-code simulations at distances 5–15 with superconducting-qubit correlated noise models.",
+            "label": "SPECULATIVE",
+            "note": "‘AlphaQubit 2’ is not a widely recognized, standard framework; existence and capabilities are unclear from the proposal."
+          }
+        ],
+        "verdict": "speculative"
+      },
+      "score_secs": 58.2
+    },
+    {
+      "condition": "C_gpt5_newrubric",
+      "critic": "openai/gpt-5",
+      "model": "qwen/qwen3.5-9b",
+      "paper_id": "050675de50181e735c187cb612b5f83e62d31cbe",
+      "domain": "CS",
+      "seed": 42,
+      "scores": {
+        "originality": {
+          "score": 5,
+          "reasoning": ""
+        },
+        "feasibility": {
+          "score": 6,
+          "reasoning": ""
+        },
+        "clarity": {
+          "score": 4,
+          "reasoning": ""
+        },
+        "impact": {
+          "score": 6,
+          "reasoning": ""
+        },
+        "specificity": {
+          "score": 5,
+          "reasoning": ""
+        }
+      },
+      "factual_check": {
+        "claims": [
+          {
+            "claim": "ScanQA and SQA3D are spatial reasoning/QA benchmarks built on ScanNet-like 3D scenes.",
+            "label": "ESTABLISHED",
+            "note": "Both datasets exist and target 3D QA grounded in ScanNet-style indoor scenes."
+          },
+          {
+            "claim": "Replacing static causal attention masks with learnable spatial attention mechanisms will improve 3D scene understanding.",
+            "label": "SPECULATIVE",
+            "note": "Plausible idea but not demonstrated; moreover, causal masks are primarily for autoregressive text, so the asserted benefit for 3D spatial reasoning remains unverified."
+          },
+          {
+            "claim": "Encoding scene geometry into differentiable neural fields that interact with LLM token embeddings via cross-modal graph convolutions will yield superior performance.",
+            "label": "SPECULATIVE",
+            "note": "Technically plausible (NeRF/Neural fields + graph ops + text embeddings) but unproven and implementation-dependent."
+          },
+          {
+            "claim": "Explicitly modeling Gestalt principles will reduce spatial hallucinations by ~30% and improve 3D grounding by 15–20% on ScanNet-derived datasets.",
+            "label": "SPECULATIVE",
+            "note": "Quantitative effects are predictions without cited evidence; Gestalt operationalization in deep models is an active research area."
+          }
+        ],
+        "verdict": "speculative"
+      },
+      "score_secs": 51.9
+    },
+    {
+      "condition": "C_gpt5_newrubric",
+      "critic": "openai/gpt-5",
+      "model": "qwen/qwen3.5-9b",
+      "paper_id": "050675de50181e735c187cb612b5f83e62d31cbe",
+      "domain": "CS",
+      "seed": 1337,
+      "scores": {
+        "originality": {
+          "score": 7,
+          "reasoning": ""
+        },
+        "feasibility": {
+          "score": 6,
+          "reasoning": ""
+        },
+        "clarity": {
+          "score": 5,
+          "reasoning": ""
+        },
+        "impact": {
+          "score": 6,
+          "reasoning": ""
+        },
+        "specificity": {
+          "score": 5,
+          "reasoning": ""
+        }
+      },
+      "factual_check": {
+        "claims": [
+          {
+            "claim": "NAS-Bench-201 is a standard NAS benchmark suitable for testing architecture search methods.",
+            "label": "ESTABLISHED",
+            "note": "Widely used tabular NAS benchmark with enumerated search space and ground-truth accuracies."
+          },
+          {
+            "claim": "Training-free (zero-cost) evaluation proxies can estimate architecture quality without full training.",
+            "label": "ESTABLISHED",
+            "note": "A body of work shows proxies like SynFlow/Jacobian correlate with final accuracy sufficiently for NAS pruning."
+          },
+          {
+            "claim": "A 62-dataset framework from learning-curve estimation literature is available and applicable to predictive maintenance workloads.",
+            "label": "SPECULATIVE",
+            "note": "There are LCE/HPO benchmark collections, but the specific ‘62-dataset’ framing and its focus on predictive maintenance is not a standard, well-known reference."
+          },
+          {
+            "claim": "Self-consistency across multiple chain-of-thought samples improves reliability of LLM reasoning.",
+            "label": "ESTABLISHED",
+            "note": "Self-consistency voting has been shown to improve reasoning accuracy in LLMs across tasks."
+          },
+          {
+            "claim": "MS-FAR will reduce the search space by 60% while achieving 95% of exhaustive-search performance.",
+            "label": "SPECULATIVE",
+            "note": "This is a forward-looking quantitative claim without prior empirical support."
+          }
+        ],
+        "verdict": "speculative"
+      },
+      "score_secs": 47.3
+    },
+    {
+      "condition": "C_gpt5_newrubric",
+      "critic": "openai/gpt-5",
+      "model": "qwen/qwen3.5-9b",
+      "paper_id": "050675de50181e735c187cb612b5f83e62d31cbe",
+      "domain": "CS",
+      "seed": 2024,
+      "scores": {
+        "originality": {
+          "score": 7,
+          "reasoning": ""
+        },
+        "feasibility": {
+          "score": 4,
+          "reasoning": ""
+        },
+        "clarity": {
+          "score": 5,
+          "reasoning": ""
+        },
+        "impact": {
+          "score": 7,
+          "reasoning": ""
+        },
+        "specificity": {
+          "score": 5,
+          "reasoning": ""
+        }
+      },
+      "factual_check": {
+        "claims": [
+          {
+            "claim": "Zero-cost proxy NAS methods exist and can be extended to new objectives.",
+            "label": "ESTABLISHED",
+            "note": "A body of work on zero-cost proxies (e.g., SNIP/GradNorm-based proxies, TE-NAS/Zen-NAS) is well known in NAS."
+          },
+          {
+            "claim": "GSM8K, MATH, and ScienceQA are established complex reasoning benchmarks for LLMs.",
+            "label": "ESTABLISHED",
+            "note": "These datasets are standard for evaluating arithmetic and scientific reasoning in LLMs."
+          },
+          {
+            "claim": "Perplexity-based step importance can guide architecture search for reasoning by identifying salient CoT steps.",
+            "label": "SPECULATIVE",
+            "note": "Perplexity is a next-token predictive metric; its relationship to causal importance of individual reasoning steps is unvalidated."
+          },
+          {
+            "claim": "Chain-of-thought generation cost can be formulated as a differentiable objective suitable for differentiable NAS.",
+            "label": "SPECULATIVE",
+            "note": "Token count and discrete generation are not inherently differentiable; a surrogate could be devised, but correlation and stability are unproven."
+          },
+          {
+            "claim": "NAS-discovered architectures will outperform manually designed CoT-enhanced models by 8–12% while reducing token generation costs by 35–40%.",
+            "label": "SPECULATIVE",
+            "note": "These are quantitative performance claims without prior empirical support; architecture-only gains of this magnitude on reasoning are unestablished."
+          },
+          {
+            "claim": "A CE-NAS carbon-efficient framework can support 50,000 search iterations over 100+ architectures for LLM-scale reasoning experiments.",
+            "label": "SPECULATIVE",
+            "note": "Carbon/compute-efficient NAS frameworks exist, but applicability and efficacy at LLM scale for reasoning-focused evaluation are not established here."
+          }
+        ],
+        "verdict": "coherent"
+      },
+      "score_secs": 60.7
+    },
+    {
+      "condition": "C_gpt5_newrubric",
+      "critic": "openai/gpt-5",
+      "model": "qwen/qwen3.5-9b",
+      "paper_id": "05f31ad3176a5df162e4d041b8736bf123f4b628",
+      "domain": "Biology",
+      "seed": 42,
+      "scores": {
+        "originality": {
+          "score": 8,
+          "reasoning": ""
+        },
+        "feasibility": {
+          "score": 5,
+          "reasoning": ""
+        },
+        "clarity": {
+          "score": 6,
+          "reasoning": ""
+        },
+        "impact": {
+          "score": 7,
+          "reasoning": ""
+        },
+        "specificity": {
+          "score": 6,
+          "reasoning": ""
+        }
+      },
+      "factual_check": {
+        "claims": [
+          {
+            "claim": "CRISPR-based dual epigenetic editing can modulate enhancer accessibility (e.g., via dCas9–p300/KRAB) and promoter DNA methylation (e.g., via dCas9–DNMT3A/TET1).",
+            "label": "ESTABLISHED",
+            "note": "Multiple studies have demonstrated locus-specific chromatin and methylation editing using dCas9 fusions."
+          },
+          {
+            "claim": "Single-cell readouts (scRNA-seq and scATAC-seq) can be combined with pooled CRISPR perturbations (Perturb-seq-like) to map regulatory effects at scale.",
+            "label": "ESTABLISHED",
+            "note": "Perturb-seq and related methods (e.g., CROP-seq, Perturb-ATAC, Multiome perturbations) exist; joint RNA+ATAC with perturbations is emerging but demonstrated."
+          },
+          {
+            "claim": "Reprogramming efficiency limits arise primarily from failures in nested enhancer–enhancer crosstalk rather than individual enhancer–promoter links.",
+            "label": "SPECULATIVE",
+            "note": "Mechanistic emphasis on enhancer–enhancer crosstalk as the dominant bottleneck is a hypothesis not yet established."
+          },
+          {
+            "claim": "Screening ~5,000 enhancer–promoter pairs across ~2 million cells with Perturb-seq-style single-cell multi-omics is practical.",
+            "label": "SPECULATIVE",
+            "note": "Technically plausible but very costly and complex, especially for joint RNA+ATAC readouts at this scale."
+          },
+          {
+            "claim": "Engineering synthetic epigenetic circuits (tunable chromatin remodelers and methylation-sensitive promoters) can produce a 2–3× increase in fibroblast-to-iPSC reprogramming efficiency.",
+            "label": "SPECULATIVE",
+            "note": "Directional improvement is plausible; the quantitative effect size is unproven."
+          }
+        ],
+        "verdict": "coherent"
+      },
+      "score_secs": 60.4
+    },
+    {
+      "condition": "C_gpt5_newrubric",
+      "critic": "openai/gpt-5",
+      "model": "qwen/qwen3.5-9b",
+      "paper_id": "05f31ad3176a5df162e4d041b8736bf123f4b628",
+      "domain": "Biology",
+      "seed": 1337,
+      "scores": {
+        "originality": {
+          "score": 4,
+          "reasoning": ""
+        },
+        "feasibility": {
+          "score": 3,
+          "reasoning": ""
+        },
+        "clarity": {
+          "score": 5,
+          "reasoning": ""
+        },
+        "impact": {
+          "score": 6,
+          "reasoning": ""
+        },
+        "specificity": {
+          "score": 4,
+          "reasoning": ""
+        }
+      },
+      "factual_check": {
+        "claims": [
+          {
+            "claim": "Targeted dCas9–p300 epigenome editing at pluripotency enhancers will reduce chromatin accessibility by >60%.",
+            "label": "INCORRECT",
+            "note": "dCas9–p300 recruits a histone acetyltransferase domain that deposits H3K27ac and generally increases enhancer activity and chromatin accessibility, not decreases."
+          },
+          {
+            "claim": "BRD4 is a chromatin remodeler that cooperates with OCT4 at distal enhancers.",
+            "label": "INCORRECT",
+            "note": "BRD4 is a BET bromodomain chromatin reader/co-activator that binds acetyl-lysines and recruits P-TEFb; it is not a chromatin remodeler (e.g., SWI/SNF, ISWI, CHD)."
+          },
+          {
+            "claim": "OCT4 and BRD4 co-occupy super-enhancers of pluripotency genes in ESCs, supporting high transcriptional output.",
+            "label": "ESTABLISHED",
+            "note": "Multiple studies show BRD4 enrichment at super-enhancers (including pluripotency loci) and OCT4 occupancy at these regions; BRD4 inhibition disrupts pluripotency gene expression."
+          },
+          {
+            "claim": "BET inhibitors would reinforce a pluripotency ‘chromatin barrier’ during early differentiation and could boost reprogramming efficiency.",
+            "label": "SPECULATIVE",
+            "note": "BET inhibition (e.g., JQ1) typically displaces BRD4 from super-enhancers and reduces enhancer activity; effects on ‘reinforcing’ a barrier are logically contradictory and highly context-dependent."
+          }
+        ],
+        "verdict": "factually_incoherent"
+      },
+      "score_secs": 54.2
+    },
+    {
+      "condition": "C_gpt5_newrubric",
+      "critic": "openai/gpt-5",
+      "model": "qwen/qwen3.5-9b",
+      "paper_id": "0142bf7cfaac534da831178cf27e49c31c16b70c",
+      "domain": "Physics",
+      "seed": 42,
+      "scores": {
+        "originality": {
+          "score": 4,
+          "reasoning": ""
+        },
+        "feasibility": {
+          "score": 2,
+          "reasoning": ""
+        },
+        "clarity": {
+          "score": 3,
+          "reasoning": ""
+        },
+        "impact": {
+          "score": 6,
+          "reasoning": ""
+        },
+        "specificity": {
+          "score": 2,
+          "reasoning": ""
+        }
+      },
+      "factual_check": {
+        "claims": [
+          {
+            "claim": "For 2+1D quantum critical systems, the entanglement entropy has a volume-law coefficient at criticality.",
+            "label": "INCORRECT",
+            "note": "For ground states of local Hamiltonians in d>1, entanglement entropy generally obeys an area law with possible subleading logarithmic terms; volume-law scaling is not expected at zero temperature (exceptions require nonlocal interactions or highly excited states)."
+          },
+          {
+            "claim": "The violation of the area law for entanglement entropy at critical points is directly proportional to the topological susceptibility.",
+            "label": "INCORRECT",
+            "note": "There is no established, general proportionality between entanglement-scaling corrections and topological susceptibility; the latter is well-defined in certain gauge theories but is not a standard control parameter for entanglement in 2+1D topologically ordered systems."
+          },
+          {
+            "claim": "The energy dependence of scattering cross sections at a 2+1D critical point is universally determined by the central charge and the topological entanglement entropy.",
+            "label": "INCORRECT",
+            "note": "In 2+1D CFTs there is no single central charge governing universal dynamics as in 1+1D; topological entanglement entropy characterizes gapped phases, not critical points. Scattering cross sections are set by correlation functions and critical exponents, not TEE."
+          },
+          {
+            "claim": "Cross-section measurements in ultracold atomic quantum simulators provide a direct probe of the underlying entanglement structure.",
+            "label": "SPECULATIVE",
+            "note": "Ultracold-atom probes (e.g., Bragg spectroscopy) access dynamical structure factors, while direct entanglement measurements typically require interferometric or randomized measurements. A direct, universal mapping from cross-sections to entanglement is not established."
+          }
+        ],
+        "verdict": "factually_incoherent"
+      },
+      "score_secs": 63.0
+    },
+    {
+      "condition": "C_gpt5_newrubric",
+      "critic": "openai/gpt-5",
+      "model": "qwen/qwen3.5-9b",
+      "paper_id": "0142bf7cfaac534da831178cf27e49c31c16b70c",
+      "domain": "Physics",
+      "seed": 1337,
+      "scores": {
+        "originality": {
+          "score": 4,
+          "reasoning": ""
+        },
+        "feasibility": {
+          "score": 2,
+          "reasoning": ""
+        },
+        "clarity": {
+          "score": 5,
+          "reasoning": ""
+        },
+        "impact": {
+          "score": 8,
+          "reasoning": ""
+        },
+        "specificity": {
+          "score": 4,
+          "reasoning": ""
+        }
+      },
+      "factual_check": {
+        "claims": [
+          {
+            "claim": "Hinges in these 3D crystals are described as '4D surface intersections'.",
+            "label": "INCORRECT",
+            "note": "In a 3D solid, surfaces are 2D and hinges are 1D lines where two surfaces meet; there is no 4D geometric manifold involved."
+          },
+          {
+            "claim": "TaAs or Cd3As2 are cubic Weyl semimetals.",
+            "label": "INCORRECT",
+            "note": "TaAs is a non-centrosymmetric tetragonal Weyl semimetal; Cd3As2 is a Dirac semimetal (also tetragonal), not a Weyl semimetal and not cubic."
+          },
+          {
+            "claim": "Fabry–Pérot interferometry will show an anyonic statistical phase θ = π/4 for Fibonacci anyons.",
+            "label": "INCORRECT",
+            "note": "Fibonacci anyons (SU(2)_3) have topological spin θ = 4π/5 for the nontrivial anyon; θ = π/4 is not a Fibonacci value and also does not match Moore–Read (π/8 for σ)."
+          },
+          {
+            "claim": "Moore–Read Pfaffian edge theory has chiral central charge c = 3/2.",
+            "label": "ESTABLISHED",
+            "note": "The MR state supports a charged boson (c = 1) plus a neutral Majorana mode (c = 1/2), totaling c = 3/2."
+          },
+          {
+            "claim": "Shot-noise measurements can detect fractional charges such as e/2 and e/4.",
+            "label": "ESTABLISHED",
+            "note": "Quantum shot-noise is a standard probe of fractional charge in FQH systems; e/4 quasiparticles are widely discussed for ν=5/2 MR states; e/2 excitations can also appear."
+          },
+          {
+            "claim": "1D hinge channels in higher-order Weyl/Dirac semimetals under strong B can host non-Abelian fractional quantum Hall states at ν = 1/2 and 3/2.",
+            "label": "SPECULATIVE",
+            "note": "Non-Abelian FQH order is intrinsically 2D; realizing it effectively along a 1D hinge via coupled surfaces and axial anomaly is an unverified, nonstandard mechanism."
+          }
+        ],
+        "verdict": "factually_incoherent"
+      },
+      "score_secs": 62.8
+    },
+    {
+      "condition": "C_gpt5_newrubric",
+      "critic": "openai/gpt-5",
+      "model": "qwen/qwen3.5-9b",
+      "paper_id": "0142bf7cfaac534da831178cf27e49c31c16b70c",
+      "domain": "Physics",
+      "seed": 2024,
+      "scores": {
+        "originality": {
+          "score": 4,
+          "reasoning": ""
+        },
+        "feasibility": {
+          "score": 3,
+          "reasoning": ""
+        },
+        "clarity": {
+          "score": 6,
+          "reasoning": ""
+        },
+        "impact": {
+          "score": 7,
+          "reasoning": ""
+        },
+        "specificity": {
+          "score": 4,
+          "reasoning": ""
+        }
+      },
+      "factual_check": {
+        "claims": [
+          {
+            "claim": "The Su–Schrieffer–Heeger (SSH) chain is given as an example of a 2D system alongside the Kitaev honeycomb model.",
+            "label": "INCORRECT",
+            "note": "The SSH model is a 1D topological insulator, not 2D; conflating its dimensionality is a factual error."
+          },
+          {
+            "claim": "Topological phase transitions are accompanied by a closing of the bulk energy gap at the critical point.",
+            "label": "ESTABLISHED",
+            "note": "For models like SSH and Kitaev honeycomb, bulk gap closing at the transition is well established in the literature."
+          },
+          {
+            "claim": "The Hessian eigenvalue spectrum of the training loss for autoregressive neural networks will show bifurcation patterns at critical points mirroring the bulk gap closing.",
+            "label": "SPECULATIVE",
+            "note": "A novel assertion linking optimization landscape geometry to physical criticality; plausible but unverified."
+          },
+          {
+            "claim": "Entanglement entropy extracted from the network’s autoregressive coefficients will show non-analytic critical scaling with an exponent different from conventional order parameters.",
+            "label": "SPECULATIVE",
+            "note": "Entanglement scaling at criticality is known, but obtaining it directly from autoregressive coefficients and claiming distinct exponents is unverified."
+          },
+          {
+            "claim": "Exact diagonalization can generate ground states up to system sizes of about L=20 (spin-1/2 sites), enabling a dataset of ~10,000 ground states across parameters.",
+            "label": "ESTABLISHED",
+            "note": "ED up to ~20 spins/fermions is standard; generating many parameterized ground states is computationally feasible."
+          }
+        ],
+        "verdict": "factually_incoherent"
+      },
+      "score_secs": 47.3
+    }
+  ]
+}
