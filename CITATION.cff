@@ -1,0 +1,71 @@
+cff-version: 1.2.0
+message: "If you use AgentIdeaBench, please cite the paper."
+title: "AgentIdeaBench: Benchmarking Scientific Ideation in the Agent Era"
+abstract: >-
+  Existing benchmarks for scientific hypothesis generation hand a model a curated
+  reference set and ask for the paper those references lead to. That static protocol
+  has saturated. AgentIdeaBench evaluates the active setting instead, giving a model
+  only a subfield name and a literature search tool and letting it choose its own
+  retrieval path. Across 40 subfields and 35 models, Active carries 4.4 times the
+  between-model variance of Static, and the Active-Static gain is gated by capability.
+type: software
+license: MIT
+repository-code: "https://github.com/HKUST-KnowComp/AgentIdeaBench"
+authors:
+  - family-names: Mo
+    given-names: Yunxiang
+    affiliation: "The Hong Kong University of Science and Technology"
+  - family-names: Zheng
+    given-names: Tianshi
+    affiliation: "The Hong Kong University of Science and Technology"
+  - family-names: Gao
+    given-names: Yisen
+    affiliation: "The Hong Kong University of Science and Technology"
+  - family-names: Wang
+    given-names: Rui
+    affiliation: "The Hong Kong University of Science and Technology"
+  - family-names: Nam
+    given-names: Newt Nguyen Kim Hue
+    affiliation: "The Hong Kong University of Science and Technology"
+  - family-names: Tam
+    given-names: Kelvin Kiu Wai
+    affiliation: "The Hong Kong University of Science and Technology"
+  - family-names: Bai
+    given-names: Jiaxin
+    affiliation: "The Hong Kong University of Science and Technology"
+  - family-names: Song
+    given-names: Yangqiu
+    affiliation: "The Hong Kong University of Science and Technology"
+  - family-names: Wong
+    given-names: Ginny
+    affiliation: "NVIDIA AI Technology Center (NVAITC), NVIDIA"
+  - family-names: See
+    given-names: Simon
+    affiliation: "NVIDIA AI Technology Center (NVAITC), NVIDIA"
+preferred-citation:
+  type: article
+  title: "AgentIdeaBench: Benchmarking Scientific Ideation in the Agent Era"
+  year: 2026
+  journal: "arXiv preprint arXiv:2609.07611"
+  url: "https://arxiv.org/abs/2609.07611"
+  authors:
+    - family-names: Mo
+      given-names: Yunxiang
+    - family-names: Zheng
+      given-names: Tianshi
+    - family-names: Gao
+      given-names: Yisen
+    - family-names: Wang
+      given-names: Rui
+    - family-names: Nam
+      given-names: Newt Nguyen Kim Hue
+    - family-names: Tam
+      given-names: Kelvin Kiu Wai
+    - family-names: Bai
+      given-names: Jiaxin
+    - family-names: Song
+      given-names: Yangqiu
+    - family-names: Wong
+      given-names: Ginny
+    - family-names: See
+      given-names: Simon
