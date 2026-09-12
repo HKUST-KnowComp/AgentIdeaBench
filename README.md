@@ -12,7 +12,7 @@
 [![Subfields](https://img.shields.io/badge/subfields-100%20%2F%205%20disciplines-6f42c1)](#how-the-benchmark-works)
 
 [**Paper**](https://arxiv.org/abs/2609.07611) ·
-[**Leaderboard**](#leaderboard) ·
+[**Leaderboard**](https://hkust-knowcomp.github.io/AgentIdeaBench/) ·
 [**Quickstart**](#quickstart) ·
 [**Evaluate your model**](#evaluate-your-own-model) ·
 [**Data**](#released-data) ·
@@ -97,6 +97,11 @@ Weighted totals for the 33 matched models, ranked by Active. Δ = Active − Sta
 **Turns** is the mean number of `SEARCH`/`FETCH` calls an Active rollout issues out of a
 budget of 10; it describes behavior, not quality. Held-out closed-source models are marked
 † and are excluded from every headline statistic.
+
+The full board, covering all 66 models scored on the Active track with per-dimension
+scores and standard errors, is at
+[**hkust-knowcomp.github.io/AgentIdeaBench**](https://hkust-knowcomp.github.io/AgentIdeaBench/),
+and as a plain table in [`LEADERBOARD.md`](LEADERBOARD.md).
 
 | # | Model | Static | Active | Δ | Turns |
 |--:|---|--:|--:|--:|--:|
