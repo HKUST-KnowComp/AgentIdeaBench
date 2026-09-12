@@ -1,0 +1,51 @@
+# ── secrets ──────────────────────────────────────────────
+.env
+*.env
+.env.*
+!.env.example
+
+# ── python ───────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+.venv/
+venv/
+env/
+
+# ── built by the pipeline, not committed ─────────────────
+# Phase 1 builds these from the Semantic Scholar API; they hold abstracts and
+# reference text that this project does not redistribute. release_data/ is the
+# redacted export that does ship. See DATA_CARD.md.
+data/*.db
+data/*.db-journal
+data/*.db-wal
+data/*.db-shm
+data/snapshots/
+logs/*.log
+*.log
+
+# ── reports/: scripts and the stats they read are tracked, figures are not ──
+# The *.json here are derived statistics (per-model means, slopes, bootstrap
+# CIs). They ship so a fresh clone can rebuild the paper's figures without a
+# database or an API key. Generated figures stay local.
+reports/*
+!reports/*.py
+!reports/*.json
+
+# ── local writeup material ───────────────────────────────
+docs/
+archive/
+
+# ── editors / OS ─────────────────────────────────────────
+.DS_Store
+**/.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+.ipynb_checkpoints/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/

@@ -1,0 +1,4 @@
+# SciSynthBench dependencies — pinned for reproducibility
+openai==1.82.0
+requests==2.32.3
+python-dotenv==1.1.0
