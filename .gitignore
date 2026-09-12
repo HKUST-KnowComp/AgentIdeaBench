@@ -33,6 +33,7 @@ logs/*.log
 reports/*
 !reports/*.py
 !reports/*.json
+!reports/leaderboard_template.html
 
 # ── local writeup material ───────────────────────────────
 docs/

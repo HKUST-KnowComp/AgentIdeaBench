@@ -1,0 +1,507 @@
+<title>AgentIdeaBench Agentic Leaderboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;450;500;600&display=swap">
+<style>
+:root{
+  --ground:#F1F3F6; --surface:#FFFFFF; --surface-2:#F7F8FA;
+  --ink:#12161D; --ink-2:#39414E; --muted:#6B7484; --faint:#9AA3B1;
+  --line:#DCE0E7; --line-soft:#E8EBF0;
+  --active:#1B6B66; --active-soft:#CFE3E0; --active-dim:#8FBDB8;
+  --static:#8A94A4; --regress:#A8502C; --regress-soft:#EFD9CF;
+  --closed:#5B5FA6;
+  --shadow:0 1px 2px rgba(18,22,29,.05), 0 8px 24px -12px rgba(18,22,29,.14);
+  --sans:"IBM Plex Sans", ui-sans-serif, system-ui, "Helvetica Neue", Arial, sans-serif;
+  --mono:"IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  --serif:"Newsreader", Georgia, "Times New Roman", serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ground:#0D1015; --surface:#151A21; --surface-2:#1A2028;
+    --ink:#E9ECF1; --ink-2:#C3CAD5; --muted:#8E98A7; --faint:#6B7583;
+    --line:#262D38; --line-soft:#1F252E;
+    --active:#5CBBAE; --active-soft:#1E3B39; --active-dim:#39716B;
+    --static:#7C8697; --regress:#DD8A63; --regress-soft:#3A2820;
+    --closed:#9AA0E0;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 10px 28px -14px rgba(0,0,0,.7);
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#0D1015; --surface:#151A21; --surface-2:#1A2028;
+  --ink:#E9ECF1; --ink-2:#C3CAD5; --muted:#8E98A7; --faint:#6B7583;
+  --line:#262D38; --line-soft:#1F252E;
+  --active:#5CBBAE; --active-soft:#1E3B39; --active-dim:#39716B;
+  --static:#7C8697; --regress:#DD8A63; --regress-soft:#3A2820;
+  --closed:#9AA0E0;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 10px 28px -14px rgba(0,0,0,.7);
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0; background:var(--ground); color:var(--ink);
+  font-family:var(--sans); font-size:15px; line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:1120px; margin:0 auto; padding:0 28px}
+@media (max-width:640px){ .wrap{padding:0 16px} }
+
+/* ── masthead ─────────────────────────────────────────── */
+header.top{border-bottom:1px solid var(--line); background:var(--surface)}
+.top-in{display:flex; align-items:baseline; gap:14px; padding:15px 0; flex-wrap:wrap}
+.mark{
+  font-family:var(--mono); font-size:12px; font-weight:600; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--ink);
+}
+.mark span{color:var(--active)}
+.top-in nav{margin-left:auto; display:flex; gap:18px; font-size:13px}
+.top-in nav a{color:var(--muted); text-decoration:none; border-bottom:1px solid transparent; padding-bottom:1px}
+.top-in nav a:hover{color:var(--ink); border-color:var(--active)}
+
+/* ── hero ─────────────────────────────────────────────── */
+.hero{padding:52px 0 34px; border-bottom:1px solid var(--line)}
+.eyebrow{
+  font-family:var(--mono); font-size:11.5px; letter-spacing:.13em; text-transform:uppercase;
+  color:var(--active); margin:0 0 16px;
+}
+h1{
+  font-family:var(--serif); font-weight:500; font-size:clamp(34px,5.2vw,54px);
+  line-height:1.08; letter-spacing:-.015em; margin:0 0 18px; text-wrap:balance; max-width:19ch;
+}
+.dek{font-size:17px; line-height:1.62; color:var(--ink-2); max-width:64ch; margin:0}
+.dek b{font-weight:600; color:var(--ink)}
+
+.strip{
+  display:grid; grid-template-columns:repeat(4,1fr); gap:1px;
+  background:var(--line); border:1px solid var(--line); margin-top:34px;
+}
+.strip div{background:var(--surface); padding:14px 16px}
+.strip .k{
+  font-family:var(--mono); font-size:24px; font-weight:500; color:var(--ink);
+  font-variant-numeric:tabular-nums; line-height:1.1;
+}
+.strip .v{font-size:12.5px; color:var(--muted); margin-top:4px}
+@media (max-width:720px){ .strip{grid-template-columns:repeat(2,1fr)} }
+
+/* ── board ────────────────────────────────────────────── */
+section.board{padding:38px 0 10px}
+.board-head{display:flex; align-items:flex-end; gap:20px; flex-wrap:wrap; margin-bottom:18px}
+h2{
+  font-family:var(--serif); font-weight:500; font-size:28px; letter-spacing:-.01em;
+  margin:0; line-height:1.2;
+}
+.sub{font-size:13.5px; color:var(--muted); margin:6px 0 0; max-width:62ch}
+
+.controls{display:flex; gap:8px; align-items:center; flex-wrap:wrap; margin-left:auto}
+.seg{display:inline-flex; border:1px solid var(--line); background:var(--surface)}
+.seg button{
+  font:inherit; font-size:12.5px; padding:6px 13px; border:0; background:transparent;
+  color:var(--muted); cursor:pointer; border-right:1px solid var(--line-soft);
+}
+.seg button:last-child{border-right:0}
+.seg button[aria-pressed="true"]{background:var(--active); color:#fff}
+.seg button:hover:not([aria-pressed="true"]){color:var(--ink); background:var(--surface-2)}
+input[type="search"]{
+  font:inherit; font-size:12.5px; padding:6px 10px; width:150px;
+  border:1px solid var(--line); background:var(--surface); color:var(--ink);
+}
+input[type="search"]:focus-visible, .seg button:focus-visible, .row:focus-visible{
+  outline:2px solid var(--active); outline-offset:1px;
+}
+
+.table{border:1px solid var(--line); background:var(--surface); box-shadow:var(--shadow)}
+.thead{
+  display:grid; grid-template-columns:34px minmax(150px,1.25fr) 84px minmax(190px,2fr) 64px 74px 58px 26px;
+  gap:12px; align-items:center; padding:9px 16px;
+  border-bottom:1px solid var(--line); background:var(--surface-2);
+  font-family:var(--mono); font-size:10.5px; letter-spacing:.08em; text-transform:uppercase; color:var(--faint);
+}
+.row{
+  display:grid; grid-template-columns:34px minmax(150px,1.25fr) 84px minmax(190px,2fr) 64px 74px 58px 26px;
+  gap:12px; align-items:center; padding:9px 16px;
+  border-bottom:1px solid var(--line-soft); cursor:pointer; background:var(--surface);
+}
+.row:last-of-type{border-bottom:0}
+.row:hover{background:var(--surface-2)}
+.row.open{background:var(--surface-2)}
+.num{font-family:var(--mono); font-variant-numeric:tabular-nums}
+.rank{font-family:var(--mono); font-size:12.5px; color:var(--faint); text-align:right}
+.row.best .rank{color:var(--active); font-weight:600}
+.row.best .name::after{
+  content:"best open-weight"; margin-left:9px; font-family:var(--mono);
+  font-size:9.5px; letter-spacing:.06em; text-transform:uppercase;
+  color:var(--active); border:1px solid var(--active-dim); padding:1px 5px;
+}
+.dag{color:var(--closed); font-family:var(--mono); font-size:11px; margin-left:3px}
+.name{font-size:14px; font-weight:500; display:flex; align-items:center;
+  letter-spacing:-.005em; min-width:0; gap:0}
+.name > span{overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+.row.best .name::after{flex:none}
+.vendor{font-size:12px; color:var(--muted); display:flex; align-items:center; gap:6px; min-width:0}
+.dot{width:6px; height:6px; flex:none; border-radius:50%; background:var(--static)}
+.dot.closed{background:var(--closed)}
+.dot.open{background:var(--active)}
+
+.bar{position:relative; height:15px; background:var(--surface-2); border:1px solid var(--line-soft)}
+.bar .fill{position:absolute; inset:0 auto 0 0; background:var(--active-dim)}
+.row.best .bar .fill{background:var(--active)}
+.bar .notch{position:absolute; top:-3px; bottom:-3px; width:2px; background:var(--static)}
+.bar .notch::after{
+  content:""; position:absolute; left:-3px; right:-3px; top:0; bottom:0;
+}
+.score{font-family:var(--mono); font-size:14px; font-weight:500; text-align:right; font-variant-numeric:tabular-nums}
+.err{font-family:var(--mono); font-size:10.5px; color:var(--faint); display:block; font-variant-numeric:tabular-nums}
+.delta{
+  font-family:var(--mono); font-size:12.5px; text-align:right; font-variant-numeric:tabular-nums;
+  color:var(--active);
+}
+.delta.neg{color:var(--regress)}
+.delta.none{color:var(--faint)}
+.turns{font-family:var(--mono); font-size:12.5px; color:var(--muted); text-align:right; font-variant-numeric:tabular-nums}
+.chev{color:var(--muted); font-size:13px; line-height:1; text-align:center;
+  transition:transform .15s ease}
+.row:hover .chev{color:var(--active)}
+
+/* narrow screens: drop the two columns that are context rather than result */
+@media (max-width:720px){
+  .thead, .row{grid-template-columns:26px minmax(96px,1.1fr) minmax(70px,1.6fr) 58px 62px 20px;
+    gap:9px; padding:9px 12px}
+  .thead > :nth-child(3), .row > :nth-child(3),
+  .thead > :nth-child(7), .row > :nth-child(7){display:none}
+  .name{font-size:13px}
+  .controls{margin-left:0; width:100%}
+  input[type="search"]{flex:1; min-width:0}
+}
+.row.open .chev{transform:rotate(90deg)}
+
+/* expanded detail */
+.detail{padding:4px 16px 20px 62px; border-bottom:1px solid var(--line-soft); background:var(--surface-2)}
+.detail .dgrid{display:grid; grid-template-columns:repeat(5,1fr); gap:18px; max-width:760px}
+@media (max-width:760px){ .detail{padding-left:16px} .detail .dgrid{grid-template-columns:repeat(2,1fr)} }
+.dim .dl{font-family:var(--mono); font-size:10px; letter-spacing:.07em; text-transform:uppercase; color:var(--faint)}
+.dim .dv{font-family:var(--mono); font-size:15px; font-variant-numeric:tabular-nums; margin:2px 0 5px}
+.dim .dbar{height:4px; background:var(--line); position:relative}
+.dim .dbar i{position:absolute; left:0; top:0; bottom:0; background:var(--active-dim)}
+.dim .dbar u{position:absolute; top:-2px; bottom:-2px; width:2px; background:var(--static)}
+.dim .dd{font-size:11px; color:var(--muted); margin-top:4px; font-family:var(--mono); font-variant-numeric:tabular-nums}
+.meta{font-family:var(--mono); font-size:11.5px; color:var(--muted); margin-top:14px}
+.meta code{background:transparent; color:var(--ink-2)}
+
+.legend{
+  display:flex; gap:22px; flex-wrap:wrap; font-size:12px; color:var(--muted);
+  padding:12px 2px 0;
+}
+.legend i{display:inline-block; width:10px; height:10px; vertical-align:-1px; margin-right:6px}
+.legend .lb{background:var(--active-dim)}
+.legend .ln{background:var(--static); width:2px; height:12px; vertical-align:-2px}
+.empty{padding:26px 16px; color:var(--muted); font-size:13.5px}
+
+/* ── prose sections ───────────────────────────────────── */
+section.prose{padding:46px 0; border-top:1px solid var(--line); margin-top:40px}
+.cols{display:grid; grid-template-columns:minmax(0,1.15fr) minmax(0,1fr); gap:44px}
+@media (max-width:820px){ .cols{grid-template-columns:1fr; gap:28px} }
+.prose h3{
+  font-family:var(--serif); font-weight:500; font-size:21px; margin:0 0 10px; letter-spacing:-.01em;
+}
+.prose p{margin:0 0 14px; color:var(--ink-2); max-width:62ch}
+.prose p.lead{color:var(--ink)}
+.callout{border-left:2px solid var(--active); padding:2px 0 2px 16px; margin:20px 0}
+.callout p{margin:0; font-size:14px}
+
+table.defs{width:100%; border-collapse:collapse; font-size:13px; margin-top:4px}
+table.defs th, table.defs td{text-align:left; padding:9px 12px 9px 0; border-bottom:1px solid var(--line-soft); vertical-align:top}
+table.defs th{
+  font-family:var(--mono); font-size:10.5px; letter-spacing:.08em; text-transform:uppercase;
+  color:var(--faint); font-weight:500; border-bottom:1px solid var(--line);
+}
+table.defs td:first-child{font-family:var(--mono); font-size:12px; color:var(--ink); white-space:nowrap; padding-right:18px}
+table.defs td{color:var(--ink-2)}
+.scroll{overflow-x:auto}
+
+.pipeline{list-style:none; padding:0; margin:0; counter-reset:step}
+.pipeline li{
+  counter-increment:step; padding:0 0 16px 34px; position:relative;
+  border-left:1px solid var(--line); margin-left:9px;
+}
+.pipeline li:last-child{border-left-color:transparent; padding-bottom:0}
+.pipeline li::before{
+  content:counter(step); position:absolute; left:-9px; top:0;
+  width:18px; height:18px; background:var(--surface); border:1px solid var(--line);
+  font-family:var(--mono); font-size:10px; color:var(--muted);
+  display:flex; align-items:center; justify-content:center;
+}
+.pipeline b{display:block; font-size:13.5px; font-weight:600; margin-bottom:2px}
+.pipeline span{font-size:13px; color:var(--muted)}
+
+footer{border-top:1px solid var(--line); padding:26px 0 48px; font-size:12.5px; color:var(--muted)}
+footer a{color:var(--ink-2)}
+.tag{
+  display:inline-block; font-family:var(--mono); font-size:10px; letter-spacing:.06em;
+  text-transform:uppercase; color:var(--muted); border:1px solid var(--line);
+  padding:1px 6px; margin-right:6px;
+}
+@media (prefers-reduced-motion: reduce){ *{transition:none !important} }
+</style>
+
+<header class="top"><div class="wrap top-in">
+  <div class="mark">AgentIdea<span>Bench</span></div>
+  <nav>
+    <a href="#board">Leaderboard</a>
+    <a href="#method">Method</a>
+    <a href="#defs">Definitions</a>
+    <a href="https://github.com/HKUST-KnowComp/AgentIdeaBench">Repository</a>
+  </nav>
+</div></header>
+
+<div class="wrap">
+
+<div class="hero">
+  <p class="eyebrow">Active track &middot; agentic hypothesis generation</p>
+  <h1>Which models get better when you hand them a literature search tool?</h1>
+  <p class="dek">Every model on this board receives a scientific subfield and nothing else: no
+  papers, no abstracts, no reading list. It must search Semantic Scholar itself, decide what to
+  read, and propose a testable hypothesis. <b>63 models</b> ran the identical protocol across
+  <b>40 subfields</b> in five disciplines, and three independent critic models scored every
+  hypothesis on five dimensions. Closed-source models are marked &dagger;: they are reported in
+  full, and held out of every headline statistic, exactly as in the paper.</p>
+  <div class="strip">
+    <div><div class="k">63</div><div class="v">models, 28 of them open-weight</div></div>
+    <div><div class="k">44,754</div><div class="v">critic scores behind the table</div></div>
+    <div><div class="k">6.33</div><div class="v">best open-weight total, GLM-5.1</div></div>
+    <div><div class="k">7.14</div><div class="v">held-out ceiling, Claude Opus 5 &dagger;</div></div>
+  </div>
+</div>
+
+<section class="board" id="board">
+  <div class="board-head">
+    <div>
+      <h2>Agentic leaderboard</h2>
+      <p class="sub">Weighted total over five dimensions, 1&ndash;10. The bar is the Active score;
+      the vertical notch is the same model's Static score, when it was given a fixed reading list
+      instead of a search tool. Distance between them is the gain. Only the best open-weight row is
+      emphasized, since held-out closed models carry no headline claim.</p>
+    </div>
+    <div class="controls">
+      <div class="seg" role="group" aria-label="Filter by weight availability">
+        <button data-filter="all" aria-pressed="true">All</button>
+        <button data-filter="open" aria-pressed="false">Open-weight</button>
+        <button data-filter="closed" aria-pressed="false">Closed</button>
+      </div>
+      <div class="seg" role="group" aria-label="Sort order">
+        <button data-sort="active" aria-pressed="true">Score</button>
+        <button data-sort="gain" aria-pressed="false">Gain</button>
+        <button data-sort="turns" aria-pressed="false">Turns</button>
+      </div>
+      <input type="search" id="q" placeholder="Filter models" aria-label="Filter models by name">
+    </div>
+  </div>
+
+  <div class="table" id="table">
+    <div class="thead">
+      <div style="text-align:right">#</div><div>Model</div><div>Vendor</div>
+      <div>Active score</div><div style="text-align:right">Total</div>
+      <div style="text-align:right">vs. Static</div><div style="text-align:right">Turns</div><div></div>
+    </div>
+    <div id="rows"></div>
+  </div>
+
+  <div class="legend">
+    <span><i class="lb"></i>Active total (bar scaled 3.0&ndash;7.3)</span>
+    <span><i class="ln"></i>Static total, same model</span>
+    <span><i class="dot open" style="width:8px;height:8px;border-radius:50%"></i>Open-weight</span>
+    <span><i class="dot closed" style="width:8px;height:8px;border-radius:50%"></i>Closed &dagger;, held out of headline statistics</span>
+    <span>Click any row for per-dimension scores.</span>
+  </div>
+</section>
+
+<section class="prose" id="method">
+  <div class="cols">
+    <div>
+      <h3>What the board measures</h3>
+      <p class="lead">A hypothesis is only interesting relative to what the field already knows.
+      So the benchmark never hands a model the relevant literature in the Active track. It hands
+      it a subfield and a search tool, and it scores what comes back against the papers a separate
+      retrieval pass says are actually relevant.</p>
+      <p>Each model gets a budget of ten <code>SEARCH</code> or <code>FETCH</code> calls against
+      Semantic Scholar. It chooses the queries, reads the abstracts it fetches, and returns one
+      paragraph: a mechanism, a prediction, and a way to test it. Three critic models score that
+      paragraph on originality, feasibility, clarity, impact and specificity, each against the
+      retrieved evidence rather than against the critic's own memory.</p>
+      <p>The Static track is the control. The same model, the same subfield, the same critics,
+      but the reading list is supplied rather than searched. The difference between the two is
+      the only thing on this page that isolates agency from raw ability.</p>
+      <div class="callout">
+        <p>40 of 63 models score higher with the tool than without it. The rest do
+        worse. Search is not free: a model that cannot judge what it retrieved is now wrong with
+        citations. The paper states this on its open-weight roster alone, where 19 of 28 improve
+        and the gain tracks static ability at <i>r</i> = +0.69.</p>
+      </div>
+    </div>
+    <div>
+      <h3>How a row is produced</h3>
+      <ol class="pipeline">
+        <li><b>Subfield, not paper</b><span>40 subfields sampled across Biology, Chemistry,
+        Computer Science, Medicine and Physics. The model sees the subfield string only.</span></li>
+        <li><b>Agentic rollout</b><span>Up to 10 tool calls. Queries, reading order and stopping
+        point are the model's own decisions; the transcript is logged.</span></li>
+        <li><b>Three hypotheses</b><span>Each model proposes three independent hypotheses per
+        subfield, so a single lucky draw cannot carry a score.</span></li>
+        <li><b>Three critics, drop the most generous</b><span>Kimi K2.6, Qwen3.6 Plus and GLM-5.1
+        each score every hypothesis. The highest of the three is discarded before averaging.</span></li>
+        <li><b>Weighted total</b><span>Originality 2.0, impact 1.5, feasibility 1.0, clarity 0.5,
+        specificity 0.5, normalized by 5.5.</span></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="prose" id="defs">
+  <h3>Column definitions</h3>
+  <p>Every number on this page is computed from <code>data/results.db</code>, table
+  <code>lit8d_scores_3seed</code>, by <code>reports/_leaderboard_full.py</code>. No value is
+  estimated, rounded up, or carried over from an earlier run.</p>
+  <div class="scroll">
+  <table class="defs">
+    <thead><tr><th>Column</th><th>Definition</th><th>Computation</th><th>Range / unit</th></tr></thead>
+    <tbody>
+      <tr><td>#</td><td>Rank under the current sort and filter.</td>
+        <td>Position after sorting; recomputed on every filter change.</td><td>1&ndash;63</td></tr>
+      <tr><td>Model</td><td>The evaluated hypothesis generator.</td>
+        <td>Display name for the routed model id, shown on row expansion.</td><td>&mdash;</td></tr>
+      <tr><td>Vendor</td><td>Publishing organization, and whether weights are public.</td>
+        <td>Prefix of the model id. Closed rows are reported but excluded from the paper's
+        headline statistics.</td><td>&mdash;</td></tr>
+      <tr><td>Active score</td><td>Weighted quality of hypotheses produced with agentic search.</td>
+        <td>Per hypothesis: drop the most generous of three critics, weight the five dimensions,
+        normalize by 5.5. Mean over 3 hypotheses, then over 40 subfields.</td><td>1&ndash;10</td></tr>
+      <tr><td>Total &plusmn;</td><td>Standard error of the Active total.</td>
+        <td>Standard deviation across the 40 subfield means divided by &radic;40. Not a bootstrap
+        interval.</td><td>score points</td></tr>
+      <tr><td>vs. Static</td><td>Gain from agentic search over a supplied reading list.</td>
+        <td>Paired mean of Active &minus; Static over subfields scored in both tracks. Blank where
+        the model has no Static run.</td><td>score points</td></tr>
+      <tr><td>Turns</td><td>Mean tool calls issued per rollout, out of a budget of 10.</td>
+        <td>Counted from the logged agent transcript. Describes behavior, not quality.</td>
+        <td>0&ndash;10 calls</td></tr>
+      <tr><td>Per-dimension</td><td>The five critic dimensions behind the total, Active track.</td>
+        <td>Same aggregation as the total, before weighting. The notch on each mini bar is the
+        Static value for that dimension.</td><td>1&ndash;10</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p style="margin-top:20px; font-size:13px; color:var(--muted); max-width:70ch">
+  The roster is the paper's complete evaluated roster: every model run in both tracks.
+  Three models are excluded: gpt-5.3-chat is left out as a second serving route to a model already listed, not a second model; qwen3-235b-a22b-thinking-2507, qwen3-vl-8b-thinking ran the Active track only, so they have no Static column to rank against.</p>
+
+  <p style="font-size:13px; color:var(--muted); max-width:70ch">
+  Critic scores are model judgments, not measurements of scientific merit, and the two models
+  without a Static run are ranked on Active alone. The association between turns and score
+  (Spearman &rho; = +0.39, p = 0.001, n = 63) is an observation about behavior, not evidence
+  that spending more calls causes a better hypothesis.</p>
+</section>
+
+<footer><div>
+  <span class="tag">Code MIT</span><span class="tag">Data CC BY 4.0</span>
+  Generated from <code>reports/leaderboard_full.json</code> on 2026-09-12.
+  Row-level scores ship in the repository under <code>release_data/</code>.
+</div></footer>
+
+</div>
+
+<script>
+const DATA = {"rows":[{"model":"azure/anthropic/claude-opus-5","name":"Claude Opus 5","vendor":"Anthropic","access":"closed","active":7.135416666666666,"active_sem":0.0713253717564844,"static":6.886363636363638,"gain":0.2490530303030302,"dims":{"originality":7.3,"feasibility":6.770833333333333,"clarity":7.872916666666667,"impact":6.747916666666666,"specificity":7.63125},"static_dims":{"originality":7.2541666666666655,"feasibility":5.95,"clarity":7.570833333333333,"impact":6.666666666666666,"specificity":7.2625},"n_subfields_active":40,"n_subfields_static":40,"turns":9.6875},{"model":"azure/openai/gpt-5.6-sol","name":"GPT-5.6 Sol","vendor":"OpenAI","access":"closed","active":6.8753787878787875,"active_sem":0.07283703736850076,"static":6.9,"gain":-0.024621212121212134,"dims":{"originality":6.9333333333333345,"feasibility":6.720833333333334,"clarity":7.775,"impact":6.404166666666666,"specificity":7.466666666666667},"static_dims":{"originality":7.129166666666667,"feasibility":6.308333333333334,"clarity":7.7875,"impact":6.508333333333335,"specificity":7.454166666666666},"n_subfields_active":40,"n_subfields_static":40,"turns":9.799999999999999},{"model":"azure/openai/gpt-5.6-terra","name":"GPT-5.6 Terra","vendor":"OpenAI","access":"closed","active":6.799242424242425,"active_sem":0.07383287367686663,"static":6.857575757575757,"gain":-0.05833333333333348,"dims":{"originality":6.808333333333333,"feasibility":6.7625,"clarity":7.7125,"impact":6.316666666666667,"specificity":7.370833333333333},"static_dims":{"originality":7.033333333333334,"feasibility":6.525,"clarity":7.6875,"impact":6.416666666666667,"specificity":7.3125},"n_subfields_active":40,"n_subfields_static":40,"turns":9.658333333333335},{"model":"azure/anthropic/claude-opus-4-8","name":"Claude Opus 4.8","vendor":"Anthropic","access":"closed","active":6.785795454545453,"active_sem":0.07898477219885153,"static":5.782954545454546,"gain":1.002840909090909,"dims":{"originality":6.8083333333333345,"feasibility":6.83125,"clarity":7.595833333333334,"impact":6.304166666666667,"specificity":7.239583333333333},"static_dims":{"originality":6.1,"feasibility":5.216666666666667,"clarity":6.741666666666665,"impact":5.370833333333333,"specificity":5.925},"n_subfields_active":40,"n_subfields_static":40,"turns":6.975},{"model":"azure/anthropic/claude-opus-4-7","name":"Claude Opus 4.7","vendor":"Anthropic","access":"closed","active":6.697746697746699,"active_sem":0.10209253490627948,"static":5.828787878787879,"gain":0.903263403263403,"dims":{"originality":6.705128205128205,"feasibility":6.487179487179487,"clarity":7.696581196581196,"impact":6.294871794871795,"specificity":7.2991452991453},"static_dims":{"originality":6.141666666666667,"feasibility":5.0125,"clarity":6.916666666666666,"impact":5.495833333333333,"specificity":6.120833333333334},"n_subfields_active":39,"n_subfields_static":40,"turns":9.940170940170939},{"model":"azure/openai/gpt-5.5","name":"GPT-5.5","vendor":"OpenAI","access":"closed","active":6.6833333333333345,"active_sem":0.07531885397321746,"static":6.696969696969697,"gain":-0.013636363636363492,"dims":{"originality":6.7,"feasibility":6.6291666666666655,"clarity":7.5125,"impact":6.275,"specificity":7.120833333333333},"static_dims":{"originality":7.0791666666666675,"feasibility":5.933333333333333,"clarity":7.408333333333334,"impact":6.345833333333333,"specificity":7.0375},"n_subfields_active":40,"n_subfields_static":40,"turns":9.991666666666665},{"model":"azure/anthropic/claude-sonnet-5","name":"Claude Sonnet 5","vendor":"Anthropic","access":"closed","active":6.662121212121212,"active_sem":0.08263677236568456,"static":6.051136363636364,"gain":0.6109848484848484,"dims":{"originality":6.697916666666667,"feasibility":6.516666666666666,"clarity":7.59375,"impact":6.21875,"specificity":7.208333333333334},"static_dims":{"originality":6.2125,"feasibility":5.783333333333333,"clarity":6.933333333333333,"impact":5.654166666666667,"specificity":6.25},"n_subfields_active":40,"n_subfields_static":40,"turns":7.125},{"model":"azure/openai/gpt-5.2","name":"GPT-5.2","vendor":"OpenAI","access":"closed","active":6.656060606060606,"active_sem":0.061960867218122384,"static":6.159848484848484,"gain":0.49621212121212144,"dims":{"originality":6.583333333333333,"feasibility":6.9958333333333345,"clarity":7.595833333333334,"impact":6.0625,"specificity":7.1083333333333325},"static_dims":{"originality":6.4208333333333325,"feasibility":5.675,"clarity":7.125,"impact":5.683333333333333,"specificity":6.55},"n_subfields_active":40,"n_subfields_static":40,"turns":8.025},{"model":"azure/openai/gpt-5.4","name":"GPT-5.4","vendor":"OpenAI","access":"closed","active":6.623863636363637,"active_sem":0.056543332900033,"static":6.183712121212121,"gain":0.44015151515151507,"dims":{"originality":6.508333333333333,"feasibility":7.0041666666666655,"clarity":7.3916666666666675,"impact":6.145833333333334,"specificity":6.991666666666667},"static_dims":{"originality":6.491666666666665,"feasibility":5.683333333333334,"clarity":7.166666666666667,"impact":5.65,"specificity":6.570833333333333},"n_subfields_active":40,"n_subfields_static":40,"turns":8.708333333333332},{"model":"azure/openai/gpt-5.6-luna","name":"GPT-5.6 Luna","vendor":"OpenAI","access":"closed","active":6.42840909090909,"active_sem":0.06778349394940054,"static":6.6954545454545435,"gain":-0.2670454545454545,"dims":{"originality":6.283333333333333,"feasibility":6.6291666666666655,"clarity":7.408333333333333,"impact":6.0,"specificity":6.9125},"static_dims":{"originality":6.8125,"feasibility":6.475,"clarity":7.675,"impact":6.195833333333333,"specificity":7.1875},"n_subfields_active":40,"n_subfields_static":40,"turns":9.658333333333333},{"model":"azure/openai/gpt-5","name":"GPT-5","vendor":"OpenAI","access":"closed","active":6.39810606060606,"active_sem":0.08200356616507244,"static":6.550378787878787,"gain":-0.1522727272727274,"dims":{"originality":6.2875,"feasibility":6.458333333333334,"clarity":7.5125,"impact":5.9125,"specificity":7.0625},"static_dims":{"originality":6.6708333333333325,"feasibility":6.083333333333333,"clarity":7.5625,"impact":6.175,"specificity":7.116666666666667},"n_subfields_active":40,"n_subfields_static":40,"turns":9.825},{"model":"azure/openai/gpt-5-mini","name":"GPT-5 mini","vendor":"OpenAI","access":"closed","active":6.375757575757577,"active_sem":0.07354220000232826,"static":5.883712121212121,"gain":0.4920454545454545,"dims":{"originality":6.125,"feasibility":6.7541666666666655,"clarity":7.4333333333333345,"impact":5.908333333333333,"specificity":6.966666666666667},"static_dims":{"originality":6.095833333333333,"feasibility":5.458333333333333,"clarity":6.775,"impact":5.5,"specificity":6.145833333333334},"n_subfields_active":40,"n_subfields_static":40,"turns":9.141666666666667},{"model":"azure/openai/gpt-5.4-mini","name":"GPT-5.4 mini","vendor":"OpenAI","access":"closed","active":6.36060606060606,"active_sem":0.06970837040636835,"static":6.061742424242423,"gain":0.2988636363636364,"dims":{"originality":6.2,"feasibility":6.854166666666666,"clarity":7.170833333333334,"impact":5.870833333333334,"specificity":6.675},"static_dims":{"originality":6.404166666666667,"feasibility":5.616666666666666,"clarity":6.8125,"impact":5.6125,"specificity":6.179166666666666},"n_subfields_active":40,"n_subfields_static":40,"turns":5.1},{"model":"z-ai/glm-5.1","name":"GLM-5.1","vendor":"Zhipu","access":"open","active":6.332575757575758,"active_sem":0.09851465390835258,"static":5.125757575757577,"gain":1.2068181818181816,"dims":{"originality":6.308333333333333,"feasibility":6.316666666666667,"clarity":7.370833333333333,"impact":5.904166666666667,"specificity":6.708333333333333},"static_dims":{"originality":5.475,"feasibility":4.408333333333333,"clarity":6.058333333333333,"impact":4.825,"specificity":5.133333333333333},"n_subfields_active":40,"n_subfields_static":40,"turns":8.808333333333334},{"model":"google/gemini-3-flash-preview","name":"Gemini 3 Flash","vendor":"Google","access":"closed","active":6.287121212121212,"active_sem":0.1153470689541349,"static":5.592045454545454,"gain":0.6950757575757577,"dims":{"originality":6.333333333333334,"feasibility":6.1625,"clarity":7.120833333333333,"impact":5.925,"specificity":6.604166666666667},"static_dims":{"originality":5.958333333333333,"feasibility":5.0166666666666675,"clarity":6.208333333333334,"impact":5.3375,"specificity":5.425},"n_subfields_active":40,"n_subfields_static":40,"turns":8.541666666666668},{"model":"google/gemini-3.5-flash","name":"Gemini 3.5 Flash","vendor":"Google","access":"closed","active":6.221969696969697,"active_sem":0.08282061314387071,"static":5.867424242424241,"gain":0.3545454545454548,"dims":{"originality":6.0875,"feasibility":6.5125,"clarity":7.208333333333333,"impact":5.766666666666667,"specificity":6.558333333333333},"static_dims":{"originality":6.137499999999999,"feasibility":5.35,"clarity":6.791666666666667,"impact":5.504166666666667,"specificity":5.9875},"n_subfields_active":40,"n_subfields_static":40,"turns":9.916666666666666},{"model":"google/gemini-3.1-pro-preview","name":"Gemini 3.1 Pro","vendor":"Google","access":"closed","active":6.196212121212122,"active_sem":0.10053298838992615,"static":5.629924242424242,"gain":0.5662878787878788,"dims":{"originality":6.2,"feasibility":6.1375,"clarity":7.1375,"impact":5.825,"specificity":6.470833333333334},"static_dims":{"originality":5.841666666666667,"feasibility":5.0875,"clarity":6.5875,"impact":5.354166666666666,"specificity":5.7375},"n_subfields_active":40,"n_subfields_static":40,"turns":7.458333333333334},{"model":"moonshotai/kimi-k2.6","name":"Kimi K2.6","vendor":"Moonshot","access":"open","active":6.172348484848485,"active_sem":0.08205684689610408,"static":5.096969696969697,"gain":1.075378787878788,"dims":{"originality":6.075,"feasibility":6.375,"clarity":7.216666666666666,"impact":5.7,"specificity":6.529166666666667},"static_dims":{"originality":5.3583333333333325,"feasibility":4.570833333333334,"clarity":6.0,"impact":4.775,"specificity":5.166666666666666},"n_subfields_active":40,"n_subfields_static":40,"turns":9.85},{"model":"azure/openai/o3","name":"o3","vendor":"OpenAI","access":"closed","active":6.058712121212121,"active_sem":0.11560224873321177,"static":5.564772727272727,"gain":0.49393939393939396,"dims":{"originality":5.941666666666666,"feasibility":6.095833333333333,"clarity":7.379166666666667,"impact":5.570833333333334,"specificity":6.595833333333333},"static_dims":{"originality":5.675,"feasibility":5.183333333333333,"clarity":6.8625,"impact":5.095833333333333,"specificity":5.995833333333333},"n_subfields_active":40,"n_subfields_static":40,"turns":5.533333333333333},{"model":"azure/openai/gpt-5.1","name":"GPT-5.1","vendor":"OpenAI","access":"closed","active":6.039772727272728,"active_sem":0.06918175398477938,"static":5.6625,"gain":0.37727272727272715,"dims":{"originality":5.9,"feasibility":6.225,"clarity":6.9,"impact":5.741666666666667,"specificity":6.2625},"static_dims":{"originality":6.0,"feasibility":4.879166666666666,"clarity":6.508333333333335,"impact":5.420833333333333,"specificity":5.758333333333333},"n_subfields_active":40,"n_subfields_static":40,"turns":3.975},{"model":"azure/anthropic/claude-opus-4-6","name":"Claude Opus 4.6","vendor":"Anthropic","access":"closed","active":6.033411033411034,"active_sem":0.06496362632740771,"static":5.796969696969697,"gain":0.25097125097125106,"dims":{"originality":5.675213675213675,"feasibility":6.696581196581196,"clarity":7.222222222222222,"impact":5.517094017094018,"specificity":6.500000000000001},"static_dims":{"originality":5.816666666666666,"feasibility":5.75,"clarity":6.908333333333333,"impact":5.345833333333333,"specificity":6.054166666666666},"n_subfields_active":39,"n_subfields_static":40,"turns":10.0},{"model":"qwen/qwen3.5-397b-a17b","name":"Qwen3.5 397B-A17B","vendor":"Alibaba","access":"open","active":5.948106060606061,"active_sem":0.09283426364982411,"static":5.060984848484848,"gain":0.8871212121212121,"dims":{"originality":5.791666666666666,"feasibility":6.279166666666666,"clarity":6.8125,"impact":5.566666666666667,"specificity":6.191666666666667},"static_dims":{"originality":5.379166666666667,"feasibility":4.425,"clarity":5.929166666666667,"impact":4.775,"specificity":5.05},"n_subfields_active":40,"n_subfields_static":40,"turns":8.916666666666666},{"model":"moonshotai/kimi-k2.5","name":"Kimi K2.5","vendor":"Moonshot","access":"open","active":5.9208333333333325,"active_sem":0.10076040549040645,"static":4.90530303030303,"gain":1.0155303030303027,"dims":{"originality":5.8375,"feasibility":6.004166666666666,"clarity":6.8583333333333325,"impact":5.579166666666667,"specificity":6.175},"static_dims":{"originality":5.170833333333333,"feasibility":4.366666666666666,"clarity":5.75,"impact":4.6083333333333325,"specificity":4.966666666666667},"n_subfields_active":40,"n_subfields_static":40,"turns":9.941666666666666},{"model":"deepseek/deepseek-v4-pro","name":"DeepSeek-V4 Pro","vendor":"DeepSeek","access":"open","active":5.918181818181818,"active_sem":0.10364350861650969,"static":5.323106060606061,"gain":0.5950757575757575,"dims":{"originality":5.791666666666666,"feasibility":5.9375,"clarity":7.1375,"impact":5.525,"specificity":6.345833333333334},"static_dims":{"originality":5.458333333333334,"feasibility":4.975,"clarity":6.404166666666667,"impact":4.958333333333333,"specificity":5.491666666666667},"n_subfields_active":40,"n_subfields_static":40,"turns":8.466666666666667},{"model":"xiaomi/mimo-v2.5-pro","name":"MiMo-V2.5 Pro","vendor":"Xiaomi","access":"open","active":5.9147727272727275,"active_sem":0.08914153107665268,"static":5.1068181818181815,"gain":0.8079545454545455,"dims":{"originality":5.633333333333334,"feasibility":6.4625,"clarity":6.970833333333334,"impact":5.458333333333334,"specificity":6.258333333333333},"static_dims":{"originality":5.1,"feasibility":5.120833333333334,"clarity":5.9375,"impact":4.8625,"specificity":5.008333333333333},"n_subfields_active":40,"n_subfields_static":40,"turns":9.033333333333333},{"model":"azure/anthropic/claude-sonnet-4-6","name":"Claude Sonnet 4.6","vendor":"Anthropic","access":"closed","active":5.837995337995338,"active_sem":0.09439032073762184,"static":5.360227272727274,"gain":0.510878010878011,"dims":{"originality":5.555555555555555,"feasibility":6.102564102564103,"clarity":7.094017094017095,"impact":5.461538461538461,"specificity":6.311965811965812},"static_dims":{"originality":5.566666666666667,"feasibility":4.908333333333333,"clarity":6.479166666666666,"impact":4.933333333333334,"specificity":5.6},"n_subfields_active":39,"n_subfields_static":40,"turns":9.957264957264957},{"model":"azure/openai/gpt-5.4-nano","name":"GPT-5.4 nano","vendor":"OpenAI","access":"closed","active":5.819318181818182,"active_sem":0.090246855458033,"static":5.720454545454546,"gain":0.09886363636363633,"dims":{"originality":5.495833333333334,"feasibility":6.6375,"clarity":6.766666666666666,"impact":5.2875,"specificity":6.125},"static_dims":{"originality":5.966666666666667,"feasibility":5.504166666666666,"clarity":6.3375,"impact":5.279166666666667,"specificity":5.875},"n_subfields_active":40,"n_subfields_static":40,"turns":4.633333333333334},{"model":"z-ai/glm-4.6","name":"GLM-4.6","vendor":"Zhipu","access":"open","active":5.780681818181819,"active_sem":0.08319899375158997,"static":4.834090909090909,"gain":0.9465909090909091,"dims":{"originality":5.6375,"feasibility":6.141666666666667,"clarity":6.841666666666666,"impact":5.308333333333334,"specificity":5.9875},"static_dims":{"originality":4.8291666666666675,"feasibility":4.941666666666667,"clarity":5.595833333333333,"impact":4.570833333333334,"specificity":4.666666666666667},"n_subfields_active":40,"n_subfields_static":40,"turns":6.908333333333334},{"model":"azure/anthropic/claude-opus-4-5","name":"Claude Opus 4.5","vendor":"Anthropic","access":"closed","active":5.617424242424242,"active_sem":0.07461206602491216,"static":5.5181818181818185,"gain":0.09924242424242419,"dims":{"originality":5.183333333333333,"feasibility":6.4833333333333325,"clarity":6.7375,"impact":5.116666666666667,"specificity":6.004166666666667},"static_dims":{"originality":5.5125,"feasibility":5.5458333333333325,"clarity":6.55,"impact":5.104166666666667,"specificity":5.695833333333334},"n_subfields_active":40,"n_subfields_static":40,"turns":10.0},{"model":"azure/openai/o4-mini","name":"o4-mini","vendor":"OpenAI","access":"closed","active":5.614772727272728,"active_sem":0.10177819007664286,"static":5.3946969696969695,"gain":0.22007575757575765,"dims":{"originality":5.308333333333334,"feasibility":6.116666666666667,"clarity":6.966666666666667,"impact":5.05,"specificity":6.179166666666667},"static_dims":{"originality":5.366666666666667,"feasibility":5.4375,"clarity":6.591666666666666,"impact":4.891666666666667,"specificity":5.7333333333333325},"n_subfields_active":40,"n_subfields_static":40,"turns":7.558333333333333},{"model":"qwen/qwen3.5-27b","name":"Qwen3.5 27B","vendor":"Alibaba","access":"open","active":5.528787878787878,"active_sem":0.0826235934240006,"static":4.713636363636363,"gain":0.8151515151515148,"dims":{"originality":5.2666666666666675,"feasibility":5.816666666666666,"clarity":6.6375,"impact":5.216666666666667,"specificity":5.8291666666666675},"static_dims":{"originality":5.0125,"feasibility":4.029166666666667,"clarity":5.804166666666667,"impact":4.395833333333333,"specificity":4.75},"n_subfields_active":40,"n_subfields_static":40,"turns":7.983333333333334},{"model":"deepseek/deepseek-v4-flash","name":"DeepSeek-V4 Flash","vendor":"DeepSeek","access":"open","active":5.515151515151516,"active_sem":0.09010587929045387,"static":5.092045454545454,"gain":0.42310606060606054,"dims":{"originality":5.141666666666667,"feasibility":6.158333333333333,"clarity":6.7041666666666675,"impact":5.0875,"specificity":5.816666666666666},"static_dims":{"originality":5.170833333333333,"feasibility":4.9541666666666675,"clarity":6.170833333333333,"impact":4.683333333333333,"specificity":5.2},"n_subfields_active":40,"n_subfields_static":40,"turns":9.033333333333335},{"model":"azure/anthropic/claude-sonnet-4-5","name":"Claude Sonnet 4.5","vendor":"Anthropic","access":"closed","active":5.500398724082935,"active_sem":0.09289096299746023,"static":5.023751023751024,"gain":0.47788697788697804,"dims":{"originality":5.280701754385964,"feasibility":5.828947368421052,"clarity":6.504385964912281,"impact":5.184210526315789,"specificity":5.666666666666667},"static_dims":{"originality":5.103603603603603,"feasibility":4.7522522522522515,"clarity":6.0945945945945965,"impact":4.729729729729731,"specificity":5.058558558558559},"n_subfields_active":38,"n_subfields_static":37,"turns":10.0},{"model":"google/gemma-4-31b-it","name":"Gemma 4 31B","vendor":"Google","access":"open","active":5.491287878787879,"active_sem":0.09203186402237094,"static":5.1416666666666675,"gain":0.349621212121212,"dims":{"originality":5.220833333333333,"feasibility":6.0458333333333325,"clarity":6.775,"impact":4.966666666666667,"specificity":5.754166666666667},"static_dims":{"originality":5.1875,"feasibility":5.041666666666666,"clarity":6.175,"impact":4.795833333333333,"specificity":5.1625},"n_subfields_active":40,"n_subfields_static":40,"turns":4.966666666666667},{"model":"xiaomi/mimo-v2.5","name":"MiMo-V2.5","vendor":"Xiaomi","access":"open","active":5.4625,"active_sem":0.10548320393013003,"static":4.903030303030303,"gain":0.559469696969697,"dims":{"originality":5.1416666666666675,"feasibility":6.054166666666667,"clarity":6.35,"impact":5.170833333333333,"specificity":5.55},"static_dims":{"originality":4.9125,"feasibility":4.975,"clarity":5.575,"impact":4.704166666666667,"specificity":4.645833333333334},"n_subfields_active":40,"n_subfields_static":40,"turns":7.7666666666666675},{"model":"azure/anthropic/claude-haiku-4-5","name":"Claude Haiku 4.5","vendor":"Anthropic","access":"closed","active":5.374621212121212,"active_sem":0.0815825614967649,"static":5.203409090909091,"gain":0.17121212121212115,"dims":{"originality":5.1083333333333325,"feasibility":5.8875,"clarity":6.3166666666666655,"impact":5.041666666666667,"specificity":5.470833333333333},"static_dims":{"originality":5.2666666666666675,"feasibility":5.1416666666666675,"clarity":6.05,"impact":4.8875,"specificity":5.175},"n_subfields_active":40,"n_subfields_static":40,"turns":9.916666666666666},{"model":"mistralai/mistral-medium-3.1","name":"Mistral Medium 3.1","vendor":"Mistral","access":"open","active":5.36590909090909,"active_sem":0.09075120646260212,"static":4.743560606060607,"gain":0.6223484848484849,"dims":{"originality":5.0,"feasibility":5.820833333333333,"clarity":6.516666666666666,"impact":5.079166666666667,"specificity":5.629166666666666},"static_dims":{"originality":4.920833333333333,"feasibility":4.25,"clarity":5.804166666666666,"impact":4.4375,"specificity":4.879166666666666},"n_subfields_active":40,"n_subfields_static":40,"turns":6.7333333333333325},{"model":"azure/openai/gpt-5-nano","name":"GPT-5 nano","vendor":"OpenAI","access":"closed","active":5.359469696969697,"active_sem":0.08680686761740633,"static":5.748863636363636,"gain":-0.38939393939393946,"dims":{"originality":4.829166666666667,"feasibility":6.375,"clarity":6.5125,"impact":4.916666666666667,"specificity":5.625},"static_dims":{"originality":5.825,"feasibility":5.616666666666666,"clarity":6.408333333333333,"impact":5.5249999999999995,"specificity":5.720833333333333},"n_subfields_active":40,"n_subfields_static":40,"turns":6.675},{"model":"minimax/minimax-m2.7","name":"MiniMax-M2.7","vendor":"MiniMax","access":"open","active":5.326893939393939,"active_sem":0.09886497601107198,"static":4.703030303030303,"gain":0.6238636363636363,"dims":{"originality":4.954166666666667,"feasibility":6.033333333333333,"clarity":6.475,"impact":4.9125,"specificity":5.5},"static_dims":{"originality":4.629166666666666,"feasibility":4.754166666666667,"clarity":5.6375,"impact":4.475,"specificity":4.645833333333333},"n_subfields_active":40,"n_subfields_static":40,"turns":9.716666666666667},{"model":"deepseek/deepseek-r1-0528","name":"DeepSeek-R1","vendor":"DeepSeek","access":"open","active":5.302651515151515,"active_sem":0.10207935545152778,"static":4.863636363636363,"gain":0.43901515151515147,"dims":{"originality":5.079166666666667,"feasibility":5.504166666666667,"clarity":6.4875,"impact":4.945833333333333,"specificity":5.679166666666666},"static_dims":{"originality":4.945833333333333,"feasibility":4.683333333333334,"clarity":5.7875,"impact":4.5166666666666675,"specificity":5.0125},"n_subfields_active":40,"n_subfields_static":40,"turns":5.95},{"model":"mistralai/mistral-small-2603","name":"Mistral Small 2603","vendor":"Mistral","access":"open","active":5.161742424242425,"active_sem":0.07816001752240065,"static":4.606818181818182,"gain":0.5549242424242424,"dims":{"originality":4.654166666666667,"feasibility":5.933333333333333,"clarity":6.6,"impact":4.716666666666667,"specificity":5.5458333333333325},"static_dims":{"originality":4.745833333333333,"feasibility":4.308333333333333,"clarity":5.645833333333334,"impact":4.2333333333333325,"specificity":4.729166666666667},"n_subfields_active":40,"n_subfields_static":40,"turns":9.366666666666667},{"model":"google/gemini-2.5-flash","name":"Gemini 2.5 Flash","vendor":"Google","access":"closed","active":5.048863636363636,"active_sem":0.08539080400175815,"static":5.1,"gain":-0.051136363636363605,"dims":{"originality":4.529166666666667,"feasibility":6.070833333333333,"clarity":6.008333333333333,"impact":4.783333333333333,"specificity":4.920833333333333},"static_dims":{"originality":5.191666666666666,"feasibility":5.0375,"clarity":5.6,"impact":4.995833333333333,"specificity":4.6708333333333325},"n_subfields_active":40,"n_subfields_static":40,"turns":7.658333333333333},{"model":"qwen/qwen3-30b-a3b-instruct-2507","name":"Qwen3 30B-A3B","vendor":"Alibaba","access":"open","active":4.9393939393939394,"active_sem":0.07875761477203372,"static":4.933712121212121,"gain":0.00568181818181821,"dims":{"originality":4.4875,"feasibility":5.645833333333333,"clarity":6.1708333333333325,"impact":4.5791666666666675,"specificity":5.183333333333333},"static_dims":{"originality":5.1375,"feasibility":4.633333333333333,"clarity":5.729166666666667,"impact":4.620833333333333,"specificity":4.8625},"n_subfields_active":40,"n_subfields_static":40,"turns":8.283333333333333},{"model":"qwen/qwen3.5-9b","name":"Qwen3.5 9B","vendor":"Alibaba","access":"open","active":4.868560606060607,"active_sem":0.10758203290516236,"static":4.229924242424242,"gain":0.6386363636363637,"dims":{"originality":4.75,"feasibility":4.895833333333333,"clarity":6.029166666666667,"impact":4.533333333333333,"specificity":5.133333333333334},"static_dims":{"originality":4.541666666666666,"feasibility":3.6791666666666663,"clarity":5.075,"impact":3.8708333333333327,"specificity":4.316666666666667},"n_subfields_active":40,"n_subfields_static":40,"turns":6.916666666666666},{"model":"google/gemma-3-27b-it","name":"Gemma 3 27B","vendor":"Google","access":"open","active":4.822348484848485,"active_sem":0.08872006338375683,"static":4.681060606060607,"gain":0.14128787878787893,"dims":{"originality":4.158333333333333,"feasibility":6.3375,"clarity":6.091666666666667,"impact":4.208333333333334,"specificity":5.020833333333333},"static_dims":{"originality":4.783333333333333,"feasibility":4.625,"clarity":5.725,"impact":4.191666666666667,"specificity":4.808333333333333},"n_subfields_active":40,"n_subfields_static":40,"turns":6.158333333333333},{"model":"z-ai/glm-4.5-air","name":"GLM-4.5 Air","vendor":"Zhipu","access":"open","active":4.820833333333334,"active_sem":0.07026701676348589,"static":4.3098484848484855,"gain":0.5109848484848486,"dims":{"originality":4.4875,"feasibility":5.595833333333333,"clarity":5.5625,"impact":4.5875,"specificity":4.5625},"static_dims":{"originality":4.283333333333333,"feasibility":4.529166666666667,"clarity":4.791666666666667,"impact":4.1625,"specificity":3.9375},"n_subfields_active":40,"n_subfields_static":40,"turns":8.866666666666667},{"model":"azure/openai/o3-mini","name":"o3-mini","vendor":"OpenAI","access":"closed","active":4.820454545454545,"active_sem":0.06721570117063107,"static":4.836363636363636,"gain":-0.015909090909090796,"dims":{"originality":4.2666666666666675,"feasibility":6.204166666666667,"clarity":5.55,"impact":4.4875,"specificity":4.5375},"static_dims":{"originality":4.745833333333333,"feasibility":5.3291666666666675,"clarity":5.345833333333333,"impact":4.633333333333333,"specificity":4.3125},"n_subfields_active":40,"n_subfields_static":40,"turns":3.625},{"model":"qwen/qwen3-coder","name":"Qwen3 Coder","vendor":"Alibaba","access":"open","active":4.723863636363636,"active_sem":0.06953565564679844,"static":4.868939393939394,"gain":-0.14507575757575764,"dims":{"originality":3.8208333333333337,"feasibility":6.5458333333333325,"clarity":6.154166666666667,"impact":4.1375,"specificity":5.020833333333333},"static_dims":{"originality":4.675,"feasibility":5.2875,"clarity":5.658333333333333,"impact":4.625,"specificity":4.75},"n_subfields_active":40,"n_subfields_static":40,"turns":8.583333333333332},{"model":"azure/openai/gpt-4.1","name":"GPT-4.1","vendor":"OpenAI","access":"closed","active":4.703030303030303,"active_sem":0.06174817401879327,"static":4.923863636363636,"gain":-0.22083333333333327,"dims":{"originality":3.795833333333333,"feasibility":6.6208333333333345,"clarity":5.883333333333334,"impact":4.258333333333334,"specificity":4.65},"static_dims":{"originality":4.729166666666666,"feasibility":5.541666666666667,"clarity":5.8,"impact":4.554166666666666,"specificity":4.7},"n_subfields_active":40,"n_subfields_static":40,"turns":8.716666666666667},{"model":"azure/openai/o1","name":"o1","vendor":"OpenAI","access":"closed","active":4.660606060606061,"active_sem":0.07546524795923687,"static":4.553787878787879,"gain":0.10681818181818178,"dims":{"originality":4.029166666666667,"feasibility":6.025,"clarity":5.741666666666667,"impact":4.2333333333333325,"specificity":4.658333333333333},"static_dims":{"originality":4.5166666666666675,"feasibility":4.9541666666666675,"clarity":5.141666666666667,"impact":4.25,"specificity":4.225},"n_subfields_active":40,"n_subfields_static":40,"turns":8.666666666666668},{"model":"qwen/qwen3-32b","name":"Qwen3 32B","vendor":"Alibaba","access":"open","active":4.4378787878787875,"active_sem":0.08050911088977687,"static":4.534090909090909,"gain":-0.09621212121212121,"dims":{"originality":4.133333333333333,"feasibility":5.0375,"clarity":5.3125,"impact":4.145833333333333,"specificity":4.458333333333333},"static_dims":{"originality":4.470833333333333,"feasibility":4.816666666666666,"clarity":5.104166666666667,"impact":4.308333333333334,"specificity":4.329166666666667},"n_subfields_active":40,"n_subfields_static":40,"turns":3.0833333333333335},{"model":"azure/openai/gpt-4o","name":"GPT-4o","vendor":"OpenAI","access":"closed","active":4.369696969696969,"active_sem":0.06548405404078061,"static":4.710227272727273,"gain":-0.340530303030303,"dims":{"originality":3.3958333333333335,"feasibility":6.620833333333333,"clarity":5.470833333333333,"impact":3.875,"specificity":4.145833333333333},"static_dims":{"originality":4.4125,"feasibility":5.766666666666667,"clarity":5.2625,"impact":4.354166666666667,"specificity":4.304166666666667},"n_subfields_active":40,"n_subfields_static":40,"turns":9.858333333333333},{"model":"us/azure/openai/gpt-4.1-nano","name":"GPT-4.1 nano","vendor":"OpenAI","access":"closed","active":4.317424242424243,"active_sem":0.05375230008390119,"static":4.664015151515152,"gain":-0.34659090909090906,"dims":{"originality":3.429166666666667,"feasibility":6.383333333333333,"clarity":5.2041666666666675,"impact":3.9541666666666666,"specificity":3.9416666666666664},"static_dims":{"originality":4.695833333333334,"feasibility":4.895833333333334,"clarity":4.9833333333333325,"impact":4.541666666666667,"specificity":4.120833333333334},"n_subfields_active":40,"n_subfields_static":40,"turns":2.0083333333333337},{"model":"google/gemini-2.5-flash-lite","name":"Gemini 2.5 Flash-Lite","vendor":"Google","access":"closed","active":4.265909090909091,"active_sem":0.06895646876501171,"static":4.63219696969697,"gain":-0.3662878787878788,"dims":{"originality":3.195833333333333,"feasibility":6.708333333333334,"clarity":5.466666666666667,"impact":3.7041666666666666,"specificity":4.145833333333334},"static_dims":{"originality":4.516666666666667,"feasibility":5.0125,"clarity":5.354166666666666,"impact":4.375,"specificity":4.383333333333334},"n_subfields_active":40,"n_subfields_static":40,"turns":6.9333333333333345},{"model":"azure/openai/gpt-4.1-mini","name":"GPT-4.1 mini","vendor":"OpenAI","access":"closed","active":4.258712121212121,"active_sem":0.05929622723528046,"static":4.915151515151515,"gain":-0.656439393939394,"dims":{"originality":3.1208333333333336,"feasibility":6.625,"clarity":5.5166666666666675,"impact":3.7791666666666672,"specificity":4.258333333333334},"static_dims":{"originality":4.779166666666667,"feasibility":5.3583333333333325,"clarity":5.554166666666666,"impact":4.695833333333333,"specificity":4.591666666666667},"n_subfields_active":40,"n_subfields_static":40,"turns":7.341666666666666},{"model":"qwen/qwen3-8b","name":"Qwen3 8B","vendor":"Alibaba","access":"open","active":4.213257575757575,"active_sem":0.06720439765913033,"static":4.244696969696969,"gain":-0.03143939393939391,"dims":{"originality":3.8416666666666672,"feasibility":5.095833333333333,"clarity":4.945833333333333,"impact":3.9041666666666672,"specificity":4.129166666666667},"static_dims":{"originality":4.133333333333334,"feasibility":4.716666666666667,"clarity":4.583333333333333,"impact":4.1083333333333325,"specificity":3.8166666666666673},"n_subfields_active":40,"n_subfields_static":40,"turns":4.2666666666666675},{"model":"qwen/qwen-2.5-72b-instruct","name":"Qwen2.5 72B","vendor":"Alibaba","access":"open","active":3.9666666666666672,"active_sem":0.062138739544120476,"static":4.199621212121212,"gain":-0.23295454545454541,"dims":{"originality":2.675,"feasibility":6.770833333333333,"clarity":5.333333333333334,"impact":3.366666666666667,"specificity":3.958333333333333},"static_dims":{"originality":3.65,"feasibility":5.583333333333333,"clarity":4.9625,"impact":3.866666666666667,"specificity":3.866666666666667},"n_subfields_active":40,"n_subfields_static":40,"turns":8.825},{"model":"mistralai/mistral-small-24b-instruct-2501","name":"Mistral Small 24B","vendor":"Mistral","access":"open","active":3.9314393939393937,"active_sem":0.054245667526848215,"static":4.193560606060606,"gain":-0.2621212121212121,"dims":{"originality":2.875,"feasibility":6.245833333333333,"clarity":5.0125,"impact":3.475,"specificity":3.8166666666666664},"static_dims":{"originality":3.820833333333333,"feasibility":5.35,"clarity":4.870833333333334,"impact":3.7708333333333335,"specificity":3.9625},"n_subfields_active":40,"n_subfields_static":40,"turns":8.883333333333333},{"model":"meta-llama/llama-4-maverick","name":"Llama 4 Maverick","vendor":"Meta","access":"open","active":3.8371212121212124,"active_sem":0.06304520156686416,"static":4.3375,"gain":-0.5003787878787879,"dims":{"originality":2.6333333333333333,"feasibility":6.870833333333333,"clarity":4.766666666666667,"impact":3.233333333333333,"specificity":3.4666666666666672},"static_dims":{"originality":4.066666666666666,"feasibility":5.4541666666666675,"clarity":4.475,"impact":4.145833333333333,"specificity":3.625},"n_subfields_active":40,"n_subfields_static":40,"turns":4.533333333333333},{"model":"azure/openai/gpt-4o-mini","name":"GPT-4o mini","vendor":"OpenAI","access":"closed","active":3.7643939393939396,"active_sem":0.05137828039693308,"static":4.092424242424242,"gain":-0.328030303030303,"dims":{"originality":2.5791666666666666,"feasibility":6.6625,"clarity":4.758333333333333,"impact":3.2,"specificity":3.4083333333333337},"static_dims":{"originality":3.8916666666666666,"feasibility":4.945833333333333,"clarity":4.470833333333333,"impact":3.795833333333333,"specificity":3.7},"n_subfields_active":40,"n_subfields_static":40,"turns":9.15},{"model":"qwen/qwen-2.5-7b-instruct","name":"Qwen2.5 7B","vendor":"Alibaba","access":"open","active":3.6666666666666665,"active_sem":0.05789894164141978,"static":3.9655303030303033,"gain":-0.29886363636363644,"dims":{"originality":2.6208333333333336,"feasibility":6.116666666666665,"clarity":4.454166666666667,"impact":3.2833333333333337,"specificity":3.3125},"static_dims":{"originality":3.6229166666666663,"feasibility":5.15,"clarity":4.322916666666667,"impact":3.6583333333333337,"specificity":3.53125},"n_subfields_active":40,"n_subfields_static":40,"turns":8.841666666666667},{"model":"meta-llama/llama-3.1-8b-instruct","name":"Llama 3.1 8B","vendor":"Meta","access":"open","active":3.5409090909090906,"active_sem":0.061787246399753214,"static":3.7965909090909093,"gain":-0.25568181818181823,"dims":{"originality":2.645833333333333,"feasibility":5.6625,"clarity":4.1083333333333325,"impact":3.2916666666666665,"specificity":3.0583333333333336},"static_dims":{"originality":3.6958333333333337,"feasibility":4.45,"clarity":4.008333333333333,"impact":3.6,"specificity":3.270833333333333},"n_subfields_active":40,"n_subfields_static":40,"turns":6.733333333333334},{"model":"google/gemma-2-27b-it","name":"Gemma 2 27B","vendor":"Google","access":"open","active":3.1977272727272728,"active_sem":0.08964569858608742,"static":4.020833333333334,"gain":-0.8231060606060604,"dims":{"originality":2.2625,"feasibility":5.604166666666666,"clarity":3.9041666666666672,"impact":2.7541666666666664,"specificity":2.75},"static_dims":{"originality":3.575,"feasibility":5.420833333333333,"clarity":4.458333333333334,"impact":3.7208333333333328,"specificity":3.4666666666666663},"n_subfields_active":40,"n_subfields_static":40,"turns":4.058333333333333}]};
+const DIMS = [["originality","Orig"],["feasibility","Feas"],["clarity","Clar"],["impact","Impact"],["specificity","Spec"]];
+const LO = 3.0, HI = 7.3;
+const pct = v => Math.max(0, Math.min(100, (v - LO) / (HI - LO) * 100));
+const f2 = v => v.toFixed(2);
+
+let state = {filter:"all", sort:"active", q:""};
+let openRow = null;
+const rowsEl = document.getElementById("rows");
+
+function visible(){
+  const q = state.q.trim().toLowerCase();
+  let r = DATA.rows.filter(d =>
+    (state.filter === "all" || d.access === state.filter) &&
+    (!q || d.name.toLowerCase().includes(q) || d.vendor.toLowerCase().includes(q)));
+  const key = state.sort;
+  r = r.slice().sort((a, b) => {
+    if (key === "active") return b.active - a.active;
+    if (key === "turns")  return (b.turns ?? -1) - (a.turns ?? -1);
+    const ga = a.gain ?? -99, gb = b.gain ?? -99;
+    return gb - ga;
+  });
+  return r;
+}
+
+function detailHTML(d){
+  const cells = DIMS.map(([k, label]) => {
+    const a = d.dims[k];
+    const s = d.static_dims ? d.static_dims[k] : null;
+    const delta = s === null ? "" : `<div class="dd">${(a - s >= 0 ? "+" : "")}${f2(a - s)} vs Static</div>`;
+    const notch = s === null ? "" : `<u style="left:${pct(s)}%"></u>`;
+    return `<div class="dim"><div class="dl">${label}</div><div class="dv">${f2(a)}</div>
+      <div class="dbar"><i style="width:${pct(a)}%"></i>${notch}</div>${delta}</div>`;
+  }).join("");
+  const stat = d.static === null
+    ? "Static track not run for this model, so no gain is reported."
+    : `Static total ${f2(d.static)} over ${d.n_subfields_static} subfields.`;
+  return `<div class="detail"><div class="dgrid">${cells}</div>
+    <div class="meta"><code>${d.model}</code> &nbsp;&middot;&nbsp; Active over
+    ${d.n_subfields_active} subfields &nbsp;&middot;&nbsp; ${stat}</div></div>`;
+}
+
+function render(){
+  const rows = visible();
+  if (!rows.length){ rowsEl.innerHTML = `<div class="empty">No model matches that filter.</div>`; return; }
+  const bestOpen = rows.find(d => d.access === "open");
+  rowsEl.innerHTML = rows.map((d, i) => {
+    const isOpen = openRow === d.model;
+    const dag = d.access === "closed" ? `<span class="dag" title="Closed-source, held out of headline statistics">&dagger;</span>` : "";
+    const gain = d.gain === null
+      ? `<div class="delta none">&mdash;</div>`
+      : `<div class="delta${d.gain < 0 ? " neg" : ""}">${d.gain >= 0 ? "+" : "−"}${f2(Math.abs(d.gain))}</div>`;
+    const notch = d.static === null ? "" : `<div class="notch" style="left:${pct(d.static)}%"></div>`;
+    return `<div class="row${d === bestOpen && state.sort === "active" ? " best" : ""}${isOpen ? " open" : ""}"
+        data-model="${d.model}" tabindex="0" role="button" aria-expanded="${isOpen}">
+      <div class="rank">${i + 1}</div>
+      <div class="name" title="${d.name}"><span>${d.name}</span>${dag}</div>
+      <div class="vendor"><span class="dot ${d.access}"></span>${d.vendor}</div>
+      <div class="bar"><div class="fill" style="width:${pct(d.active)}%"></div>${notch}</div>
+      <div class="score">${f2(d.active)}<span class="err">&plusmn;${d.active_sem.toFixed(2)}</span></div>
+      ${gain}
+      <div class="turns">${d.turns === null ? "&mdash;" : d.turns.toFixed(1)}</div>
+      <div class="chev">&#9656;</div>
+    </div>${isOpen ? detailHTML(d) : ""}`;
+  }).join("");
+}
+
+rowsEl.addEventListener("click", e => {
+  const row = e.target.closest(".row");
+  if (!row) return;
+  openRow = openRow === row.dataset.model ? null : row.dataset.model;
+  render();
+});
+rowsEl.addEventListener("keydown", e => {
+  if (e.key !== "Enter" && e.key !== " ") return;
+  const row = e.target.closest(".row");
+  if (!row) return;
+  e.preventDefault();
+  openRow = openRow === row.dataset.model ? null : row.dataset.model;
+  render();
+});
+document.querySelectorAll("[data-filter]").forEach(b => b.addEventListener("click", () => {
+  state.filter = b.dataset.filter;
+  document.querySelectorAll("[data-filter]").forEach(x =>
+    x.setAttribute("aria-pressed", String(x === b)));
+  render();
+}));
+document.querySelectorAll("[data-sort]").forEach(b => b.addEventListener("click", () => {
+  state.sort = b.dataset.sort;
+  document.querySelectorAll("[data-sort]").forEach(x =>
+    x.setAttribute("aria-pressed", String(x === b)));
+  render();
+}));
+document.getElementById("q").addEventListener("input", e => { state.q = e.target.value; render(); });
+
+render();
+</script>

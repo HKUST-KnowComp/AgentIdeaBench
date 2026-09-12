@@ -56,7 +56,7 @@ for j in cross_year_cutoff_corrected cutoff_bucket_boost cutoff_quarterly_boost 
          e32_recall_only e36_leaderboard_subscores e37_review_r2_stats \
          e38_replay_refs e39_perdim_ci e40_domain_validity e41_claim_check \
          e41_frontier_analysis e43_active_turns f0_partial_correlation \
-         release_quarterly_boost primary_roster; do
+         release_quarterly_boost primary_roster leaderboard_full; do
   cp "$SRC/reports/$j.json" "$DEST/reports/$j.json"
 done
 
@@ -67,6 +67,17 @@ done
 # the same bytes under reports/ -- the script falls back to this path.
 cp "$SRC/archive/reports/pre_e42_mainstats_20260830/e23_ablations.json" \
    "$DEST/reports/e23_ablations_pre_e42_20260830.json"
+
+# --- the leaderboard page ---------------------------------------------------
+# site/index.html is a build product of reports/_build_leaderboard_page.py, but
+# it is committed rather than built in CI: the deploy workflow then needs no
+# python and no database. The template ships beside it so the page can be
+# regenerated from reports/leaderboard_full.json in a fresh clone.
+mkdir -p "$DEST/site" "$DEST/.github/workflows"
+cp "$SRC/site/index.html"                   "$DEST/site/index.html"
+cp "$SRC/reports/leaderboard_template.html" "$DEST/reports/leaderboard_template.html"
+cp "$SRC/LEADERBOARD.md"                    "$DEST/LEADERBOARD.md"
+cp "$SRC/.github/workflows/pages.yml"       "$DEST/.github/workflows/pages.yml"
 
 # --- the redacted data release ---------------------------------------------
 cp -R "$SRC/release_data" "$DEST/release_data"
