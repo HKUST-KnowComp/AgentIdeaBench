@@ -1,0 +1,517 @@
+{
+ "roster": {
+  "total_paired": 38,
+  "open_weight": 28,
+  "gemini_heldout": 5,
+  "frontier2026": 5
+ },
+ "capability_gate_F2": {
+  "open_weight_28": {
+   "n": 28,
+   "pearson_r": 0.6945409312708977,
+   "pearson_p": 4.123572936213881e-05,
+   "spearman_rho": 0.6310892172961139,
+   "spearman_p": 0.0003172019157127989
+  },
+  "plus_gemini_33": {
+   "n": 33,
+   "pearson_r": 0.5688471465174383,
+   "pearson_p": 0.0005517860805319428,
+   "spearman_rho": 0.5474598930481284,
+   "spearman_p": 0.0009758738360987851
+  },
+  "plus_frontier_38": {
+   "n": 38,
+   "pearson_r": 0.15940101662874884,
+   "pearson_p": 0.3391124630261346,
+   "spearman_rho": 0.33274975380238536,
+   "spearman_p": 0.04122448089062156
+  },
+  "frontier_only_5": {
+   "n": 5,
+   "pearson_r": -0.7215622929768012,
+   "pearson_p": 0.16881045144702492,
+   "spearman_rho": -0.09999999999999999,
+   "spearman_p": 0.8728885715695383
+  }
+ },
+ "per_model": {
+  "azure/anthropic/claude-opus-5": {
+   "short": "claude-opus-5",
+   "group": "frontier2026",
+   "n_shared_subdomains": 40,
+   "static": 6.886363636363636,
+   "active": 7.135416666666667,
+   "gain": 0.2490530303030302,
+   "wilcoxon_p": 0.10970234617151765,
+   "frac_subdomains_improved": 0.575
+  },
+  "azure/anthropic/claude-sonnet-5": {
+   "short": "claude-sonnet-5",
+   "group": "frontier2026",
+   "n_shared_subdomains": 40,
+   "static": 6.051136363636363,
+   "active": 6.662121212121212,
+   "gain": 0.6109848484848484,
+   "wilcoxon_p": 6.186102539942976e-05,
+   "frac_subdomains_improved": 0.8
+  },
+  "azure/openai/gpt-5.6-luna": {
+   "short": "gpt-5.6-luna",
+   "group": "frontier2026",
+   "n_shared_subdomains": 40,
+   "static": 6.695454545454547,
+   "active": 6.42840909090909,
+   "gain": -0.2670454545454545,
+   "wilcoxon_p": 0.005858073709723916,
+   "frac_subdomains_improved": 0.275
+  },
+  "azure/openai/gpt-5.6-sol": {
+   "short": "gpt-5.6-sol",
+   "group": "frontier2026",
+   "n_shared_subdomains": 40,
+   "static": 6.9,
+   "active": 6.8753787878787875,
+   "gain": -0.024621212121212134,
+   "wilcoxon_p": 0.9196969843047457,
+   "frac_subdomains_improved": 0.525
+  },
+  "azure/openai/gpt-5.6-terra": {
+   "short": "gpt-5.6-terra",
+   "group": "frontier2026",
+   "n_shared_subdomains": 40,
+   "static": 6.857575757575757,
+   "active": 6.799242424242424,
+   "gain": -0.05833333333333348,
+   "wilcoxon_p": 0.49300504062921424,
+   "frac_subdomains_improved": 0.425
+  },
+  "deepseek/deepseek-r1-0528": {
+   "short": "deepseek-r1-0528",
+   "group": "open_weight",
+   "n_shared_subdomains": 40,
+   "static": 4.863636363636364,
+   "active": 5.302651515151515,
+   "gain": 0.43901515151515147,
+   "wilcoxon_p": 0.004021502870546046,
+   "frac_subdomains_improved": 0.625
+  },
+  "deepseek/deepseek-v4-flash": {
+   "short": "deepseek-v4-flash",
+   "group": "open_weight",
+   "n_shared_subdomains": 40,
+   "static": 5.092045454545454,
+   "active": 5.515151515151516,
+   "gain": 0.42310606060606054,
+   "wilcoxon_p": 0.002178993646721478,
+   "frac_subdomains_improved": 0.725
+  },
+  "deepseek/deepseek-v4-pro": {
+   "short": "deepseek-v4-pro",
+   "group": "open_weight",
+   "n_shared_subdomains": 40,
+   "static": 5.32310606060606,
+   "active": 5.918181818181818,
+   "gain": 0.5950757575757575,
+   "wilcoxon_p": 0.0008785059351851049,
+   "frac_subdomains_improved": 0.75
+  },
+  "google/gemini-2.5-flash": {
+   "short": "gemini-2.5-flash",
+   "group": "gemini",
+   "n_shared_subdomains": 40,
+   "static": 5.1,
+   "active": 5.048863636363636,
+   "gain": -0.051136363636363605,
+   "wilcoxon_p": 0.7932197242384028,
+   "frac_subdomains_improved": 0.55
+  },
+  "google/gemini-2.5-flash-lite": {
+   "short": "gemini-2.5-flash-lite",
+   "group": "gemini",
+   "n_shared_subdomains": 40,
+   "static": 4.63219696969697,
+   "active": 4.265909090909091,
+   "gain": -0.3662878787878788,
+   "wilcoxon_p": 0.002040971135792267,
+   "frac_subdomains_improved": 0.3
+  },
+  "google/gemini-3-flash-preview": {
+   "short": "gemini-3-flash",
+   "group": "gemini",
+   "n_shared_subdomains": 40,
+   "static": 5.592045454545454,
+   "active": 6.287121212121212,
+   "gain": 0.6950757575757577,
+   "wilcoxon_p": 4.0779358346740184e-05,
+   "frac_subdomains_improved": 0.725
+  },
+  "google/gemini-3.1-pro-preview": {
+   "short": "gemini-3.1-pro",
+   "group": "gemini",
+   "n_shared_subdomains": 40,
+   "static": 5.629924242424243,
+   "active": 6.196212121212122,
+   "gain": 0.5662878787878788,
+   "wilcoxon_p": 0.0014781539578675594,
+   "frac_subdomains_improved": 0.65
+  },
+  "google/gemini-3.5-flash": {
+   "short": "gemini-3.5-flash",
+   "group": "gemini",
+   "n_shared_subdomains": 40,
+   "static": 5.867424242424242,
+   "active": 6.221969696969697,
+   "gain": 0.3545454545454548,
+   "wilcoxon_p": 0.01869342268307082,
+   "frac_subdomains_improved": 0.65
+  },
+  "google/gemma-2-27b-it": {
+   "short": "gemma-2-27b",
+   "group": "open_weight",
+   "n_shared_subdomains": 40,
+   "static": 4.020833333333333,
+   "active": 3.197727272727273,
+   "gain": -0.8231060606060604,
+   "wilcoxon_p": 5.856526390626402e-07,
+   "frac_subdomains_improved": 0.125
+  },
+  "google/gemma-3-27b-it": {
+   "short": "gemma-3-27b",
+   "group": "open_weight",
+   "n_shared_subdomains": 40,
+   "static": 4.681060606060606,
+   "active": 4.822348484848485,
+   "gain": 0.14128787878787893,
+   "wilcoxon_p": 0.37137714169829106,
+   "frac_subdomains_improved": 0.575
+  },
+  "google/gemma-4-31b-it": {
+   "short": "gemma-4-31b",
+   "group": "open_weight",
+   "n_shared_subdomains": 40,
+   "static": 5.1416666666666675,
+   "active": 5.491287878787878,
+   "gain": 0.349621212121212,
+   "wilcoxon_p": 0.02077726635755278,
+   "frac_subdomains_improved": 0.675
+  },
+  "meta-llama/llama-3.1-8b-instruct": {
+   "short": "llama-3.1-8b",
+   "group": "open_weight",
+   "n_shared_subdomains": 40,
+   "static": 3.7965909090909093,
+   "active": 3.5409090909090906,
+   "gain": -0.25568181818181823,
+   "wilcoxon_p": 0.03332356430154496,
+   "frac_subdomains_improved": 0.375
+  },
+  "meta-llama/llama-4-maverick": {
+   "short": "llama-4-maverick",
+   "group": "open_weight",
+   "n_shared_subdomains": 40,
+   "static": 4.3375,
+   "active": 3.8371212121212124,
+   "gain": -0.5003787878787879,
+   "wilcoxon_p": 0.0003930618113032039,
+   "frac_subdomains_improved": 0.225
+  },
+  "minimax/minimax-m2.7": {
+   "short": "minimax-m2.7",
+   "group": "open_weight",
+   "n_shared_subdomains": 40,
+   "static": 4.703030303030303,
+   "active": 5.326893939393939,
+   "gain": 0.6238636363636363,
+   "wilcoxon_p": 2.9986354804726456e-05,
+   "frac_subdomains_improved": 0.8
+  },
+  "mistralai/mistral-medium-3.1": {
+   "short": "mistral-medium-3.1",
+   "group": "open_weight",
+   "n_shared_subdomains": 40,
+   "static": 4.743560606060607,
+   "active": 5.36590909090909,
+   "gain": 0.6223484848484849,
+   "wilcoxon_p": 7.982464483573529e-06,
+   "frac_subdomains_improved": 0.875
+  },
+  "mistralai/mistral-small-24b-instruct-2501": {
+   "short": "mistral-small-24b",
+   "group": "open_weight",
+   "n_shared_subdomains": 40,
+   "static": 4.193560606060606,
+   "active": 3.9314393939393937,
+   "gain": -0.2621212121212121,
+   "wilcoxon_p": 0.02393388209934854,
+   "frac_subdomains_improved": 0.35
+  },
+  "mistralai/mistral-small-2603": {
+   "short": "mistral-small-2603",
+   "group": "open_weight",
+   "n_shared_subdomains": 40,
+   "static": 4.6068181818181815,
+   "active": 5.161742424242425,
+   "gain": 0.5549242424242424,
+   "wilcoxon_p": 0.00013904913474163192,
+   "frac_subdomains_improved": 0.775
+  },
+  "moonshotai/kimi-k2.5": {
+   "short": "kimi-k2.5",
+   "group": "open_weight",
+   "n_shared_subdomains": 40,
+   "static": 4.90530303030303,
+   "active": 5.920833333333333,
+   "gain": 1.0155303030303027,
+   "wilcoxon_p": 1.4935773457733117e-06,
+   "frac_subdomains_improved": 0.875
+  },
+  "moonshotai/kimi-k2.6": {
+   "short": "kimi-k2.6",
+   "group": "open_weight",
+   "n_shared_subdomains": 40,
+   "static": 5.096969696969697,
+   "active": 6.172348484848484,
+   "gain": 1.075378787878788,
+   "wilcoxon_p": 1.4748979682028416e-07,
+   "frac_subdomains_improved": 0.925
+  },
+  "qwen/qwen-2.5-72b-instruct": {
+   "short": "qwen-2.5-72b",
+   "group": "open_weight",
+   "n_shared_subdomains": 40,
+   "static": 4.199621212121213,
+   "active": 3.9666666666666672,
+   "gain": -0.23295454545454541,
+   "wilcoxon_p": 0.026560680723223325,
+   "frac_subdomains_improved": 0.375
+  },
+  "qwen/qwen-2.5-7b-instruct": {
+   "short": "qwen-2.5-7b",
+   "group": "open_weight",
+   "n_shared_subdomains": 40,
+   "static": 3.9655303030303033,
+   "active": 3.6666666666666665,
+   "gain": -0.29886363636363644,
+   "wilcoxon_p": 0.043765353566711705,
+   "frac_subdomains_improved": 0.4
+  },
+  "qwen/qwen3-30b-a3b-instruct-2507": {
+   "short": "qwen3-30b-instruct",
+   "group": "open_weight",
+   "n_shared_subdomains": 40,
+   "static": 4.933712121212122,
+   "active": 4.9393939393939394,
+   "gain": 0.00568181818181821,
+   "wilcoxon_p": 0.9000501155516525,
+   "frac_subdomains_improved": 0.525
+  },
+  "qwen/qwen3-32b": {
+   "short": "qwen3-32b",
+   "group": "open_weight",
+   "n_shared_subdomains": 40,
+   "static": 4.534090909090909,
+   "active": 4.4378787878787875,
+   "gain": -0.09621212121212121,
+   "wilcoxon_p": 0.23952298588190568,
+   "frac_subdomains_improved": 0.4
+  },
+  "qwen/qwen3-8b": {
+   "short": "qwen3-8b",
+   "group": "open_weight",
+   "n_shared_subdomains": 40,
+   "static": 4.244696969696969,
+   "active": 4.213257575757575,
+   "gain": -0.03143939393939391,
+   "wilcoxon_p": 0.9721677591045413,
+   "frac_subdomains_improved": 0.525
+  },
+  "qwen/qwen3-coder": {
+   "short": "qwen3-coder",
+   "group": "open_weight",
+   "n_shared_subdomains": 40,
+   "static": 4.868939393939394,
+   "active": 4.723863636363636,
+   "gain": -0.14507575757575764,
+   "wilcoxon_p": 0.18774583022616742,
+   "frac_subdomains_improved": 0.4
+  },
+  "qwen/qwen3.5-27b": {
+   "short": "qwen3.5-27b",
+   "group": "open_weight",
+   "n_shared_subdomains": 40,
+   "static": 4.713636363636364,
+   "active": 5.528787878787878,
+   "gain": 0.8151515151515148,
+   "wilcoxon_p": 2.460358907486676e-06,
+   "frac_subdomains_improved": 0.85
+  },
+  "qwen/qwen3.5-397b-a17b": {
+   "short": "qwen3.5-397b",
+   "group": "open_weight",
+   "n_shared_subdomains": 40,
+   "static": 5.060984848484848,
+   "active": 5.94810606060606,
+   "gain": 0.8871212121212121,
+   "wilcoxon_p": 1.30473724238873e-06,
+   "frac_subdomains_improved": 0.85
+  },
+  "qwen/qwen3.5-9b": {
+   "short": "qwen3.5-9b",
+   "group": "open_weight",
+   "n_shared_subdomains": 40,
+   "static": 4.229924242424242,
+   "active": 4.868560606060607,
+   "gain": 0.6386363636363637,
+   "wilcoxon_p": 0.0001597403588675661,
+   "frac_subdomains_improved": 0.775
+  },
+  "xiaomi/mimo-v2.5": {
+   "short": "mimo-v2.5",
+   "group": "open_weight",
+   "n_shared_subdomains": 40,
+   "static": 4.903030303030303,
+   "active": 5.4625,
+   "gain": 0.559469696969697,
+   "wilcoxon_p": 0.0006883044486305853,
+   "frac_subdomains_improved": 0.7
+  },
+  "xiaomi/mimo-v2.5-pro": {
+   "short": "mimo-v2.5-pro",
+   "group": "open_weight",
+   "n_shared_subdomains": 40,
+   "static": 5.106818181818182,
+   "active": 5.9147727272727275,
+   "gain": 0.8079545454545455,
+   "wilcoxon_p": 1.2196527090643004e-06,
+   "frac_subdomains_improved": 0.875
+  },
+  "z-ai/glm-4.5-air": {
+   "short": "glm-4.5-air",
+   "group": "open_weight",
+   "n_shared_subdomains": 40,
+   "static": 4.309848484848485,
+   "active": 4.820833333333334,
+   "gain": 0.5109848484848486,
+   "wilcoxon_p": 4.51187072092066e-05,
+   "frac_subdomains_improved": 0.775
+  },
+  "z-ai/glm-4.6": {
+   "short": "glm-4.6",
+   "group": "open_weight",
+   "n_shared_subdomains": 40,
+   "static": 4.834090909090909,
+   "active": 5.780681818181819,
+   "gain": 0.9465909090909091,
+   "wilcoxon_p": 6.293209565281465e-07,
+   "frac_subdomains_improved": 0.85
+  },
+  "z-ai/glm-5.1": {
+   "short": "glm-5.1",
+   "group": "open_weight",
+   "n_shared_subdomains": 40,
+   "static": 5.125757575757576,
+   "active": 6.332575757575758,
+   "gain": 1.2068181818181816,
+   "wilcoxon_p": 1.0982258809680538e-07,
+   "frac_subdomains_improved": 0.9
+  }
+ },
+ "per_dimension_gain": {
+  "frontier2026": {
+   "originality": {
+    "mean_gain": -0.08375000000000003,
+    "n_models": 5,
+    "n_positive": 2
+   },
+   "feasibility": {
+    "mean_gain": 0.47166666666666635,
+    "n_models": 5,
+    "n_positive": 5
+   },
+   "clarity": {
+    "mean_gain": 0.14166666666666713,
+    "n_models": 5,
+    "n_positive": 3
+   },
+   "impact": {
+    "mean_gain": 0.04916666666666636,
+    "n_models": 5,
+    "n_positive": 2
+   },
+   "specificity": {
+    "mean_gain": 0.22458333333333336,
+    "n_models": 5,
+    "n_positive": 4
+   }
+  },
+  "open_weight_28": {
+   "originality": {
+    "mean_gain": -0.13668154761904752,
+    "n_models": 28,
+    "n_positive": 15
+   },
+   "feasibility": {
+    "mean_gain": 1.2074404761904758,
+    "n_models": 28,
+    "n_positive": 28
+   },
+   "clarity": {
+    "mean_gain": 0.6271577380952379,
+    "n_models": 28,
+    "n_positive": 27
+   },
+   "impact": {
+    "mean_gain": 0.22752976190476218,
+    "n_models": 28,
+    "n_positive": 18
+   },
+   "specificity": {
+    "mean_gain": 0.5828125000000001,
+    "n_models": 28,
+    "n_positive": 23
+   }
+  },
+  "gemini_5": {
+   "originality": {
+    "mean_gain": -0.2599999999999996,
+    "n_models": 5,
+    "n_positive": 2
+   },
+   "feasibility": {
+    "mean_gain": 1.2174999999999998,
+    "n_models": 5,
+    "n_positive": 5
+   },
+   "clarity": {
+    "mean_gain": 0.4799999999999997,
+    "n_models": 5,
+    "n_positive": 5
+   },
+   "impact": {
+    "mean_gain": 0.0875,
+    "n_models": 5,
+    "n_positive": 3
+   },
+   "specificity": {
+    "mean_gain": 0.4991666666666671,
+    "n_models": 5,
+    "n_positive": 4
+   }
+  }
+ },
+ "ceiling": {
+  "core7_anchor_mean_lit8d": 7.71,
+  "max_anchor_weighted_any_variant": 7.32,
+  "frontier_best_static": 6.9,
+  "frontier_best_active": 7.135416666666666,
+  "headroom_best_active_to_core7": 0.5745833333333339,
+  "best_open_weight_active": 6.332575757575758,
+  "best_open_weight_static": 5.323106060606061
+ },
+ "sources": {
+  "model_totals": "reports/e36_leaderboard_subscores.json",
+  "cell_scores": "results.db :: lit8d_scores_3seed",
+  "aggregation": "e21._load() (trimmed mean = drop-highest of 3 critics)"
+ }
+}

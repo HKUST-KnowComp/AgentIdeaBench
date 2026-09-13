@@ -1,0 +1,312 @@
+{
+  "n_pairs": 2793,
+  "metrics": {
+    "vendi": {
+      "static_mean": 1.9426,
+      "active_mean": 2.0915,
+      "delta_mean": 0.1489,
+      "delta_win_rate": 0.623,
+      "wilcoxon_p": 0.0,
+      "delta_ci95": [
+        0.1335,
+        0.1651
+      ]
+    },
+    "cosdist": {
+      "static_mean": 0.3438,
+      "active_mean": 0.3897,
+      "delta_mean": 0.046,
+      "delta_win_rate": 0.6004,
+      "wilcoxon_p": 0.0,
+      "delta_ci95": [
+        0.0402,
+        0.0517
+      ]
+    },
+    "rougeL": {
+      "static_mean": 0.2977,
+      "active_mean": 0.1989,
+      "delta_mean": -0.0988,
+      "delta_win_rate": 0.276,
+      "wilcoxon_p": 0.0,
+      "delta_ci95": [
+        -0.1052,
+        -0.0926
+      ]
+    },
+    "distinct2": {
+      "static_mean": 0.8197,
+      "active_mean": 0.8801,
+      "delta_mean": 0.0604,
+      "delta_win_rate": 0.6015,
+      "wilcoxon_p": 0.0,
+      "delta_ci95": [
+        0.0551,
+        0.0655
+      ]
+    }
+  },
+  "per_model": {
+    "deepseek/deepseek-r1-0528": {
+      "vendi": -0.064,
+      "cosdist": -0.0305,
+      "rougeL": -0.0074,
+      "distinct2": 0.0122,
+      "static_vendi": 2.2113,
+      "active_vendi": 2.1472
+    },
+    "deepseek/deepseek-v4-flash": {
+      "vendi": 0.0135,
+      "cosdist": 0.0017,
+      "rougeL": -0.0129,
+      "distinct2": 0.0152,
+      "static_vendi": 2.0149,
+      "active_vendi": 2.0284
+    },
+    "deepseek/deepseek-v4-pro": {
+      "vendi": 0.038,
+      "cosdist": 0.0131,
+      "rougeL": -0.053,
+      "distinct2": 0.0571,
+      "static_vendi": 2.05,
+      "active_vendi": 2.088
+    },
+    "google/gemma-2-27b-it": {
+      "vendi": 0.648,
+      "cosdist": 0.2362,
+      "rougeL": -0.4709,
+      "distinct2": 0.324,
+      "static_vendi": 1.2289,
+      "active_vendi": 1.8769
+    },
+    "google/gemma-3-27b-it": {
+      "vendi": 0.0032,
+      "cosdist": -0.0111,
+      "rougeL": -0.0134,
+      "distinct2": -0.0143,
+      "static_vendi": 2.2226,
+      "active_vendi": 2.2257
+    },
+    "google/gemma-4-31b-it": {
+      "vendi": 0.1041,
+      "cosdist": 0.0285,
+      "rougeL": -0.0658,
+      "distinct2": 0.0273,
+      "static_vendi": 1.992,
+      "active_vendi": 2.0961
+    },
+    "meta-llama/llama-3.1-8b-instruct": {
+      "vendi": 0.2174,
+      "cosdist": 0.0625,
+      "rougeL": -0.1024,
+      "distinct2": 0.0255,
+      "static_vendi": 1.9385,
+      "active_vendi": 2.1559
+    },
+    "meta-llama/llama-4-maverick": {
+      "vendi": 0.4033,
+      "cosdist": 0.1451,
+      "rougeL": -0.2644,
+      "distinct2": 0.2,
+      "static_vendi": 1.5186,
+      "active_vendi": 1.9219
+    },
+    "minimax/minimax-m2.7": {
+      "vendi": -0.0498,
+      "cosdist": -0.0247,
+      "rougeL": -0.0056,
+      "distinct2": 0.0133,
+      "static_vendi": 2.0764,
+      "active_vendi": 2.0266
+    },
+    "mistralai/mistral-medium-3.1": {
+      "vendi": 0.263,
+      "cosdist": 0.0986,
+      "rougeL": -0.1038,
+      "distinct2": 0.0555,
+      "static_vendi": 1.8346,
+      "active_vendi": 2.0976
+    },
+    "mistralai/mistral-small-24b-instruct-2501": {
+      "vendi": -0.0481,
+      "cosdist": -0.0231,
+      "rougeL": 0.0199,
+      "distinct2": -0.0468,
+      "static_vendi": 2.2083,
+      "active_vendi": 2.1602
+    },
+    "mistralai/mistral-small-2603": {
+      "vendi": 0.4705,
+      "cosdist": 0.1343,
+      "rougeL": -0.2387,
+      "distinct2": 0.2176,
+      "static_vendi": 1.6335,
+      "active_vendi": 2.104
+    },
+    "moonshotai/kimi-k2.5": {
+      "vendi": -0.066,
+      "cosdist": -0.0408,
+      "rougeL": -0.0254,
+      "distinct2": 0.01,
+      "static_vendi": 2.1758,
+      "active_vendi": 2.1098
+    },
+    "moonshotai/kimi-k2.6": {
+      "vendi": 0.0055,
+      "cosdist": -0.0136,
+      "rougeL": -0.0548,
+      "distinct2": 0.0356,
+      "static_vendi": 2.122,
+      "active_vendi": 2.1275
+    },
+    "qwen/qwen-2.5-72b-instruct": {
+      "vendi": 0.1003,
+      "cosdist": 0.0312,
+      "rougeL": -0.0155,
+      "distinct2": -0.0207,
+      "static_vendi": 2.0352,
+      "active_vendi": 2.1355
+    },
+    "qwen/qwen-2.5-7b-instruct": {
+      "vendi": 0.5352,
+      "cosdist": 0.1886,
+      "rougeL": -0.3263,
+      "distinct2": 0.2036,
+      "static_vendi": 1.6003,
+      "active_vendi": 2.1356
+    },
+    "qwen/qwen3-30b-a3b-instruct-2507": {
+      "vendi": -0.0694,
+      "cosdist": -0.0358,
+      "rougeL": -0.0375,
+      "distinct2": -0.001,
+      "static_vendi": 2.0661,
+      "active_vendi": 1.9967
+    },
+    "qwen/qwen3-32b": {
+      "vendi": 0.207,
+      "cosdist": 0.0567,
+      "rougeL": -0.1175,
+      "distinct2": 0.089,
+      "static_vendi": 1.8998,
+      "active_vendi": 2.1067
+    },
+    "qwen/qwen3-8b": {
+      "vendi": 0.6478,
+      "cosdist": 0.2116,
+      "rougeL": -0.403,
+      "distinct2": 0.2997,
+      "static_vendi": 1.4375,
+      "active_vendi": 2.0853
+    },
+    "qwen/qwen3-coder": {
+      "vendi": -0.0516,
+      "cosdist": -0.029,
+      "rougeL": -0.0072,
+      "distinct2": -0.0172,
+      "static_vendi": 2.0998,
+      "active_vendi": 2.0482
+    },
+    "qwen/qwen3.5-27b": {
+      "vendi": 0.3658,
+      "cosdist": 0.1297,
+      "rougeL": -0.1684,
+      "distinct2": 0.1406,
+      "static_vendi": 1.7187,
+      "active_vendi": 2.0845
+    },
+    "qwen/qwen3.5-397b-a17b": {
+      "vendi": 0.3633,
+      "cosdist": 0.1362,
+      "rougeL": -0.1353,
+      "distinct2": 0.102,
+      "static_vendi": 1.7651,
+      "active_vendi": 2.1284
+    },
+    "qwen/qwen3.5-9b": {
+      "vendi": 0.1349,
+      "cosdist": 0.041,
+      "rougeL": -0.057,
+      "distinct2": 0.0188,
+      "static_vendi": 2.0232,
+      "active_vendi": 2.1581
+    },
+    "xiaomi/mimo-v2.5": {
+      "vendi": 0.0195,
+      "cosdist": 0.0058,
+      "rougeL": -0.0165,
+      "distinct2": -0.01,
+      "static_vendi": 2.0366,
+      "active_vendi": 2.0561
+    },
+    "xiaomi/mimo-v2.5-pro": {
+      "vendi": -0.0542,
+      "cosdist": -0.0264,
+      "rougeL": -0.0241,
+      "distinct2": 0.0046,
+      "static_vendi": 2.1565,
+      "active_vendi": 2.1023
+    },
+    "z-ai/glm-4.5-air": {
+      "vendi": -0.0596,
+      "cosdist": -0.032,
+      "rougeL": -0.0309,
+      "distinct2": -0.0429,
+      "static_vendi": 2.1076,
+      "active_vendi": 2.048
+    },
+    "z-ai/glm-4.6": {
+      "vendi": 0.0667,
+      "cosdist": 0.0208,
+      "rougeL": -0.0179,
+      "distinct2": -0.0063,
+      "static_vendi": 2.115,
+      "active_vendi": 2.1816
+    },
+    "z-ai/glm-5.1": {
+      "vendi": 0.0556,
+      "cosdist": 0.0233,
+      "rougeL": -0.0305,
+      "distinct2": 0.0109,
+      "static_vendi": 2.0715,
+      "active_vendi": 2.1271
+    }
+  },
+  "capability_vs_vendi_gain": {
+    "n_models": 28,
+    "pearson_r": -0.4718,
+    "pearson_p": 0.011248,
+    "spearman_rho": -0.3952,
+    "spearman_p": 0.037401,
+    "static_capability": {
+      "deepseek/deepseek-r1-0528": 5.3924,
+      "deepseek/deepseek-v4-flash": 5.6413,
+      "deepseek/deepseek-v4-pro": 5.9223,
+      "google/gemma-2-27b-it": 4.3617,
+      "google/gemma-3-27b-it": 5.133,
+      "google/gemma-4-31b-it": 5.6784,
+      "meta-llama/llama-3.1-8b-instruct": 4.1864,
+      "meta-llama/llama-4-maverick": 4.6701,
+      "minimax/minimax-m2.7": 5.0989,
+      "mistralai/mistral-medium-3.1": 5.2913,
+      "mistralai/mistral-small-24b-instruct-2501": 4.542,
+      "mistralai/mistral-small-2603": 5.1174,
+      "moonshotai/kimi-k2.5": 5.397,
+      "moonshotai/kimi-k2.6": 5.6462,
+      "qwen/qwen-2.5-72b-instruct": 4.5258,
+      "qwen/qwen-2.5-7b-instruct": 4.2939,
+      "qwen/qwen3-30b-a3b-instruct-2507": 5.497,
+      "qwen/qwen3-32b": 4.8992,
+      "qwen/qwen3-8b": 4.6064,
+      "qwen/qwen3-coder": 5.2629,
+      "qwen/qwen3.5-27b": 5.2761,
+      "qwen/qwen3.5-397b-a17b": 5.6527,
+      "qwen/qwen3.5-9b": 4.7447,
+      "xiaomi/mimo-v2.5": 5.3072,
+      "xiaomi/mimo-v2.5-pro": 5.5167,
+      "z-ai/glm-4.5-air": 4.6902,
+      "z-ai/glm-4.6": 5.2814,
+      "z-ai/glm-5.1": 5.6943
+    }
+  }
+}

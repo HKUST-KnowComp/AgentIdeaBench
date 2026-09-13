@@ -1,0 +1,174 @@
+{
+  "note": "best-of-3 active_base (3x~7=21 LLM calls) = compute-matched baseline for S4b (~21 calls). Selection by the same lit8d weighted score (favorable to the baseline). Run 1 = existing swm_scores active_base cell.",
+  "n_cells_complete_bo3": 173,
+  "base_single_mean": 5.3071,
+  "bo3_mean": 6.0993,
+  "s4b_mean_on_shared": 5.5523,
+  "bo3_minus_base_single": {
+    "pooled": {
+      "n": 173,
+      "delta_mean": 0.7922,
+      "win_rate": 0.6416,
+      "wilcoxon_p": 0.0,
+      "delta_ci95": [
+        0.6597,
+        0.9291
+      ]
+    },
+    "per_backbone": {
+      "deepseek/deepseek-v4-flash": {
+        "n": 45,
+        "delta_mean": 0.7798,
+        "win_rate": 0.6667,
+        "wilcoxon_p": 0.0,
+        "delta_ci95": [
+          0.5444,
+          1.0384
+        ]
+      },
+      "deepseek/deepseek-v4-pro": {
+        "n": 45,
+        "delta_mean": 0.7636,
+        "win_rate": 0.6222,
+        "wilcoxon_p": 0.0,
+        "delta_ci95": [
+          0.5333,
+          1.001
+        ]
+      },
+      "qwen/qwen3.5-27b": {
+        "n": 45,
+        "delta_mean": 0.9515,
+        "win_rate": 0.6889,
+        "wilcoxon_p": 0.0,
+        "delta_ci95": [
+          0.6727,
+          1.2606
+        ]
+      },
+      "qwen/qwen3.5-9b": {
+        "n": 38,
+        "delta_mean": 0.6519,
+        "win_rate": 0.5789,
+        "wilcoxon_p": 0.0,
+        "delta_ci95": [
+          0.4007,
+          0.9342
+        ]
+      }
+    }
+  },
+  "s4b_minus_bo3": {
+    "pooled": {
+      "n": 173,
+      "delta_mean": -0.547,
+      "win_rate": 0.3526,
+      "wilcoxon_p": 0.0,
+      "delta_ci95": [
+        -0.7294,
+        -0.3699
+      ]
+    },
+    "per_backbone": {
+      "deepseek/deepseek-v4-flash": {
+        "n": 45,
+        "delta_mean": -0.6465,
+        "win_rate": 0.2889,
+        "wilcoxon_p": 0.0002,
+        "delta_ci95": [
+          -0.9455,
+          -0.3414
+        ]
+      },
+      "deepseek/deepseek-v4-pro": {
+        "n": 45,
+        "delta_mean": -0.8121,
+        "win_rate": 0.2667,
+        "wilcoxon_p": 0.0,
+        "delta_ci95": [
+          -1.1152,
+          -0.499
+        ]
+      },
+      "qwen/qwen3.5-27b": {
+        "n": 45,
+        "delta_mean": -0.6061,
+        "win_rate": 0.3333,
+        "wilcoxon_p": 0.0041,
+        "delta_ci95": [
+          -0.9556,
+          -0.2717
+        ]
+      },
+      "qwen/qwen3.5-9b": {
+        "n": 38,
+        "delta_mean": -0.0455,
+        "win_rate": 0.5526,
+        "wilcoxon_p": 0.9201,
+        "delta_ci95": [
+          -0.5275,
+          0.4163
+        ]
+      }
+    }
+  },
+  "s4b_minus_base_single_on_shared": {
+    "pooled": {
+      "n": 173,
+      "delta_mean": 0.2451,
+      "win_rate": 0.5665,
+      "wilcoxon_p": 0.0418,
+      "delta_ci95": [
+        0.0302,
+        0.4601
+      ]
+    },
+    "per_backbone": {
+      "deepseek/deepseek-v4-flash": {
+        "n": 45,
+        "delta_mean": 0.1333,
+        "win_rate": 0.5111,
+        "wilcoxon_p": 0.6873,
+        "delta_ci95": [
+          -0.2616,
+          0.5475
+        ]
+      },
+      "deepseek/deepseek-v4-pro": {
+        "n": 45,
+        "delta_mean": -0.0485,
+        "win_rate": 0.4889,
+        "wilcoxon_p": 0.7628,
+        "delta_ci95": [
+          -0.4556,
+          0.3434
+        ]
+      },
+      "qwen/qwen3.5-27b": {
+        "n": 45,
+        "delta_mean": 0.3455,
+        "win_rate": 0.6,
+        "wilcoxon_p": 0.0906,
+        "delta_ci95": [
+          -0.0526,
+          0.7394
+        ]
+      },
+      "qwen/qwen3.5-9b": {
+        "n": 38,
+        "delta_mean": 0.6065,
+        "win_rate": 0.6842,
+        "wilcoxon_p": 0.0284,
+        "delta_ci95": [
+          0.11,
+          1.0873
+        ]
+      }
+    }
+  },
+  "calls_accounting": {
+    "active_base_per_cell": "~7 (5.8 tool turns + final)",
+    "s4b_per_cell": "~21 (8.4 outer + ~13 internal panel)",
+    "bo3_per_cell": "~21 (3 independent base runs)"
+  }
+}

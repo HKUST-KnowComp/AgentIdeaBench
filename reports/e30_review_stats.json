@@ -1,0 +1,326 @@
+{
+  "generated_by": "experiments/e30_review_stats.py",
+  "rng_seed": 20260723,
+  "n_bootstrap": 5000,
+  "swm_direct": {
+    "note": "review point 2: published p=.040 (S4b) / .065 (S4) are each arm vs active_base; this block adds the DIRECT S4b-S4 paired test and Holm correction over the three vs-base designs",
+    "direct_S4b_minus_S4": {
+      "test": "paired Wilcoxon signed-rank on per-(backbone, subdomain) S4b minus S4 weighted lit8d cell scores (identical panels, different aggregators); cells where both conditions scored",
+      "pooled": {
+        "unit": "backbone x subdomain cell",
+        "n": 180,
+        "delta_mean": 0.0268,
+        "win_rate": 0.5278,
+        "rank_biserial": 0.0279,
+        "wilcoxon_p": 0.7464,
+        "delta_ci95_bootstrap": [
+          -0.1806,
+          0.2275
+        ]
+      },
+      "per_backbone": {
+        "deepseek/deepseek-v4-flash": {
+          "unit": "subdomain cell",
+          "n": 45,
+          "delta_mean": -0.1394,
+          "win_rate": 0.4889,
+          "rank_biserial": -0.1159,
+          "wilcoxon_p": 0.5019,
+          "delta_ci95_bootstrap": [
+            -0.4778,
+            0.201
+          ]
+        },
+        "deepseek/deepseek-v4-pro": {
+          "unit": "subdomain cell",
+          "n": 45,
+          "delta_mean": -0.1121,
+          "win_rate": 0.4444,
+          "rank_biserial": -0.0848,
+          "wilcoxon_p": 0.624,
+          "delta_ci95_bootstrap": [
+            -0.5364,
+            0.301
+          ]
+        },
+        "qwen/qwen3.5-27b": {
+          "unit": "subdomain cell",
+          "n": 45,
+          "delta_mean": 0.0646,
+          "win_rate": 0.5333,
+          "rank_biserial": 0.0454,
+          "wilcoxon_p": 0.7971,
+          "delta_ci95_bootstrap": [
+            -0.3273,
+            0.4606
+          ]
+        },
+        "qwen/qwen3.5-9b": {
+          "unit": "subdomain cell",
+          "n": 45,
+          "delta_mean": 0.2939,
+          "win_rate": 0.6444,
+          "rank_biserial": 0.2377,
+          "wilcoxon_p": 0.1701,
+          "delta_ci95_bootstrap": [
+            -0.1808,
+            0.7627
+          ]
+        }
+      }
+    },
+    "vs_base_holm": {
+      "family": [
+        "swm_S2",
+        "swm_S4",
+        "swm_S4b"
+      ],
+      "correction": "Holm step-down over the 3 pooled vs-base Wilcoxon tests",
+      "tests": {
+        "swm_S2": {
+          "unit": "backbone x subdomain cell",
+          "n": 183,
+          "delta_mean": 0.1793,
+          "win_rate": 0.5464,
+          "rank_biserial": 0.1368,
+          "wilcoxon_p": 0.1103,
+          "delta_ci95_bootstrap": [
+            -0.0494,
+            0.4001
+          ],
+          "holm_p": 0.1508
+        },
+        "swm_S4": {
+          "unit": "backbone x subdomain cell",
+          "n": 173,
+          "delta_mean": 0.2065,
+          "win_rate": 0.5318,
+          "rank_biserial": 0.1563,
+          "wilcoxon_p": 0.0754,
+          "delta_ci95_bootstrap": [
+            -0.004,
+            0.4159
+          ],
+          "holm_p": 0.1508
+        },
+        "swm_S4b": {
+          "unit": "backbone x subdomain cell",
+          "n": 177,
+          "delta_mean": 0.2442,
+          "win_rate": 0.565,
+          "rank_biserial": 0.1782,
+          "wilcoxon_p": 0.0403,
+          "delta_ci95_bootstrap": [
+            0.038,
+            0.4548
+          ],
+          "holm_p": 0.1209
+        }
+      },
+      "tests_four_backbones_only": {
+        "swm_S2": {
+          "unit": "backbone x subdomain cell",
+          "n": 179,
+          "delta_mean": 0.1717,
+          "win_rate": 0.5419,
+          "rank_biserial": 0.1294,
+          "wilcoxon_p": 0.1355,
+          "delta_ci95_bootstrap": [
+            -0.0531,
+            0.3916
+          ],
+          "holm_p": 0.1508
+        },
+        "swm_S4": {
+          "unit": "backbone x subdomain cell",
+          "n": 173,
+          "delta_mean": 0.2065,
+          "win_rate": 0.5318,
+          "rank_biserial": 0.1563,
+          "wilcoxon_p": 0.0754,
+          "delta_ci95_bootstrap": [
+            -0.0079,
+            0.4123
+          ],
+          "holm_p": 0.1508
+        },
+        "swm_S4b": {
+          "unit": "backbone x subdomain cell",
+          "n": 173,
+          "delta_mean": 0.2451,
+          "win_rate": 0.5665,
+          "rank_biserial": 0.1789,
+          "wilcoxon_p": 0.0418,
+          "delta_ci95_bootstrap": [
+            0.0297,
+            0.4569
+          ],
+          "holm_p": 0.1254
+        }
+      },
+      "four_backbones": [
+        "deepseek/deepseek-v4-flash",
+        "deepseek/deepseek-v4-pro",
+        "qwen/qwen3.5-27b",
+        "qwen/qwen3.5-9b"
+      ]
+    }
+  },
+  "f3_interaction": {
+    "note": "review point 4: direct track x cutoff interaction instead of comparing two separately fitted slopes",
+    "model_level": {
+      "model": "score ~ cutoff_c + track + cutoff_c:track (OLS), track C=1, cutoff centered at roster mean",
+      "cutoff_center": 2025.0268,
+      "unit": "model x track mean over 40 subdomains",
+      "n_rows": 50,
+      "n_models": 26,
+      "n_models_both_tracks": 24,
+      "beta_cutoff_static_slope": 0.5436,
+      "beta_track_at_mean_cutoff": 0.3015,
+      "beta_interaction_per_yr": 0.6182,
+      "interaction_ci95_cluster_bootstrap_models": [
+        0.4092,
+        0.9381
+      ],
+      "bootstrap_p_two_sided": 0.0,
+      "permutation_p_two_sided": 0.0002,
+      "permutation": "track labels flipped within each both-track model, 5000 draws"
+    },
+    "cell_level_robustness": {
+      "unit": "model x subdomain x track (mean of 3 ideas)",
+      "n_rows": 1996,
+      "n_models": 26,
+      "n_subdomains": 40,
+      "beta_interaction_per_yr": 0.6172,
+      "interaction_ci95_twoway_cluster_bootstrap": [
+        0.4221,
+        0.9092
+      ],
+      "bootstrap": "2000 draws resampling models and subdomains independently"
+    }
+  },
+  "f2_family": {
+    "note": "review point 4: family-cluster robustness for F2 r(static, boost)",
+    "unit": "model (n=28 with both tracks); cluster = family (id prefix)",
+    "n_models": 28,
+    "n_families": 9,
+    "family_sizes": {
+      "deepseek": 3,
+      "google": 3,
+      "meta-llama": 2,
+      "minimax": 1,
+      "mistralai": 3,
+      "moonshotai": 2,
+      "qwen": 9,
+      "xiaomi": 2,
+      "z-ai": 3
+    },
+    "pearson_r": 0.6945,
+    "pearson_p": 4.1e-05,
+    "r_ci95_family_cluster_bootstrap": [
+      0.5621,
+      0.8451
+    ],
+    "leave_one_family_out": {
+      "deepseek": {
+        "n_dropped": 3,
+        "n_left": 25,
+        "pearson_r": 0.716
+      },
+      "google": {
+        "n_dropped": 3,
+        "n_left": 25,
+        "pearson_r": 0.6807
+      },
+      "meta-llama": {
+        "n_dropped": 2,
+        "n_left": 26,
+        "pearson_r": 0.6657
+      },
+      "minimax": {
+        "n_dropped": 1,
+        "n_left": 27,
+        "pearson_r": 0.6965
+      },
+      "mistralai": {
+        "n_dropped": 3,
+        "n_left": 25,
+        "pearson_r": 0.6841
+      },
+      "moonshotai": {
+        "n_dropped": 2,
+        "n_left": 26,
+        "pearson_r": 0.6743
+      },
+      "qwen": {
+        "n_dropped": 9,
+        "n_left": 19,
+        "pearson_r": 0.7617
+      },
+      "xiaomi": {
+        "n_dropped": 2,
+        "n_left": 26,
+        "pearson_r": 0.6804
+      },
+      "z-ai": {
+        "n_dropped": 3,
+        "n_left": 25,
+        "pearson_r": 0.7032
+      }
+    },
+    "lofo_r_range": [
+      0.6657,
+      0.7617
+    ]
+  },
+  "e28_recluster": {
+    "note": "review point 4: diversity headline re-tested with model / subfield clustering instead of treating 2793 correlated cells as independent",
+    "metric": "within-cell Vendi score of the 3 ideas (cached MiniLM embeddings, reports/e28_idea_emb.npz)",
+    "cell_level_reference": {
+      "unit": "model x subdomain pair (correlated)",
+      "n": 2793,
+      "delta_mean": 0.1489,
+      "win_rate": 0.623,
+      "rank_biserial": 0.371,
+      "wilcoxon_p": 0.0,
+      "delta_ci95_bootstrap": [
+        0.1345,
+        0.1637
+      ]
+    },
+    "model_level_headline": {
+      "unit": "model (mean delta over its subdomains)",
+      "n": 28,
+      "delta_mean": 0.15,
+      "win_rate": 0.7143,
+      "rank_biserial": 0.601,
+      "wilcoxon_p": 0.0044,
+      "delta_ci95_bootstrap": [
+        0.0717,
+        0.2375
+      ],
+      "test": "Wilcoxon signed-rank over per-model mean deltas"
+    },
+    "subfield_level": {
+      "unit": "subdomain (mean delta over models)",
+      "n": 100,
+      "delta_mean": 0.1489,
+      "win_rate": 0.88,
+      "rank_biserial": 0.935,
+      "wilcoxon_p": 0.0,
+      "delta_ci95_bootstrap": [
+        0.1274,
+        0.1705
+      ],
+      "test": "Wilcoxon signed-rank over per-subdomain mean deltas"
+    },
+    "overall_delta_ci95_cluster_bootstrap_models": [
+      0.0703,
+      0.2324
+    ],
+    "overall_delta_ci95_cluster_bootstrap_subdomains": [
+      0.128,
+      0.1703
+    ]
+  }
+}

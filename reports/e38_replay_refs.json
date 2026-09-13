@@ -1,0 +1,218 @@
+{
+  "generated_by": "experiments/e38_replay_refs.py",
+  "note": "Arm R' (replay) = Active-surfaced references fed in the passive Static (_build_generation_payload 'B') format, same top-<=10 reference count. B/C recomputed on the SAME 10 subdomains and shared models for exact pairing. Cell = (model, subdomain), mean of 3 ideas' weighted trimmed lit8d scores. R'~=B<C -> gain is agentic process not retrieved content; R'~=C -> gain is retrieved content.",
+  "n_models": 28,
+  "n_subdomains": 10,
+  "n_shared_cells": 279,
+  "means": {
+    "Rp": 4.8021,
+    "B": 4.7237,
+    "C": 5.0576
+  },
+  "cell_level": {
+    "Rp_minus_B": {
+      "n": 279,
+      "delta_mean": 0.0784,
+      "win_rate": 0.5233,
+      "wilcoxon_p": 0.2087,
+      "delta_ci95": [
+        -0.0323,
+        0.1857
+      ]
+    },
+    "C_minus_Rp": {
+      "n": 279,
+      "delta_mean": 0.2555,
+      "win_rate": 0.5986,
+      "wilcoxon_p": 0.0,
+      "delta_ci95": [
+        0.1488,
+        0.3668
+      ]
+    },
+    "C_minus_B": {
+      "n": 279,
+      "delta_mean": 0.334,
+      "win_rate": 0.6559,
+      "wilcoxon_p": 0.0,
+      "delta_ci95": [
+        0.2263,
+        0.4394
+      ]
+    }
+  },
+  "model_level": {
+    "Rp_minus_B": {
+      "n": 28,
+      "delta_mean": 0.0791,
+      "win_rate": 0.5714,
+      "wilcoxon_p": 0.1936,
+      "delta_ci95": [
+        -0.0436,
+        0.2109
+      ]
+    },
+    "C_minus_Rp": {
+      "n": 28,
+      "delta_mean": 0.251,
+      "win_rate": 0.6786,
+      "wilcoxon_p": 0.0167,
+      "delta_ci95": [
+        0.056,
+        0.4464
+      ]
+    },
+    "C_minus_B": {
+      "n": 28,
+      "delta_mean": 0.3301,
+      "win_rate": 0.75,
+      "wilcoxon_p": 0.002,
+      "delta_ci95": [
+        0.1381,
+        0.513
+      ]
+    }
+  },
+  "per_model": {
+    "deepseek-r1-0528": {
+      "Rp": 4.8394,
+      "B": 4.9485,
+      "C": 5.4197
+    },
+    "deepseek-v4-flash": {
+      "Rp": 5.2303,
+      "B": 4.897,
+      "C": 5.5409
+    },
+    "deepseek-v4-pro": {
+      "Rp": 4.9712,
+      "B": 5.7288,
+      "C": 5.6242
+    },
+    "gemma-2-27b-it": {
+      "Rp": 4.229,
+      "B": 3.9596,
+      "C": 3.2273
+    },
+    "gemma-3-27b-it": {
+      "Rp": 4.7985,
+      "B": 4.6818,
+      "C": 5.1136
+    },
+    "gemma-4-31b-it": {
+      "Rp": 4.9682,
+      "B": 5.2636,
+      "C": 5.5242
+    },
+    "llama-3.1-8b-instruct": {
+      "Rp": 3.8924,
+      "B": 3.6803,
+      "C": 3.7591
+    },
+    "llama-4-maverick": {
+      "Rp": 4.4621,
+      "B": 4.453,
+      "C": 3.8848
+    },
+    "minimax-m2.7": {
+      "Rp": 5.0242,
+      "B": 4.6788,
+      "C": 5.5424
+    },
+    "mistral-medium-3.1": {
+      "Rp": 4.8697,
+      "B": 4.6182,
+      "C": 5.6197
+    },
+    "mistral-small-24b-instruct-2501": {
+      "Rp": 4.2924,
+      "B": 4.3894,
+      "C": 4.0167
+    },
+    "mistral-small-2603": {
+      "Rp": 5.097,
+      "B": 4.9803,
+      "C": 5.1455
+    },
+    "kimi-k2.5": {
+      "Rp": 5.6553,
+      "B": 5.0364,
+      "C": 6.05
+    },
+    "kimi-k2.6": {
+      "Rp": 4.9667,
+      "B": 5.1727,
+      "C": 6.1833
+    },
+    "qwen-2.5-72b-instruct": {
+      "Rp": 4.247,
+      "B": 4.3242,
+      "C": 3.9758
+    },
+    "qwen-2.5-7b-instruct": {
+      "Rp": 3.9492,
+      "B": 3.8553,
+      "C": 3.6909
+    },
+    "qwen3-30b-a3b-instruct-2507": {
+      "Rp": 5.1758,
+      "B": 4.8015,
+      "C": 5.0091
+    },
+    "qwen3-32b": {
+      "Rp": 4.55,
+      "B": 4.7182,
+      "C": 4.8091
+    },
+    "qwen3-8b": {
+      "Rp": 4.0273,
+      "B": 4.1606,
+      "C": 4.1803
+    },
+    "qwen3-coder": {
+      "Rp": 5.003,
+      "B": 4.7212,
+      "C": 4.6894
+    },
+    "qwen3.5-27b": {
+      "Rp": 4.8303,
+      "B": 4.9273,
+      "C": 5.3591
+    },
+    "qwen3.5-397b-a17b": {
+      "Rp": 5.4864,
+      "B": 5.3015,
+      "C": 5.7879
+    },
+    "qwen3.5-9b": {
+      "Rp": 5.3515,
+      "B": 4.1636,
+      "C": 4.9333
+    },
+    "mimo-v2.5": {
+      "Rp": 5.1545,
+      "B": 5.0379,
+      "C": 5.4348
+    },
+    "mimo-v2.5-pro": {
+      "Rp": 4.8091,
+      "B": 5.0182,
+      "C": 5.8061
+    },
+    "glm-4.5-air": {
+      "Rp": 4.4909,
+      "B": 4.5667,
+      "C": 4.9667
+    },
+    "glm-4.6": {
+      "Rp": 5.0515,
+      "B": 5.0409,
+      "C": 5.8667
+    },
+    "glm-5.1": {
+      "Rp": 4.9788,
+      "B": 5.0606,
+      "C": 6.2697
+    }
+  }
+}

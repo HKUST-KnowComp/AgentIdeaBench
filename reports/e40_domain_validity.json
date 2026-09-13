@@ -1,0 +1,84 @@
+{
+ "generated_by": "experiments/e40_domain_validity_json.py",
+ "note": "Per-discipline lit8d validity. Anchors = top-10 rewritten landmark papers of that discipline; model = deepseek-v4 Active items scored in the same e12_gap_scores pass; weak = weak-probe control generators. Weighted total under the production weighting. Aggregation reuses e18_multidomain_anchors._wit (drop-highest trimmed mean over critics). Chemistry has no weak-control items.",
+ "topn": 10,
+ "per_discipline": {
+  "CS": {
+   "n_anchors": 10,
+   "anchor_top10_mean": 7.3364,
+   "n_model_items": 40,
+   "model_active_mean": 5.8364,
+   "model_active_max": 6.9545,
+   "n_weak_items": 8,
+   "weak_control_mean": 3.8295,
+   "gap_anchor_minus_model": 1.5
+  },
+  "Biology": {
+   "n_anchors": 10,
+   "anchor_top10_mean": 6.1545,
+   "n_model_items": 40,
+   "model_active_mean": 5.8705,
+   "model_active_max": 7.4545,
+   "n_weak_items": 6,
+   "weak_control_mean": 4.1439,
+   "gap_anchor_minus_model": 0.2841
+  },
+  "Chemistry": {
+   "n_anchors": 10,
+   "anchor_top10_mean": 6.0227,
+   "n_model_items": 40,
+   "model_active_mean": 5.6455,
+   "model_active_max": 6.9545,
+   "n_weak_items": 0,
+   "weak_control_mean": null,
+   "gap_anchor_minus_model": 0.3773
+  },
+  "Physics": {
+   "n_anchors": 10,
+   "anchor_top10_mean": 6.1,
+   "n_model_items": 40,
+   "model_active_mean": 5.225,
+   "model_active_max": 6.6364,
+   "n_weak_items": 3,
+   "weak_control_mean": 3.7121,
+   "gap_anchor_minus_model": 0.875
+  },
+  "Medicine": {
+   "n_anchors": 10,
+   "anchor_top10_mean": 6.4318,
+   "n_model_items": 40,
+   "model_active_mean": 6.0045,
+   "model_active_max": 7.4091,
+   "n_weak_items": 5,
+   "weak_control_mean": 4.1,
+   "gap_anchor_minus_model": 0.4273
+  }
+ },
+ "reproduction_check_vs_paper": {
+  "CS": {
+   "published": 1.5,
+   "recomputed": 1.5,
+   "matches_2dp": true
+  },
+  "Physics": {
+   "published": 0.88,
+   "recomputed": 0.875,
+   "matches_2dp": true
+  },
+  "Medicine": {
+   "published": 0.43,
+   "recomputed": 0.4273,
+   "matches_2dp": true
+  },
+  "Chemistry": {
+   "published": 0.38,
+   "recomputed": 0.3773,
+   "matches_2dp": true
+  },
+  "Biology": {
+   "published": 0.28,
+   "recomputed": 0.2841,
+   "matches_2dp": true
+  }
+ }
+}

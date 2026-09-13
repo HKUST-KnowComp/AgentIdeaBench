@@ -1,0 +1,374 @@
+{
+ "roster_sizes": {
+  "open28": 28,
+  "plus_closed59": 59,
+  "all64": 64
+ },
+ "C1_capability_gate": {
+  "claim": "The Active gain is strongly predicted by Static ability (r=+0.69); the strongest models gain more than a full point.",
+  "by_roster": {
+   "open28": {
+    "n": 28,
+    "pearson_r": 0.6945409312708977,
+    "pearson_p": 4.123572936213881e-05,
+    "spearman_rho": 0.6310892172961139,
+    "spearman_p": 0.0003172019157127989
+   },
+   "plus_closed59": {
+    "n": 59,
+    "pearson_r": 0.3268899490578265,
+    "pearson_p": 0.011503891442959688,
+    "spearman_rho": 0.3403272939801287,
+    "spearman_p": 0.008354234120909182
+   },
+   "all64": {
+    "n": 64,
+    "pearson_r": 0.19765718837027504,
+    "pearson_p": 0.11744659399984533,
+    "spearman_rho": 0.24967948717948718,
+    "spearman_p": 0.0466236829870446
+   }
+  },
+  "historical_e41_28_33_38": {
+   "open_weight_28": {
+    "n": 28,
+    "pearson_r": 0.6945409312708977,
+    "pearson_p": 4.123572936213881e-05,
+    "spearman_rho": 0.6310892172961139,
+    "spearman_p": 0.0003172019157127989
+   },
+   "plus_gemini_33": {
+    "n": 33,
+    "pearson_r": 0.5688471465174383,
+    "pearson_p": 0.0005517860805319428,
+    "spearman_rho": 0.5474598930481284,
+    "spearman_p": 0.0009758738360987851
+   },
+   "plus_frontier_38": {
+    "n": 38,
+    "pearson_r": 0.15940101662874884,
+    "pearson_p": 0.3391124630261346,
+    "spearman_rho": 0.33274975380238536,
+    "spearman_p": 0.04122448089062156
+   },
+   "frontier_only_5": {
+    "n": 5,
+    "pearson_r": -0.7215622929768012,
+    "pearson_p": 0.16881045144702492,
+    "spearman_rho": -0.09999999999999999,
+    "spearman_p": 0.8728885715695383
+   }
+  },
+  "strongest_models_actual_gain": {
+   "gpt-5.6-sol": -0.025,
+   "claude-opus-5": 0.249,
+   "gpt-5.6-terra": -0.058,
+   "gpt-5.5": -0.014,
+   "gpt-5.6-luna": -0.267
+  }
+ },
+ "C2_gap_widens": {
+  "claim": "The Active-Static gap widens as models become more capable.",
+  "quartile_mean_gain": {
+   "open28": [
+    {
+     "n": 7,
+     "static_range": [
+      3.7965909090909093,
+      4.244696969696969
+     ],
+     "mean_gain": -0.18079004329004325
+    },
+    {
+     "n": 7,
+     "static_range": [
+      4.3098484848484855,
+      4.713636363636363
+     ],
+     "mean_gain": 0.29280303030303
+    },
+    {
+     "n": 7,
+     "static_range": [
+      4.743560606060607,
+      4.933712121212121
+     ],
+     "mean_gain": 0.4919372294372293
+    },
+    {
+     "n": 7,
+     "static_range": [
+      5.060984848484848,
+      5.323106060606061
+     ],
+     "mean_gain": 0.7635822510822512
+    }
+   ],
+   "plus_closed59": [
+    {
+     "n": 15,
+     "static_range": [
+      3.7965909090909093,
+      4.664015151515152
+     ],
+     "mean_gain": -0.1153535353535353
+    },
+    {
+     "n": 15,
+     "static_range": [
+      4.681060606060607,
+      5.023751023751024
+     ],
+     "mean_gain": 0.28445328103222817
+    },
+    {
+     "n": 15,
+     "static_range": [
+      5.060984848484848,
+      5.629924242424242
+     ],
+     "mean_gain": 0.5345027195027195
+    },
+    {
+     "n": 14,
+     "static_range": [
+      5.6625,
+      6.696969696969697
+     ],
+     "mean_gain": 0.3427964396714402
+    }
+   ],
+   "all64": [
+    {
+     "n": 16,
+     "static_range": [
+      3.7965909090909093,
+      4.681060606060607
+     ],
+     "mean_gain": -0.09931344696969696
+    },
+    {
+     "n": 16,
+     "static_range": [
+      4.703030303030303,
+      5.092045454545454
+     ],
+     "mean_gain": 0.33973366308892616
+    },
+    {
+     "n": 16,
+     "static_range": [
+      5.096969696969697,
+      5.748863636363636
+     ],
+     "mean_gain": 0.4246284965034966
+    },
+    {
+     "n": 16,
+     "static_range": [
+      5.782954545454546,
+      6.9
+     ],
+     "mean_gain": 0.3264028506216009
+    }
+   ]
+  }
+ },
+ "C3_discrimination": {
+  "claim": "Active evaluation restores top-end separation; var(Active)/var(Static) = 4.4x on the paper roster.",
+  "by_roster": {
+   "open28": {
+    "var_static": 0.17099476304653075,
+    "var_active": 0.7539734344406063,
+    "variance_ratio_C_over_B": 4.409336408948598,
+    "sd_static": 0.4135151303719499,
+    "sd_active": 0.8683164368135653
+   },
+   "plus_closed59": {
+    "var_static": 0.44872233690089836,
+    "var_active": 0.8776187528105928,
+    "variance_ratio_C_over_B": 1.955816951016676,
+    "sd_static": 0.6698674024767128,
+    "sd_active": 0.9368130831764642
+   },
+   "all64": {
+    "var_static": 0.6054323624492858,
+    "var_active": 0.9615090024209959,
+    "variance_ratio_C_over_B": 1.588136119006253,
+    "sd_static": 0.7780953427757332,
+    "sd_active": 0.9805656543143839
+   }
+  }
+ },
+ "C4_top_end_compression": {
+  "claim": "Under Static scoring the top of the field compresses (top-8 spread only 0.39).",
+  "by_roster": {
+   "open28": {
+    "static_total": {
+     "top_k": 8,
+     "max": 5.323106060606061,
+     "min": 4.933712121212121,
+     "spread": 0.3893939393939396
+    },
+    "active_total": {
+     "top_k": 8,
+     "max": 6.332575757575758,
+     "min": 5.528787878787878,
+     "spread": 0.8037878787878796
+    }
+   },
+   "plus_closed59": {
+    "static_total": {
+     "top_k": 8,
+     "max": 6.696969696969697,
+     "min": 5.867424242424241,
+     "spread": 0.8295454545454559
+    },
+    "active_total": {
+     "top_k": 8,
+     "max": 6.911742424242425,
+     "min": 6.375757575757577,
+     "spread": 0.5359848484848477
+    }
+   },
+   "all64": {
+    "static_total": {
+     "top_k": 8,
+     "max": 6.9,
+     "min": 6.183712121212121,
+     "spread": 0.7162878787878793
+    },
+    "active_total": {
+     "top_k": 8,
+     "max": 7.135416666666666,
+     "min": 6.662121212121212,
+     "spread": 0.47329545454545396
+    }
+   }
+  }
+ },
+ "C5_mechanism": {
+  "claim": "Agent-controlled retrieval raises feasibility, clarity and specificity; measured originality stays flat.",
+  "scope_note": "Per-dimension gains come from e41_frontier_analysis.json and cover only the groups measured there (frontier2026 / open_weight_28 / gemini_5). The E42 closed roster is NOT included here: e36 stores Active per-dimension scores but no Static ones, so a per-dimension gain cannot be derived from it. not computed for E42.",
+  "per_dimension_gain": {
+   "frontier2026": {
+    "originality": {
+     "mean_gain": -0.08375000000000003,
+     "n_models": 5,
+     "n_positive": 2
+    },
+    "feasibility": {
+     "mean_gain": 0.47166666666666635,
+     "n_models": 5,
+     "n_positive": 5
+    },
+    "clarity": {
+     "mean_gain": 0.14166666666666713,
+     "n_models": 5,
+     "n_positive": 3
+    },
+    "impact": {
+     "mean_gain": 0.04916666666666636,
+     "n_models": 5,
+     "n_positive": 2
+    },
+    "specificity": {
+     "mean_gain": 0.22458333333333336,
+     "n_models": 5,
+     "n_positive": 4
+    }
+   },
+   "open_weight_28": {
+    "originality": {
+     "mean_gain": -0.13668154761904752,
+     "n_models": 28,
+     "n_positive": 15
+    },
+    "feasibility": {
+     "mean_gain": 1.2074404761904758,
+     "n_models": 28,
+     "n_positive": 28
+    },
+    "clarity": {
+     "mean_gain": 0.6271577380952379,
+     "n_models": 28,
+     "n_positive": 27
+    },
+    "impact": {
+     "mean_gain": 0.22752976190476218,
+     "n_models": 28,
+     "n_positive": 18
+    },
+    "specificity": {
+     "mean_gain": 0.5828125000000001,
+     "n_models": 28,
+     "n_positive": 23
+    }
+   },
+   "gemini_5": {
+    "originality": {
+     "mean_gain": -0.2599999999999996,
+     "n_models": 5,
+     "n_positive": 2
+    },
+    "feasibility": {
+     "mean_gain": 1.2174999999999998,
+     "n_models": 5,
+     "n_positive": 5
+    },
+    "clarity": {
+     "mean_gain": 0.4799999999999997,
+     "n_models": 5,
+     "n_positive": 5
+    },
+    "impact": {
+     "mean_gain": 0.0875,
+     "n_models": 5,
+     "n_positive": 3
+    },
+    "specificity": {
+     "mean_gain": 0.4991666666666671,
+     "n_models": 5,
+     "n_positive": 4
+    }
+   }
+  },
+  "rank_order": {
+   "frontier2026": [
+    "feasibility",
+    "specificity",
+    "clarity",
+    "impact",
+    "originality"
+   ],
+   "open_weight_28": [
+    "feasibility",
+    "clarity",
+    "specificity",
+    "impact",
+    "originality"
+   ],
+   "gemini_5": [
+    "feasibility",
+    "specificity",
+    "clarity",
+    "impact",
+    "originality"
+   ]
+  },
+  "originality_flat_everywhere": {
+   "frontier2026": -0.08375000000000003,
+   "open_weight_28": -0.13668154761904752,
+   "gemini_5": -0.2599999999999996
+  }
+ },
+ "ceiling": {
+  "core7_anchor_mean_lit8d": 7.71,
+  "max_anchor_weighted_any_variant": 7.32,
+  "frontier_best_static": 6.9,
+  "frontier_best_active": 7.135416666666666,
+  "headroom_best_active_to_core7": 0.5745833333333339,
+  "best_open_weight_active": 6.332575757575758,
+  "best_open_weight_static": 5.323106060606061
+ }
+}

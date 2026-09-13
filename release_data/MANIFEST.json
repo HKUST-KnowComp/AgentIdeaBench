@@ -1,0 +1,1236 @@
+{
+  "release": "AgentIdeaBench",
+  "licence": "CC BY 4.0 (see LICENSE-DATA)",
+  "redaction": "No abstract text, no reference-list text, no full text. Reference lists and retrieval traces are reduced to Semantic Scholar identifiers; refetch content from the API under your own agreement.",
+  "dropped_columns": [
+    "abstract",
+    "evidence_json",
+    "gt_hypothesis",
+    "idea_abstract",
+    "paper_refs_backup",
+    "ranked_refs_json",
+    "raw_forward",
+    "raw_output",
+    "raw_response",
+    "raw_swap",
+    "real_abstract",
+    "reasoning_json",
+    "recitation_text",
+    "references_json",
+    "refs_json",
+    "telemetry",
+    "telemetry_json",
+    "trace_json"
+  ],
+  "withheld_text": "Generated text from google/gemini* models is replaced by a placeholder; their scores and derived statistics are released.",
+  "files": [
+    {
+      "path": "core/subdomain_ideas.csv.gz",
+      "group": "core",
+      "source": "results.db:subdomain_ideas",
+      "rows": 26098,
+      "bytes": 7639216,
+      "sha256": "234de531d43342592c47651412fff9dc0a78d158acec8171bed4a9ba8f9088a6",
+      "columns": [
+        "idea_model",
+        "domain",
+        "subdomain",
+        "track",
+        "idea_index",
+        "idea_text",
+        "created_at"
+      ],
+      "dropped": [
+        "telemetry"
+      ]
+    },
+    {
+      "path": "core/lit8d_scores_3seed.csv.gz",
+      "group": "core",
+      "source": "results.db:lit8d_scores_3seed",
+      "rows": 47013,
+      "bytes": 415389,
+      "sha256": "6b7a6123f38dc2eab2132e5562f78bcb1fe8fbead53913caf6a6c6c5a4adb5ae",
+      "columns": [
+        "item_id",
+        "idea_model",
+        "track",
+        "subdomain",
+        "domain",
+        "idea_index",
+        "critic_model",
+        "score_originality",
+        "score_feasibility",
+        "score_clarity",
+        "score_impact",
+        "score_specificity",
+        "error",
+        "created_at"
+      ],
+      "dropped": []
+    },
+    {
+      "path": "core/lit8d_scores.csv.gz",
+      "group": "core",
+      "source": "results.db:lit8d_scores",
+      "rows": 3471,
+      "bytes": 32650,
+      "sha256": "4e6de20a502b8b5e556a43048cb0f68e4180e3a3555cbbedd5ce2629b9d1a9d2",
+      "columns": [
+        "item_id",
+        "idea_model",
+        "track",
+        "subdomain",
+        "domain",
+        "critic_model",
+        "score_originality",
+        "score_feasibility",
+        "score_clarity",
+        "score_impact",
+        "score_specificity",
+        "error",
+        "created_at"
+      ],
+      "dropped": []
+    },
+    {
+      "path": "core/e13_evidence.csv.gz",
+      "group": "core",
+      "source": "results.db:e13_evidence",
+      "rows": 19540,
+      "bytes": 1251019,
+      "sha256": "b0fe39db434f18fb6dd20e055b2dc9c2f7ebd8614cb0b2366f9672b7fcd879bd",
+      "columns": [
+        "item_id",
+        "grp",
+        "cutoff_date",
+        "queries_json",
+        "n_hits",
+        "self_excluded",
+        "created_at"
+      ],
+      "dropped": [
+        "evidence_json"
+      ]
+    },
+    {
+      "path": "core/e13_anchor_meta.csv.gz",
+      "group": "core",
+      "source": "results.db:e13_anchor_meta",
+      "rows": 28,
+      "bytes": 2246,
+      "sha256": "02153b98004e6941f066cff799fbd59392df47a54c3cfe60a097821d72382268",
+      "columns": [
+        "anchor_id",
+        "title",
+        "ss_paper_id",
+        "publication_date",
+        "cutoff_date",
+        "resolved",
+        "created_at"
+      ],
+      "dropped": []
+    },
+    {
+      "path": "core/subdomain_refs.csv.gz",
+      "group": "core",
+      "source": "results.db:subdomain_refs",
+      "rows": 100,
+      "bytes": 3455,
+      "sha256": "dded2e8576ae6f3934cb71971091a40cc4d77e708e3900d0cc78a273f57dd948",
+      "columns": [
+        "subdomain",
+        "domain",
+        "n_refs",
+        "fetched_at"
+      ],
+      "dropped": [
+        "refs_json"
+      ]
+    },
+    {
+      "path": "core/uniform_critic_scores.csv.gz",
+      "group": "core",
+      "source": "results.db:uniform_critic_scores",
+      "rows": 18646,
+      "bytes": 1984096,
+      "sha256": "3254968519453e071ae312a02690d1854a23782f161287940982048cef875cc2",
+      "columns": [
+        "paper_id",
+        "idea_model",
+        "track",
+        "idea_index",
+        "idea_text",
+        "critic_model",
+        "score_originality",
+        "score_feasibility",
+        "score_clarity",
+        "score_impact",
+        "score_specificity",
+        "error",
+        "critic_pool_version",
+        "created_at"
+      ],
+      "dropped": [
+        "raw_response",
+        "reasoning_json",
+        "telemetry"
+      ]
+    },
+    {
+      "path": "core/results.csv.gz",
+      "group": "core",
+      "source": "results.db:results",
+      "rows": 17377,
+      "bytes": 3064788,
+      "sha256": "ca03e2202208e2d38b9a4e99c9fec54613e187e04c5604eb5ff9420fc38d7cef",
+      "columns": [
+        "id",
+        "paper_id",
+        "idea_model",
+        "track",
+        "idea_index",
+        "idea_text",
+        "critic_model",
+        "score_originality",
+        "score_feasibility",
+        "score_clarity",
+        "score_impact",
+        "score_specificity",
+        "semantic_overlap",
+        "error",
+        "created_at",
+        "cited_refs",
+        "prompt_version"
+      ],
+      "dropped": [
+        "raw_response",
+        "reasoning_json",
+        "telemetry"
+      ]
+    },
+    {
+      "path": "core/model_scores.csv.gz",
+      "group": "core",
+      "source": "results.db:model_scores",
+      "rows": 1075,
+      "bytes": 286619,
+      "sha256": "cf509a978a77605d8ea870039199ebd6f5786a58e9d7ec0f4b7ffaec2cafe126",
+      "columns": [
+        "id",
+        "paper_id",
+        "idea_model",
+        "track",
+        "best_idea_text",
+        "best_idea_index",
+        "mean_absolute_score",
+        "semantic_overlap",
+        "context_gain",
+        "computed_at"
+      ],
+      "dropped": []
+    },
+    {
+      "path": "core/pairwise_results.csv.gz",
+      "group": "core",
+      "source": "results.db:pairwise_results",
+      "rows": 225,
+      "bytes": 1886,
+      "sha256": "01bed3039f69114643c6c8588829cd26d233ac601b09df9693dd0b5a26340de4",
+      "columns": [
+        "paper_id",
+        "track",
+        "model_a",
+        "model_b",
+        "critic_model",
+        "overall_winner",
+        "originality_winner",
+        "feasibility_winner",
+        "specificity_winner",
+        "created_at"
+      ],
+      "dropped": [
+        "raw_forward",
+        "raw_swap",
+        "telemetry"
+      ]
+    },
+    {
+      "path": "core/papers.csv.gz",
+      "group": "core",
+      "source": "papers.db:papers",
+      "rows": 249,
+      "bytes": 29082,
+      "sha256": "a6867b3f7f08445aedf8fff0954e06fec38af4de268658b1395daf47b36a9043",
+      "columns": [
+        "paper_id",
+        "title",
+        "abstract_words",
+        "domain",
+        "query",
+        "published_date",
+        "venue",
+        "citation_count",
+        "pub_types_json",
+        "n_valid_refs",
+        "status",
+        "reject_reason",
+        "leakage_flag",
+        "fetched_at"
+      ],
+      "dropped": [
+        "abstract",
+        "gt_hypothesis",
+        "paper_refs_backup",
+        "ranked_refs_json",
+        "references_json"
+      ]
+    },
+    {
+      "path": "core/survey_refs.csv.gz",
+      "group": "core",
+      "source": "papers.db:survey_refs",
+      "rows": 5,
+      "bytes": 569,
+      "sha256": "8253394b436d3331016cac68595767a770be2de67d6fe5f7effa2ab677ab4cc0",
+      "columns": [
+        "domain",
+        "survey_id",
+        "survey_title",
+        "n_refs",
+        "n_with_abstract",
+        "fetched_at"
+      ],
+      "dropped": [
+        "refs_json"
+      ]
+    },
+    {
+      "path": "appendix/swm_ideas.csv.gz",
+      "group": "appendix",
+      "source": "results.db:swm_ideas",
+      "rows": 981,
+      "bytes": 344015,
+      "sha256": "207a3d0d1b181a34f3c2f9f3dfd587a42ef0514404276118aeb09b869244e9d8",
+      "columns": [
+        "gen_model",
+        "subdomain",
+        "domain",
+        "condition",
+        "idea_text",
+        "aux_n_tool_calls",
+        "aux_n_sims",
+        "aux_swm_verdicts",
+        "aux_error",
+        "created_at"
+      ],
+      "dropped": []
+    },
+    {
+      "path": "appendix/swm_scores.csv.gz",
+      "group": "appendix",
+      "source": "results.db:swm_scores",
+      "rows": 2853,
+      "bytes": 31344,
+      "sha256": "45ebe4b7cd9cfae2a47b94b9d9f530501a0144284e1d7877265f664187b36765",
+      "columns": [
+        "item_id",
+        "gen_model",
+        "subdomain",
+        "domain",
+        "condition",
+        "critic_model",
+        "score_originality",
+        "score_feasibility",
+        "score_clarity",
+        "score_impact",
+        "score_specificity",
+        "error",
+        "created_at"
+      ],
+      "dropped": []
+    },
+    {
+      "path": "appendix/wm_ideas.csv.gz",
+      "group": "appendix",
+      "source": "results.db:wm_ideas",
+      "rows": 120,
+      "bytes": 79052,
+      "sha256": "384388f4fa404ee9257e35181d7f568fa91fe16a1c9c227f43677dee6e12d768",
+      "columns": [
+        "gen_model",
+        "subdomain",
+        "domain",
+        "variant",
+        "idea_text",
+        "created_at",
+        "aux_world_model",
+        "aux_analogies"
+      ],
+      "dropped": []
+    },
+    {
+      "path": "appendix/wm_scores.csv.gz",
+      "group": "appendix",
+      "source": "results.db:wm_scores",
+      "rows": 345,
+      "bytes": 3641,
+      "sha256": "07a851559b9edc76830086f47193a4a06ded3f9b69ddf5dc6284f0d0cfcfd37e",
+      "columns": [
+        "item_id",
+        "gen_model",
+        "subdomain",
+        "domain",
+        "variant",
+        "critic_model",
+        "score_originality",
+        "score_feasibility",
+        "score_clarity",
+        "score_impact",
+        "score_specificity",
+        "error",
+        "created_at"
+      ],
+      "dropped": []
+    },
+    {
+      "path": "appendix/budget_sweep_ideas.csv.gz",
+      "group": "appendix",
+      "source": "results.db:budget_sweep_ideas",
+      "rows": 489,
+      "bytes": 171472,
+      "sha256": "fddb3a861f46470c578160a04eec0a58633510de4a569faa1fca75323bd90241",
+      "columns": [
+        "id",
+        "paper_id",
+        "domain",
+        "idea_model",
+        "budget",
+        "idea_index",
+        "idea_text",
+        "iters_used",
+        "n_tool_calls",
+        "n_turns",
+        "budget_nudge",
+        "final_prompt_tokens",
+        "final_total_tokens",
+        "error",
+        "created_at"
+      ],
+      "dropped": [
+        "trace_json"
+      ]
+    },
+    {
+      "path": "appendix/budget_sweep_scores.csv.gz",
+      "group": "appendix",
+      "source": "results.db:budget_sweep_scores",
+      "rows": 1290,
+      "bytes": 20805,
+      "sha256": "9fdc5caed2bef6d0d45df1748537bc1feec17d9b9374f4b5b448e8126675672f",
+      "columns": [
+        "id",
+        "paper_id",
+        "idea_model",
+        "budget",
+        "idea_index",
+        "critic_model",
+        "score_originality",
+        "score_feasibility",
+        "score_clarity",
+        "score_impact",
+        "score_specificity",
+        "error",
+        "created_at"
+      ],
+      "dropped": [
+        "raw_response",
+        "reasoning_json",
+        "telemetry"
+      ]
+    },
+    {
+      "path": "appendix/budget_sweep_ideas_v2.csv.gz",
+      "group": "appendix",
+      "source": "results.db:budget_sweep_ideas_v2",
+      "rows": 1080,
+      "bytes": 353101,
+      "sha256": "96879a5e999cd31cd00adff7f4354387edc3433163ee8c7720ec6fa5e7b611b1",
+      "columns": [
+        "id",
+        "paper_id",
+        "domain",
+        "idea_model",
+        "budget",
+        "idea_index",
+        "idea_text",
+        "iters_used",
+        "n_tool_calls",
+        "n_turns",
+        "budget_nudge",
+        "final_prompt_tokens",
+        "final_total_tokens",
+        "error",
+        "created_at"
+      ],
+      "dropped": [
+        "trace_json"
+      ]
+    },
+    {
+      "path": "appendix/budget_sweep_scores_v2.csv.gz",
+      "group": "appendix",
+      "source": "results.db:budget_sweep_scores_v2",
+      "rows": 3150,
+      "bytes": 49227,
+      "sha256": "db6303e43260a54035d8e42d55cc4b656a954eda0b42075c910ff953f7d35554",
+      "columns": [
+        "id",
+        "paper_id",
+        "idea_model",
+        "budget",
+        "idea_index",
+        "critic_model",
+        "score_originality",
+        "score_feasibility",
+        "score_clarity",
+        "score_impact",
+        "score_specificity",
+        "error",
+        "created_at"
+      ],
+      "dropped": [
+        "raw_response",
+        "reasoning_json",
+        "telemetry"
+      ]
+    },
+    {
+      "path": "appendix/budget_sweep_ideas_v3.csv.gz",
+      "group": "appendix",
+      "source": "results.db:budget_sweep_ideas_v3",
+      "rows": 1079,
+      "bytes": 344406,
+      "sha256": "9f90439d34bcc3b7ce6bc9d7d3b741c306e2bb963f317e6f64e73b45e9977213",
+      "columns": [
+        "id",
+        "paper_id",
+        "domain",
+        "idea_model",
+        "budget",
+        "idea_index",
+        "idea_text",
+        "iters_used",
+        "n_tool_calls",
+        "n_turns",
+        "budget_nudge",
+        "final_prompt_tokens",
+        "final_total_tokens",
+        "error",
+        "created_at"
+      ],
+      "dropped": [
+        "trace_json"
+      ]
+    },
+    {
+      "path": "appendix/budget_sweep_scores_v3.csv.gz",
+      "group": "appendix",
+      "source": "results.db:budget_sweep_scores_v3",
+      "rows": 3159,
+      "bytes": 48763,
+      "sha256": "49e0b8a46ece8d1646ebf98aa34287f9c8da751e46bf219cfc7652a532362a17",
+      "columns": [
+        "id",
+        "paper_id",
+        "idea_model",
+        "budget",
+        "idea_index",
+        "critic_model",
+        "score_originality",
+        "score_feasibility",
+        "score_clarity",
+        "score_impact",
+        "score_specificity",
+        "error",
+        "created_at"
+      ],
+      "dropped": [
+        "raw_response",
+        "reasoning_json",
+        "telemetry"
+      ]
+    },
+    {
+      "path": "appendix/cap_ablation_scores.csv.gz",
+      "group": "appendix",
+      "source": "results.db:cap_ablation_scores",
+      "rows": 279,
+      "bytes": 2959,
+      "sha256": "115d8ac8a5388d91a9e92be44f1fd38b865b963dbc46762f7bc4e3a02fcba7a3",
+      "columns": [
+        "paper_id",
+        "idea_model",
+        "track",
+        "critic_model",
+        "score_originality",
+        "score_feasibility",
+        "score_clarity",
+        "score_impact",
+        "score_specificity",
+        "created_at"
+      ],
+      "dropped": [
+        "raw_response",
+        "reasoning_json"
+      ]
+    },
+    {
+      "path": "appendix/e7_bestpaper_scores.csv.gz",
+      "group": "appendix",
+      "source": "results.db:e7_bestpaper_scores",
+      "rows": 200,
+      "bytes": 2774,
+      "sha256": "30c6901642d87d60e7afccc1eebe95ef0aab302d1b169ec44eabe742f00bfe5b",
+      "columns": [
+        "paper_id",
+        "domain",
+        "citation_count",
+        "critic_model",
+        "score_originality",
+        "score_feasibility",
+        "score_clarity",
+        "score_impact",
+        "score_specificity",
+        "error",
+        "created_at"
+      ],
+      "dropped": [
+        "raw_response",
+        "reasoning_json"
+      ]
+    },
+    {
+      "path": "appendix/e10_idea_anchor_scores.csv.gz",
+      "group": "appendix",
+      "source": "results.db:e10_idea_anchor_scores",
+      "rows": 270,
+      "bytes": 3151,
+      "sha256": "f54813bc47e8ecdbc428799574cd0952d09ec355bb3ca652f2ce8242e22851d5",
+      "columns": [
+        "anchor_id",
+        "title",
+        "domain",
+        "variant",
+        "critic_model",
+        "score_originality",
+        "score_feasibility",
+        "score_clarity",
+        "score_impact",
+        "score_specificity",
+        "error",
+        "created_at"
+      ],
+      "dropped": [
+        "raw_response",
+        "reasoning_json"
+      ]
+    },
+    {
+      "path": "appendix/e10_model_idea_scores.csv.gz",
+      "group": "appendix",
+      "source": "results.db:e10_model_idea_scores",
+      "rows": 460,
+      "bytes": 3827,
+      "sha256": "57e33d0c6cade91fecfd88c023abd8953d8bd8baab0cecbb44e96cec28dbf0b3",
+      "columns": [
+        "idea_model",
+        "paper_id",
+        "idea_index",
+        "variant",
+        "critic_model",
+        "score_originality",
+        "score_feasibility",
+        "score_clarity",
+        "score_impact",
+        "score_specificity",
+        "error",
+        "created_at"
+      ],
+      "dropped": [
+        "reasoning_json"
+      ]
+    },
+    {
+      "path": "appendix/e10_deepseek_scores.csv.gz",
+      "group": "appendix",
+      "source": "results.db:e10_deepseek_scores",
+      "rows": 1515,
+      "bytes": 11317,
+      "sha256": "13b8d83df937b43e467f0eb24b356326a591bbbb2ca40b9bd0c37c8a898f35ae",
+      "columns": [
+        "idea_model",
+        "track",
+        "paper_id",
+        "idea_index",
+        "critic_model",
+        "score_originality",
+        "score_feasibility",
+        "score_clarity",
+        "score_impact",
+        "score_specificity",
+        "error",
+        "created_at"
+      ],
+      "dropped": []
+    },
+    {
+      "path": "appendix/e10_fixv2_scores.csv.gz",
+      "group": "appendix",
+      "source": "results.db:e10_fixv2_scores",
+      "rows": 1590,
+      "bytes": 13369,
+      "sha256": "bbd5cba84d6cbea7fb43752ce69a0a84489491e04fca8f271c928bef63478571",
+      "columns": [
+        "kind",
+        "item_id",
+        "idea_model",
+        "track",
+        "domain",
+        "critic_model",
+        "score_originality",
+        "score_feasibility",
+        "score_clarity",
+        "score_impact",
+        "score_specificity",
+        "error",
+        "created_at"
+      ],
+      "dropped": []
+    },
+    {
+      "path": "appendix/e10_fixv3_scores.csv.gz",
+      "group": "appendix",
+      "source": "results.db:e10_fixv3_scores",
+      "rows": 1590,
+      "bytes": 13575,
+      "sha256": "2389abf02d036cf4eaf2e058a253b532dc94f0587b13088150c8da9ca6547342",
+      "columns": [
+        "kind",
+        "item_id",
+        "idea_model",
+        "track",
+        "domain",
+        "critic_model",
+        "score_originality",
+        "score_feasibility",
+        "score_clarity",
+        "score_impact",
+        "score_specificity",
+        "error",
+        "created_at"
+      ],
+      "dropped": []
+    },
+    {
+      "path": "appendix/e12_gap_scores.csv.gz",
+      "group": "appendix",
+      "source": "results.db:e12_gap_scores",
+      "rows": 4933,
+      "bytes": 58237,
+      "sha256": "35089bfe89d4b1c0c56a38a79f5dd3d2e663cb4f16f1b1a47dbd56abd859b4b3",
+      "columns": [
+        "item_id",
+        "grp",
+        "model",
+        "track",
+        "domain",
+        "variant",
+        "critic_model",
+        "score_originality",
+        "score_feasibility",
+        "score_clarity",
+        "score_impact",
+        "score_specificity",
+        "error",
+        "created_at"
+      ],
+      "dropped": []
+    },
+    {
+      "path": "appendix/domain_anchor_pool.csv.gz",
+      "group": "appendix",
+      "source": "results.db:domain_anchor_pool",
+      "rows": 185,
+      "bytes": 18576,
+      "sha256": "6dc1558b7a5225274dc240c705784b05233e5ff2be967ab67c0c3d1980ca3744",
+      "columns": [
+        "anchor_id",
+        "domain",
+        "subdomain",
+        "title",
+        "ss_paper_id",
+        "publication_date",
+        "citation_count",
+        "created_at"
+      ],
+      "dropped": [
+        "idea_abstract",
+        "real_abstract"
+      ]
+    },
+    {
+      "path": "appendix/domain_topic_refs.csv.gz",
+      "group": "appendix",
+      "source": "results.db:domain_topic_refs",
+      "rows": 92,
+      "bytes": 3221,
+      "sha256": "69166f3877c0e7ee3a6936426afbc4a8d99bfa60708eff9a10109a50f1a124d6",
+      "columns": [
+        "query",
+        "domain",
+        "n_refs",
+        "fetched_at"
+      ],
+      "dropped": [
+        "refs_json"
+      ]
+    },
+    {
+      "path": "appendix/prior_probe.csv.gz",
+      "group": "appendix",
+      "source": "results.db:prior_probe",
+      "rows": 550,
+      "bytes": 10221,
+      "sha256": "644ff3ed85f013549685dbc357cd2a474e0ee901c709cbb359254853fa2a6a4d",
+      "columns": [
+        "id",
+        "paper_id",
+        "idea_model",
+        "rouge_l_f1",
+        "rouge_l_p",
+        "rouge_l_r",
+        "jaccard_unigram",
+        "length_ratio",
+        "n_tokens_recitation",
+        "n_tokens_gt",
+        "self_reported_unknown",
+        "error",
+        "created_at"
+      ],
+      "dropped": [
+        "recitation_text"
+      ]
+    },
+    {
+      "path": "appendix/prior_probe_refs.csv.gz",
+      "group": "appendix",
+      "source": "results.db:prior_probe_refs",
+      "rows": 2200,
+      "bytes": 46563,
+      "sha256": "1e5af217f62a1ed97bcb03923855b9752d7f3da40b44a786df96a892e860c93a",
+      "columns": [
+        "id",
+        "paper_id",
+        "idea_model",
+        "rouge_l_f1",
+        "rouge_l_p",
+        "rouge_l_r",
+        "jaccard_unigram",
+        "length_ratio",
+        "n_tokens_recitation",
+        "n_tokens_gt",
+        "ref_year",
+        "ref_domain",
+        "self_reported_unknown",
+        "error",
+        "created_at"
+      ],
+      "dropped": [
+        "recitation_text"
+      ]
+    },
+    {
+      "path": "appendix/e29_nlp_scores.csv.gz",
+      "group": "appendix",
+      "source": "results.db:e29_nlp_scores",
+      "rows": 741,
+      "bytes": 7486,
+      "sha256": "c7cff034b1f59b65b49ecf695f5f38037dedb5dc0f7f3ae94a3b26ea8e76e70d",
+      "columns": [
+        "item_id",
+        "idea_model",
+        "subdomain",
+        "domain",
+        "track",
+        "idea_index",
+        "critic_model",
+        "score_originality",
+        "score_feasibility",
+        "score_clarity",
+        "score_impact",
+        "score_specificity",
+        "error",
+        "created_at"
+      ],
+      "dropped": []
+    },
+    {
+      "path": "appendix/e29_pairwise_llm.csv.gz",
+      "group": "appendix",
+      "source": "results.db:e29_pairwise_llm",
+      "rows": 300,
+      "bytes": 4177,
+      "sha256": "78fc2401b80a6ead7a4eddcefc3ae3c491141e63dcf4395b9adfa3cd3307493b",
+      "columns": [
+        "pair_id",
+        "judge_model",
+        "subfield",
+        "overall",
+        "originality",
+        "feasibility",
+        "specificity",
+        "critic_pref",
+        "created_at"
+      ],
+      "dropped": [
+        "raw_forward",
+        "raw_swap",
+        "telemetry"
+      ]
+    },
+    {
+      "path": "appendix/e31_bo3_ideas.csv.gz",
+      "group": "appendix",
+      "source": "results.db:e31_bo3_ideas",
+      "rows": 360,
+      "bytes": 117507,
+      "sha256": "5145f06561d8050cad31beb77fadbcc531f70fc41b15495381d3475184f35e44",
+      "columns": [
+        "gen_model",
+        "subdomain",
+        "domain",
+        "run_idx",
+        "idea_text",
+        "aux_n_tool_calls",
+        "aux_iters_used",
+        "aux_error",
+        "created_at"
+      ],
+      "dropped": []
+    },
+    {
+      "path": "appendix/e31_bo3_scores.csv.gz",
+      "group": "appendix",
+      "source": "results.db:e31_bo3_scores",
+      "rows": 1080,
+      "bytes": 14113,
+      "sha256": "6b7d9c4ffe762b37b411909866f56d1467c5f16c69cfaa290740460d9e2c42d4",
+      "columns": [
+        "item_id",
+        "gen_model",
+        "subdomain",
+        "domain",
+        "run_idx",
+        "critic_model",
+        "score_originality",
+        "score_feasibility",
+        "score_clarity",
+        "score_impact",
+        "score_specificity",
+        "error",
+        "created_at"
+      ],
+      "dropped": []
+    },
+    {
+      "path": "appendix/e32_recall_ideas.csv.gz",
+      "group": "appendix",
+      "source": "results.db:e32_recall_ideas",
+      "rows": 840,
+      "bytes": 187685,
+      "sha256": "8918b788cfe62fb39d0d3ca8ac8f3ab9796dcf24a206b8fbe8b418a14c3318c4",
+      "columns": [
+        "idea_model",
+        "domain",
+        "subdomain",
+        "idea_index",
+        "idea_text",
+        "created_at"
+      ],
+      "dropped": []
+    },
+    {
+      "path": "appendix/e32_recall_scores.csv.gz",
+      "group": "appendix",
+      "source": "results.db:e32_recall_scores",
+      "rows": 2520,
+      "bytes": 21722,
+      "sha256": "56a80beca11c3d34ce3933386a4d7b57afbb6e3a4aefc35bc7a8857f11a302de",
+      "columns": [
+        "item_id",
+        "idea_model",
+        "subdomain",
+        "domain",
+        "idea_index",
+        "critic_model",
+        "score_originality",
+        "score_feasibility",
+        "score_clarity",
+        "score_impact",
+        "score_specificity",
+        "error",
+        "created_at"
+      ],
+      "dropped": []
+    },
+    {
+      "path": "appendix/e38_replay_ideas.csv.gz",
+      "group": "appendix",
+      "source": "results.db:e38_replay_ideas",
+      "rows": 831,
+      "bytes": 207308,
+      "sha256": "8031c4575489a57dc7d0af21f0ff5e9e8ba7094dfa68efe7552206473a9650a9",
+      "columns": [
+        "idea_model",
+        "domain",
+        "subdomain",
+        "idea_index",
+        "idea_text",
+        "n_refs",
+        "created_at"
+      ],
+      "dropped": []
+    },
+    {
+      "path": "appendix/e38_replay_refs.csv.gz",
+      "group": "appendix",
+      "source": "results.db:e38_replay_refs",
+      "rows": 280,
+      "bytes": 1754,
+      "sha256": "e79db704e66e8635d741ec31e92a58daab6010c8744c9d6cdf7313ba37cd6798",
+      "columns": [
+        "idea_model",
+        "domain",
+        "subdomain",
+        "n_refs",
+        "created_at"
+      ],
+      "dropped": [
+        "refs_json"
+      ]
+    },
+    {
+      "path": "appendix/e38_replay_scores.csv.gz",
+      "group": "appendix",
+      "source": "results.db:e38_replay_scores",
+      "rows": 2493,
+      "bytes": 20894,
+      "sha256": "a5ce60c36edbc07e59790eef9f748620c85bc9bc8db3bbe8cd9e418ecb2c101a",
+      "columns": [
+        "item_id",
+        "idea_model",
+        "subdomain",
+        "domain",
+        "idea_index",
+        "critic_model",
+        "score_originality",
+        "score_feasibility",
+        "score_clarity",
+        "score_impact",
+        "score_specificity",
+        "error",
+        "created_at"
+      ],
+      "dropped": []
+    },
+    {
+      "path": "appendix/dynamic_critic_sweep.csv.gz",
+      "group": "appendix",
+      "source": "results.db:dynamic_critic_sweep",
+      "rows": 1690,
+      "bytes": 27317,
+      "sha256": "8aa8f3cee64f08bdbc261c91a0ac62b7e1b72a19bfd2ba2847c3acdc59dc288d",
+      "columns": [
+        "id",
+        "paper_id",
+        "idea_model",
+        "track",
+        "idea_index",
+        "critic_model",
+        "judge_mode",
+        "score_originality",
+        "score_feasibility",
+        "score_clarity",
+        "score_impact",
+        "score_specificity",
+        "error",
+        "created_at"
+      ],
+      "dropped": [
+        "raw_response",
+        "reasoning_json",
+        "telemetry"
+      ]
+    },
+    {
+      "path": "appendix/dynamic_critic_sweep_ideas.csv.gz",
+      "group": "appendix",
+      "source": "results.db:dynamic_critic_sweep_ideas",
+      "rows": 469,
+      "bytes": 120586,
+      "sha256": "a389513a69598a209ec96ba6c57767529b82685363cd198743e3d0fadcaa1c11",
+      "columns": [
+        "id",
+        "paper_id",
+        "idea_model",
+        "track",
+        "idea_index",
+        "idea_text",
+        "cited_refs",
+        "created_at"
+      ],
+      "dropped": [
+        "telemetry"
+      ]
+    },
+    {
+      "path": "appendix/active_comparison_ideas.csv.gz",
+      "group": "appendix",
+      "source": "results.db:active_comparison_ideas",
+      "rows": 30,
+      "bytes": 13248,
+      "sha256": "b308a1abf3163ad1967dd2fb0565850a5bad05aea78e226db5bbfc03e0da609e",
+      "columns": [
+        "id",
+        "paper_id",
+        "domain",
+        "idea_model",
+        "title",
+        "hypothesis",
+        "error",
+        "created_at"
+      ],
+      "dropped": [
+        "raw_output",
+        "telemetry_json",
+        "trace_json"
+      ]
+    },
+    {
+      "path": "appendix/active_comparison_scores.csv.gz",
+      "group": "appendix",
+      "source": "results.db:active_comparison_scores",
+      "rows": 240,
+      "bytes": 2758,
+      "sha256": "14b32c2926112d80f2d7f326a4b7a195f23525239c12a0de239f02f414e31a7a",
+      "columns": [
+        "id",
+        "paper_id",
+        "idea_model",
+        "critic_model",
+        "judge_mode",
+        "score_originality",
+        "score_feasibility",
+        "score_clarity",
+        "score_impact",
+        "score_specificity",
+        "error",
+        "created_at"
+      ],
+      "dropped": [
+        "raw_response",
+        "reasoning_json",
+        "telemetry_json"
+      ]
+    },
+    {
+      "path": "derived/paper_references.csv.gz",
+      "group": "derived",
+      "source": "papers.references_json + papers.ranked_refs_json",
+      "rows": 11794,
+      "bytes": 299143,
+      "sha256": "2b03a775dbcbcd353fdf3d2572da0f243d94dc700567ca32866e1f781768cc1d",
+      "columns": [
+        "paper_id",
+        "list_kind",
+        "rank",
+        "ss_paper_id",
+        "year",
+        "citation_count",
+        "in_paper_citations",
+        "is_influential"
+      ],
+      "dropped": []
+    },
+    {
+      "path": "derived/static_refs.csv.gz",
+      "group": "derived",
+      "source": "subdomain_refs / domain_topic_refs / e38_replay_refs .refs_json",
+      "rows": 4386,
+      "bytes": 141129,
+      "sha256": "709f72f3e893b63cb6216a0ad84e3918eeecf846798503076a3798a40177f368",
+      "columns": [
+        "source_table",
+        "key",
+        "subdomain",
+        "domain",
+        "rank",
+        "ss_paper_id",
+        "year",
+        "citation_count",
+        "in_paper_citations",
+        "is_influential",
+        "query",
+        "idea_model"
+      ],
+      "dropped": []
+    },
+    {
+      "path": "derived/active_traces.csv.gz",
+      "group": "derived",
+      "source": "subdomain_ideas.telemetry + budget_sweep_ideas*.trace_json",
+      "rows": 101455,
+      "bytes": 15361780,
+      "sha256": "98de102fdff9579847951ea57399f6296982f0ade91ef8059b35b677ee28851e",
+      "columns": [
+        "source_table",
+        "idea_model",
+        "domain",
+        "subdomain",
+        "track",
+        "idea_index",
+        "budget",
+        "iter",
+        "tool",
+        "query",
+        "limit",
+        "n_results",
+        "returned_ss_ids"
+      ],
+      "dropped": []
+    },
+    {
+      "path": "derived/evidence_hits.csv.gz",
+      "group": "derived",
+      "source": "e13_evidence.evidence_json",
+      "rows": 144024,
+      "bytes": 6148601,
+      "sha256": "914eed8ff9bda66d30c1126c2028a7b1ec8ca9bf40869c8dad593e6e2700cb23",
+      "columns": [
+        "item_id",
+        "grp",
+        "cutoff_date",
+        "rank",
+        "query",
+        "ss_paper_id",
+        "year",
+        "publication_date",
+        "citation_count"
+      ],
+      "dropped": []
+    }
+  ],
+  "total_bytes": 39041839,
+  "total_rows": 435770
+}

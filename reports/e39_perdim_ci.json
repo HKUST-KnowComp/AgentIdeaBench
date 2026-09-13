@@ -1,0 +1,337 @@
+{
+ "generated_by": "experiments/e39_perdim_ci.py",
+ "note": "Per-dimension Active-Static deltas. Unit = model (n=28 open-weight paired); aggregation identical to e22/e36. CI = paired bootstrap over models, 5000 resamples, seed 42. Read-only recomputation; adds uncertainty to the point estimates already reported in the paper.",
+ "n_models": 28,
+ "models": [
+  "deepseek/deepseek-r1-0528",
+  "deepseek/deepseek-v4-flash",
+  "deepseek/deepseek-v4-pro",
+  "google/gemma-2-27b-it",
+  "google/gemma-3-27b-it",
+  "google/gemma-4-31b-it",
+  "meta-llama/llama-3.1-8b-instruct",
+  "meta-llama/llama-4-maverick",
+  "minimax/minimax-m2.7",
+  "mistralai/mistral-medium-3.1",
+  "mistralai/mistral-small-24b-instruct-2501",
+  "mistralai/mistral-small-2603",
+  "moonshotai/kimi-k2.5",
+  "moonshotai/kimi-k2.6",
+  "qwen/qwen-2.5-72b-instruct",
+  "qwen/qwen-2.5-7b-instruct",
+  "qwen/qwen3-30b-a3b-instruct-2507",
+  "qwen/qwen3-32b",
+  "qwen/qwen3-8b",
+  "qwen/qwen3-coder",
+  "qwen/qwen3.5-27b",
+  "qwen/qwen3.5-397b-a17b",
+  "qwen/qwen3.5-9b",
+  "xiaomi/mimo-v2.5",
+  "xiaomi/mimo-v2.5-pro",
+  "z-ai/glm-4.5-air",
+  "z-ai/glm-4.6",
+  "z-ai/glm-5.1"
+ ],
+ "per_dimension": {
+  "originality": {
+   "n_models": 28,
+   "static_mean": 4.6697,
+   "active_mean": 4.533,
+   "delta_mean": -0.1367,
+   "delta_median": 0.0562,
+   "delta_ci95": [
+    -0.3758,
+    0.1019
+   ],
+   "wilcoxon_p": 0.4652,
+   "n_improved": 15,
+   "sign_test_p": 0.8506
+  },
+  "feasibility": {
+   "n_models": 28,
+   "static_mean": 4.7679,
+   "active_mean": 5.9753,
+   "delta_mean": 1.2074,
+   "delta_median": 1.2083,
+   "delta_ci95": [
+    1.0429,
+    1.3689
+   ],
+   "wilcoxon_p": 0.0,
+   "n_improved": 28,
+   "sign_test_p": 0.0
+  },
+  "clarity": {
+   "n_models": 28,
+   "static_mean": 5.43,
+   "active_mean": 6.0571,
+   "delta_mean": 0.6272,
+   "delta_median": 0.7062,
+   "delta_ci95": [
+    0.471,
+    0.7802
+   ],
+   "wilcoxon_p": 0.0,
+   "n_improved": 27,
+   "sign_test_p": 0.0
+  },
+  "impact": {
+   "n_models": 28,
+   "static_mean": 4.3667,
+   "active_mean": 4.5942,
+   "delta_mean": 0.2275,
+   "delta_median": 0.4271,
+   "delta_ci95": [
+    0.0168,
+    0.4301
+   ],
+   "wilcoxon_p": 0.0379,
+   "n_improved": 18,
+   "sign_test_p": 0.1849
+  },
+  "specificity": {
+   "n_models": 28,
+   "static_mean": 4.5376,
+   "active_mean": 5.1204,
+   "delta_mean": 0.5828,
+   "delta_median": 0.6458,
+   "delta_ci95": [
+    0.3759,
+    0.7836
+   ],
+   "wilcoxon_p": 0.0001,
+   "n_improved": 23,
+   "sign_test_p": 0.0009
+  }
+ },
+ "per_model_delta": {
+  "deepseek/deepseek-r1-0528": {
+   "originality": 0.1333,
+   "feasibility": 0.8208,
+   "clarity": 0.7,
+   "impact": 0.4292,
+   "specificity": 0.6667
+  },
+  "deepseek/deepseek-v4-flash": {
+   "originality": -0.0292,
+   "feasibility": 1.2042,
+   "clarity": 0.5333,
+   "impact": 0.4042,
+   "specificity": 0.6167
+  },
+  "deepseek/deepseek-v4-pro": {
+   "originality": 0.3333,
+   "feasibility": 0.9625,
+   "clarity": 0.7333,
+   "impact": 0.5667,
+   "specificity": 0.8542
+  },
+  "google/gemma-2-27b-it": {
+   "originality": -1.3125,
+   "feasibility": 0.1833,
+   "clarity": -0.5542,
+   "impact": -0.9667,
+   "specificity": -0.7167
+  },
+  "google/gemma-3-27b-it": {
+   "originality": -0.625,
+   "feasibility": 1.7125,
+   "clarity": 0.3667,
+   "impact": 0.0167,
+   "specificity": 0.2125
+  },
+  "google/gemma-4-31b-it": {
+   "originality": 0.0333,
+   "feasibility": 1.0042,
+   "clarity": 0.6,
+   "impact": 0.1708,
+   "specificity": 0.5917
+  },
+  "meta-llama/llama-3.1-8b-instruct": {
+   "originality": -1.05,
+   "feasibility": 1.2125,
+   "clarity": 0.1,
+   "impact": -0.3083,
+   "specificity": -0.2125
+  },
+  "meta-llama/llama-4-maverick": {
+   "originality": -1.4333,
+   "feasibility": 1.4167,
+   "clarity": 0.2917,
+   "impact": -0.9125,
+   "specificity": -0.1583
+  },
+  "minimax/minimax-m2.7": {
+   "originality": 0.325,
+   "feasibility": 1.2792,
+   "clarity": 0.8375,
+   "impact": 0.4375,
+   "specificity": 0.8542
+  },
+  "mistralai/mistral-medium-3.1": {
+   "originality": 0.0792,
+   "feasibility": 1.5708,
+   "clarity": 0.7125,
+   "impact": 0.6417,
+   "specificity": 0.75
+  },
+  "mistralai/mistral-small-24b-instruct-2501": {
+   "originality": -0.9458,
+   "feasibility": 0.8958,
+   "clarity": 0.1417,
+   "impact": -0.2958,
+   "specificity": -0.1458
+  },
+  "mistralai/mistral-small-2603": {
+   "originality": -0.0917,
+   "feasibility": 1.625,
+   "clarity": 0.9542,
+   "impact": 0.4833,
+   "specificity": 0.8167
+  },
+  "moonshotai/kimi-k2.5": {
+   "originality": 0.6667,
+   "feasibility": 1.6375,
+   "clarity": 1.1083,
+   "impact": 0.9708,
+   "specificity": 1.2083
+  },
+  "moonshotai/kimi-k2.6": {
+   "originality": 0.7167,
+   "feasibility": 1.8042,
+   "clarity": 1.2167,
+   "impact": 0.925,
+   "specificity": 1.3625
+  },
+  "qwen/qwen-2.5-72b-instruct": {
+   "originality": -0.975,
+   "feasibility": 1.1875,
+   "clarity": 0.3708,
+   "impact": -0.5,
+   "specificity": 0.0917
+  },
+  "qwen/qwen-2.5-7b-instruct": {
+   "originality": -1.0021,
+   "feasibility": 0.9667,
+   "clarity": 0.1312,
+   "impact": -0.375,
+   "specificity": -0.2188
+  },
+  "qwen/qwen3-30b-a3b-instruct-2507": {
+   "originality": -0.65,
+   "feasibility": 1.0125,
+   "clarity": 0.4417,
+   "impact": -0.0417,
+   "specificity": 0.3208
+  },
+  "qwen/qwen3-32b": {
+   "originality": -0.3375,
+   "feasibility": 0.2208,
+   "clarity": 0.2083,
+   "impact": -0.1625,
+   "specificity": 0.1292
+  },
+  "qwen/qwen3-8b": {
+   "originality": -0.2917,
+   "feasibility": 0.3792,
+   "clarity": 0.3625,
+   "impact": -0.2042,
+   "specificity": 0.3125
+  },
+  "qwen/qwen3-coder": {
+   "originality": -0.8542,
+   "feasibility": 1.2583,
+   "clarity": 0.4958,
+   "impact": -0.4875,
+   "specificity": 0.2708
+  },
+  "qwen/qwen3.5-27b": {
+   "originality": 0.2542,
+   "feasibility": 1.7875,
+   "clarity": 0.8333,
+   "impact": 0.8208,
+   "specificity": 1.0792
+  },
+  "qwen/qwen3.5-397b-a17b": {
+   "originality": 0.4125,
+   "feasibility": 1.8542,
+   "clarity": 0.8833,
+   "impact": 0.7917,
+   "specificity": 1.1417
+  },
+  "qwen/qwen3.5-9b": {
+   "originality": 0.2083,
+   "feasibility": 1.2167,
+   "clarity": 0.9542,
+   "impact": 0.6625,
+   "specificity": 0.8167
+  },
+  "xiaomi/mimo-v2.5": {
+   "originality": 0.2292,
+   "feasibility": 1.0792,
+   "clarity": 0.775,
+   "impact": 0.4667,
+   "specificity": 0.9042
+  },
+  "xiaomi/mimo-v2.5-pro": {
+   "originality": 0.5333,
+   "feasibility": 1.3417,
+   "clarity": 1.0333,
+   "impact": 0.5958,
+   "specificity": 1.25
+  },
+  "z-ai/glm-4.5-air": {
+   "originality": 0.2042,
+   "feasibility": 1.0667,
+   "clarity": 0.7708,
+   "impact": 0.425,
+   "specificity": 0.625
+  },
+  "z-ai/glm-4.6": {
+   "originality": 0.8083,
+   "feasibility": 1.2,
+   "clarity": 1.2458,
+   "impact": 0.7375,
+   "specificity": 1.3208
+  },
+  "z-ai/glm-5.1": {
+   "originality": 0.8333,
+   "feasibility": 1.9083,
+   "clarity": 1.3125,
+   "impact": 1.0792,
+   "specificity": 1.575
+  }
+ },
+ "reproduction_check_vs_paper": {
+  "originality": {
+   "published": -0.14,
+   "recomputed": -0.1367,
+   "abs_diff": 0.0033,
+   "matches_2dp": true
+  },
+  "feasibility": {
+   "published": 1.21,
+   "recomputed": 1.2074,
+   "abs_diff": 0.0026,
+   "matches_2dp": true
+  },
+  "clarity": {
+   "published": 0.63,
+   "recomputed": 0.6272,
+   "abs_diff": 0.0028,
+   "matches_2dp": true
+  },
+  "impact": {
+   "published": 0.23,
+   "recomputed": 0.2275,
+   "abs_diff": 0.0025,
+   "matches_2dp": true
+  },
+  "specificity": {
+   "published": 0.58,
+   "recomputed": 0.5828,
+   "abs_diff": 0.0028,
+   "matches_2dp": true
+  }
+ }
+}

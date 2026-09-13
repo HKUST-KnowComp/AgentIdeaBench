@@ -1,0 +1,127 @@
+{
+  "_meta": {
+    "created": "2026-07-02",
+    "source": "NeurIPS 2025 Best Papers / Runner-ups / Orals (NeurIPS 2026 decisions not yet released as of 2026-07; ICLR 2026 award papers already in docs/bestpapers.md as anchors 01/11/15)",
+    "selection_policy": "E13-informed: clean-move ideas (assumption inversion / theory surprise / new mechanism), avoiding hot lanes dense with parallel work. cand_09 (Gated Attention) deliberately included as a HIGH containment-risk probe to validate the screener.",
+    "abstract_policy": "idea abstracts rewritten (80-150 words) to state the increment claim explicitly: prevailing assumption X -> this idea claims beyond-X. Rewritten from real SS abstracts, no fabricated numbers."
+  },
+  "candidates": [
+    {
+      "id": "cand_01",
+      "title": "Optimal Mistake Bounds for Transductive Online Learning",
+      "venue": "NeurIPS 2025 Best Paper Runner-up",
+      "subdomain": "Machine Learning / Learning Theory",
+      "ss_paper_id": "51e69b45cbb926520cdbf64db373635e45971a7c",
+      "publication_date": "2025-12-14",
+      "abstract": "For thirty years, the benefit of advance access to the unlabeled instance sequence in online learning has been believed marginal: all known lower bounds on the transductive mistake bound are logarithmic in the Littlestone dimension d. We hypothesize the true separation is polynomial, not logarithmic: the optimal transductive mistake bound is Theta(sqrt(d)). Concretely, we propose to prove an Omega(sqrt(d)) lower bound — an exponential leap over the known Omega(log d) — and a matching O(sqrt(d)) upper bound, improving the long-standing (2/3)d bound. This would establish a quadratic gap between transductive and standard online learning, in sharp contrast to the PAC setting where the two have essentially the same sample complexity. Decisive test: for every d, exhibit a concept class of Littlestone dimension d that is transductively learnable with O(sqrt(d)) mistakes, and prove no algorithm beats Omega(sqrt(d)) in the worst case."
+    },
+    {
+      "id": "cand_02",
+      "title": "Superposition Yields Robust Neural Scaling",
+      "venue": "NeurIPS 2025 Best Paper Runner-up",
+      "subdomain": "Machine Learning / Science of Deep Learning",
+      "ss_paper_id": "a2f9fb38933be56b68544b520cb4d58dde1ec589",
+      "publication_date": "2025-05-15",
+      "abstract": "Neural scaling laws are conventionally attributed to power-law structure in the data: loss falls as a power law because feature frequencies do. We hypothesize the primary driver is instead representation superposition — models encoding more features than they have dimensions. The claim: under weak superposition, power-law loss scaling requires power-law data statistics; but under strong superposition, loss generically scales inversely with model dimension across a broad class of feature-frequency distributions, because the geometric overlap between representation vectors, not the data spectrum, dominates the loss. Test: control the degree of superposition with weight decay in toy models and measure how the scaling exponent changes; verify that open-weight LLMs sit in the strong-superposition regime with approximately 1/width loss scaling; check consistency with Chinchilla scaling. If true, this predicts when scaling laws can be engineered to improve and when they must break down."
+    },
+    {
+      "id": "cand_03",
+      "title": "Why Diffusion Models Don't Memorize: The Role of Implicit Dynamical Regularization in Training",
+      "venue": "NeurIPS 2025 Best Paper (D&B track)",
+      "subdomain": "Machine Learning / Generative Models Theory",
+      "ss_paper_id": "a2356bd17f81684d2c2e9bb00d85741cf9047ddd",
+      "publication_date": "2025-05-23",
+      "abstract": "Highly overparameterized diffusion models are expected to memorize their training data, and their observed generalization is usually credited to explicit regularization or architecture. We hypothesize a different mechanism: implicit dynamical regularization in the training trajectory itself. The claim: there are two distinct timescales — tau_gen, when high-quality generation emerges, which is constant in training-set size n; and tau_mem, when memorization begins, which grows linearly with n — so a window of training times opens up, widening with n, inside which the model generalizes even though it would memorize if trained forever. Prediction: simple early stopping inside this window suffices for generalization in heavily overparameterized models, and beyond a model-dependent threshold n the memorization phase disappears entirely even at infinite training time. Test with U-Nets on real and synthetic data, plus an analytically tractable random-features model in the high-dimensional limit."
+    },
+    {
+      "id": "cand_04",
+      "title": "1000 Layer Networks for Self-Supervised RL: Scaling Depth Can Enable New Goal-Reaching Capabilities",
+      "venue": "NeurIPS 2025 Best Paper",
+      "subdomain": "Machine Learning / Reinforcement Learning",
+      "ss_paper_id": "6a8382ca206560ab17930b3ceb4a77016f6c74d6",
+      "publication_date": "2025-03-19",
+      "abstract": "Reinforcement-learning practice has settled on shallow networks (2-5 layers): depth is widely believed not to help RL and to destabilize training, so scaling efforts target width, data, or ensembles. We hypothesize the opposite for self-supervised goal-conditioned RL: depth is the critical scaling axis. The claim: scaling value/policy networks two orders of magnitude deeper — up to ~1024 layers — does not merely improve success rates (predicted 2x-50x on unsupervised locomotion and manipulation, with no rewards or demonstrations) but qualitatively changes the learned behaviors, unlocking goal-reaching strategies that shallow networks never discover at any width. Decisive test: hold algorithm and data fixed in contrastive goal-conditioned RL, sweep depth from 4 to 1024 layers with residual-style stabilization, and check whether gains track depth specifically, exceeding what width-matched shallow baselines achieve."
+    },
+    {
+      "id": "cand_05",
+      "title": "Does Reinforcement Learning Really Incentivize Reasoning Capacity in LLMs Beyond the Base Model?",
+      "venue": "NeurIPS 2025 Best Paper Runner-up",
+      "subdomain": "Machine Learning / LLM Reasoning",
+      "ss_paper_id": "143e18bfd7c356592e7c1439738a3525d3e16279",
+      "publication_date": "2025-04-18",
+      "abstract": "The field assumes RLVR lets language models self-improve: like classical RL exploration, it should produce genuinely new reasoning abilities beyond the base model. We hypothesize the opposite: current RLVR only re-weights the base model's existing output distribution — sharpening pass@1 while shrinking the support of solvable problems — and creates no new reasoning patterns. Predictions: (1) pass@k curves of base and RLVR models cross — RLVR wins at k=1 but the BASE model wins at large k, across model families, RL algorithms, and math/code/visual-reasoning benchmarks; (2) coverage and perplexity analyses show every RLVR solution path already lies inside the base distribution; (3) distillation from a stronger teacher, unlike RL, genuinely expands the reachable reasoning set. If true, the reasoning capacity of an RLVR model is bounded by its base model, and fundamentally different RL paradigms are needed."
+    },
+    {
+      "id": "cand_06",
+      "title": "Artificial Hivemind: The Open-Ended Homogeneity of Language Models (and Beyond)",
+      "venue": "NeurIPS 2025 Best Paper",
+      "subdomain": "Machine Learning / LLM Evaluation & Society",
+      "ss_paper_id": "9d91473359242c888f21e9c65609943a90613712",
+      "publication_date": "2025-10-27",
+      "abstract": "Output diversity of language models is usually framed as within-model mode collapse and studied on narrow tasks (name or number generation). We hypothesize a stronger, cross-model phenomenon: an artificial hivemind. The claim: on real-world open-ended queries with no ground truth, independently trained models from different organizations produce strikingly similar outputs — inter-model homogeneity even exceeding a single model's self-repetition — implying repeated human exposure to LMs converges thought toward one distribution regardless of vendor. Test: build a large corpus of genuinely open-ended real user queries with a taxonomy of open-endedness, sample across many models, and measure intra- vs inter-model similarity; additionally predict that reward models and LM judges are systematically mis-calibrated to human ratings precisely on generations where human preferences are idiosyncratic, exposing a blind spot of current alignment pipelines."
+    },
+    {
+      "id": "cand_07",
+      "title": "Slow Transition to Low-Dimensional Chaos in Heavy-Tailed Recurrent Neural Networks",
+      "venue": "NeurIPS 2025 Oral",
+      "subdomain": "Machine Learning / Computational Neuroscience",
+      "ss_paper_id": "ec24e170d65434c852bebc0556343bfae4fd2c27",
+      "publication_date": "2025-05-14",
+      "abstract": "RNN theory almost universally assumes Gaussian connectivity, yet synaptic weights in the brain are heavy-tailed. For Levy alpha-stable weights, infinite-size mean-field theory predicts the quiescent state is always unstable — chaos everywhere, no transition to study. We hypothesize this is an artifact of the infinite limit: finite heavy-tailed networks DO have a sharp, analytically predictable quiescent-to-chaos transition that mean-field misses. Claims: (1) the transition gain can be derived for finite N where mean-field breaks down; (2) heavier tails widen the gain regime near the edge of chaos (a slow transition), making criticality robust without fine-tuning; (3) this robustness is bought with reduced attractor Lyapunov dimension — a quantitative tradeoff between dynamical robustness and representational richness. Test: compare predicted transition gains against simulations across tail indices and network sizes; measure Lyapunov dimension along the tail-index axis."
+    },
+    {
+      "id": "cand_08",
+      "title": "Titans: Learning to Memorize at Test Time",
+      "venue": "NeurIPS 2025 Oral",
+      "subdomain": "Machine Learning / Sequence Architectures",
+      "ss_paper_id": "5e7a795d89910634f001cc3a631023f1dd4e2e23",
+      "publication_date": "2024-12-31",
+      "abstract": "Long-context modeling is framed as a binary choice: recurrence compresses history into a fixed state (cheap, lossy) or attention keeps everything (exact, quadratic, bounded). We hypothesize a third primitive: a neural long-term memory that learns to memorize at test time — a deep MLP memory whose weights are updated online, during inference, by gradient steps on a memorization loss, with the surprise (gradient magnitude) deciding what gets stored and momentum/forgetting deciding what decays. Claim: pairing this persistent test-time-learned memory with attention as short-term memory gives an architecture that trains in parallel, infers fast, and scales past 2M-token contexts with higher needle-in-haystack accuracy than Transformers and modern linear recurrent models. Decisive test: language modeling, reasoning, genomics, and time-series benchmarks against attention and linear-recurrence baselines at matched compute, with ablations over where the memory module is inserted."
+    },
+    {
+      "id": "cand_09",
+      "title": "Gated Attention for Large Language Models: Non-linearity, Sparsity, and Attention-Sink-Free",
+      "venue": "NeurIPS 2025 Best Paper (RISK PROBE: gating line is dense with prior art)",
+      "subdomain": "Machine Learning / LLM Architecture",
+      "ss_paper_id": "a295e71055248f4145257ed88f25503a75a78406",
+      "publication_date": "2025-05-10",
+      "abstract": "Gating is everywhere in deep learning — LSTMs, highway networks, state-space models, linear attention — yet its specific effect inside standard softmax attention has never been isolated at scale. We hypothesize that one minimal intervention, a head-specific sigmoid gate applied to the SDPA output, is disproportionately powerful. Claims: the gate (1) inserts the non-linearity missing from attention's low-rank value path, and (2) applies query-dependent sparse modulation that eliminates the attention-sink phenomenon at its source rather than patching it. Predictions: consistent quality gains on dense and MoE models trained on trillions of tokens; markedly improved training stability and tolerance of larger learning rates; and long-context extrapolation improving because attention sinks vanish — while alternative gate placements and non-sparse variants fail to reproduce the effect, isolating the mechanism."
+    },
+    {
+      "id": "cand_10",
+      "title": "Why DPO is a Misspecified Estimator (and How to Fix It)",
+      "venue": "ICLR 2026 Oral",
+      "subdomain": "Machine Learning / LLM Alignment",
+      "ss_paper_id": "63be9df4f7727e32fec3dc766a1cd467b64f461a",
+      "publication_date": "2025-10-23",
+      "abstract": "Direct Preference Optimization is treated as a clean, RL-free shortcut to RLHF: since it optimizes the same preference objective by supervised learning, the field assumes it targets the same solution. We hypothesize this equivalence is false in general. The claim: DPO is secretly a statistical estimator of the reward function within the parametric policy class, so whenever the true preference-generating reward is not realizable by that class, DPO is MISSPECIFIED — and misspecification, not optimization error, is what produces its known pathologies (preference-order reversal, reward degradation, extreme sensitivity to the preference-data distribution). Two-stage RLHF avoids these because, viewed locally, its update is a natural-gradient step in policy space that DPO's supervised surrogate cannot match. Decisive test: characterize the geometry of both objectives for a parametric class, predict exactly when DPO's ordering flips relative to RLHF, and show that adding auxiliary variables to steer the DPO loss toward the natural-gradient direction removes the pathologies — on bandit didactic settings and LLM alignment."
+    },
+    {
+      "id": "cand_11",
+      "title": "Learning Linear Attention in Polynomial Time",
+      "venue": "NeurIPS 2025 (learnability of transformers)",
+      "subdomain": "Machine Learning / Learning Theory",
+      "ss_paper_id": "c1e384e3e1d9015aea7a5f1cb0b4ecc5b59fdca6",
+      "publication_date": "2024-10-14",
+      "abstract": "A decade of transformer theory characterizes what attention CAN express — Boolean circuits, automata, Turing machines — but leaves the harder question untouched: can these computations be LEARNED from data in polynomial time, or is expressivity a dead end without a tractable learning algorithm? We hypothesize the gap is closable for linear attention. The claim: a single-layer linear-attention transformer is exactly a linear predictor in a specific RKHS, so learning it reduces to ordinary linear regression in an expanded feature space and back — yielding the first strong, agnostic PAC learnability result (polynomial time) for a transformer family. Stronger still: one can constructively identify training sets on which every empirical-risk minimizer recovers the data-generating transformer up to trivial symmetry, giving provable generalization to all inputs. Decisive test: prove the RKHS equivalence and the ERM-uniqueness condition, and validate by learning random linear-attention networks, key-value associative memories, and finite-automaton execution to the theory's predicted accuracy."
+    },
+    {
+      "id": "cand_12",
+      "title": "State Entropy Regularization for Robust Reinforcement Learning",
+      "venue": "NeurIPS 2025 Spotlight",
+      "subdomain": "Machine Learning / Reinforcement Learning Theory",
+      "ss_paper_id": "cc5dd7ed24abfa24fdc48aeb5f3fe7e5e7677521",
+      "publication_date": "2025-06-08",
+      "abstract": "State-entropy bonuses are used as an exploration heuristic, justified empirically by better sample complexity; robust-RL theory, meanwhile, targets small uncorrelated perturbations via policy entropy. We hypothesize these two literatures have missed what state entropy actually buys: robustness to STRUCTURED, spatially correlated perturbations — exactly the transfer-learning shifts that standard robust RL ignores. The claim: maximizing state (not policy) entropy provably hedges against correlated reward and transition uncertainty, and this is a qualitatively different guarantee than policy-entropy regularization, which protects only against local uncorrelated noise. We further predict a specific failure mode — the state-entropy robustness advantage degrades as the number of rollouts used for policy evaluation shrinks, whereas policy entropy is insensitive to it. Decisive test: derive formal robustness guarantees for state-entropy-regularized policies under structured reward/transition uncertainty, contrast them dimension-by-dimension with policy entropy, and confirm the rollout-sensitivity prediction empirically."
+    },
+    {
+      "id": "cand_13",
+      "title": "Optimistic Task Inference for Behavior Foundation Models",
+      "venue": "ICLR 2026 Oral",
+      "subdomain": "Machine Learning / Reinforcement Learning",
+      "ss_paper_id": "5d349b172143ba45337405c5d5d1c0738c5b0649",
+      "publication_date": "2025-10-23",
+      "abstract": "Zero-shot RL with Behavior Foundation Models is sold as instant policy retrieval for any test-time reward, but it quietly assumes a reward oracle: you must evaluate the reward over a sizeable inference dataset, or supply its functional form, or pay for labels. We hypothesize the reward oracle is unnecessary — task identity can be inferred purely from environment interaction. The claim: model epistemic uncertainty over the unknown reward as a linear-bandit problem in the BFM's successor-feature space, and act by an optimism criterion (upper-confidence over reward hypotheses) that steers data collection specifically toward disambiguating the task. This converts zero-shot RL from reward-labeled inference into active exploration with a provable regret bound inherited from linear UCB. Decisive test: prove the regret bound via the successor-feature/linear-bandit correspondence, and show that a well-trained BFM identifies and optimizes an unseen reward in a handful of episodes with negligible compute, without ever querying a reward label."
+    }
+  ]
+}
