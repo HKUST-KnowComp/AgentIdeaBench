@@ -110,13 +110,13 @@ input[type="search"]:focus-visible, .seg button:focus-visible, .row:focus-visibl
 
 .table{border:1px solid var(--line); background:var(--surface); box-shadow:var(--shadow)}
 .thead{
-  display:grid; grid-template-columns:34px minmax(150px,1.25fr) 84px minmax(190px,2fr) 64px 74px 58px 26px;
+  display:grid; grid-template-columns:34px minmax(0,1.25fr) 84px minmax(0,2fr) 64px 74px 58px 26px;
   gap:12px; align-items:center; padding:9px 16px;
   border-bottom:1px solid var(--line); background:var(--surface-2);
   font-family:var(--mono); font-size:10.5px; letter-spacing:.08em; text-transform:uppercase; color:var(--faint);
 }
 .row{
-  display:grid; grid-template-columns:34px minmax(150px,1.25fr) 84px minmax(190px,2fr) 64px 74px 58px 26px;
+  display:grid; grid-template-columns:34px minmax(0,1.25fr) 84px minmax(0,2fr) 64px 74px 58px 26px;
   gap:12px; align-items:center; padding:9px 16px;
   border-bottom:1px solid var(--line-soft); cursor:pointer; background:var(--surface);
 }
@@ -133,7 +133,7 @@ input[type="search"]:focus-visible, .seg button:focus-visible, .row:focus-visibl
 }
 .dag{color:var(--closed); font-family:var(--mono); font-size:11px; margin-left:3px}
 .name{font-size:14px; font-weight:500; display:flex; align-items:center;
-  letter-spacing:-.005em; min-width:0; gap:0}
+  letter-spacing:-.005em; min-width:0; gap:0; overflow:hidden}
 .name > span{overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
 .row.best .name::after{flex:none}
 .vendor{font-size:12px; color:var(--muted); display:flex; align-items:center; gap:6px; min-width:0}
@@ -162,9 +162,9 @@ input[type="search"]:focus-visible, .seg button:focus-visible, .row:focus-visibl
 .row:hover .chev{color:var(--active)}
 
 /* narrow screens: drop the two columns that are context rather than result */
-@media (max-width:720px){
-  .thead, .row{grid-template-columns:26px minmax(96px,1.1fr) minmax(70px,1.6fr) 58px 62px 20px;
-    gap:9px; padding:9px 12px}
+@media (max-width:760px){
+  .thead, .row{grid-template-columns:24px minmax(0,1.2fr) minmax(0,1.4fr) 56px 58px 18px;
+    gap:8px; padding:9px 12px}
   .thead > :nth-child(3), .row > :nth-child(3),
   .thead > :nth-child(7), .row > :nth-child(7){display:none}
   .name{font-size:13px}

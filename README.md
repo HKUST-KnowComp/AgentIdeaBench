@@ -12,7 +12,7 @@
 [![Subfields](https://img.shields.io/badge/subfields-100%20%2F%205%20disciplines-6f42c1)](#how-the-benchmark-works)
 
 [**Paper**](https://arxiv.org/abs/2609.07611) ·
-[**Leaderboard**](https://hkust-knowcomp.github.io/AgentIdeaBench/) ·
+[**Leaderboard**](https://moyunxiang.com/agentideabench/) ·
 [**Quickstart**](#quickstart) ·
 [**Evaluate your model**](#evaluate-your-own-model) ·
 [**Data**](#released-data) ·
@@ -100,7 +100,7 @@ budget of 10; it describes behavior, not quality. Held-out closed-source models 
 
 The full board, covering all 66 models scored on the Active track with per-dimension
 scores and standard errors, is at
-[**hkust-knowcomp.github.io/AgentIdeaBench**](https://hkust-knowcomp.github.io/AgentIdeaBench/),
+[**moyunxiang.com/agentideabench**](https://moyunxiang.com/agentideabench/),
 and as a plain table in [`LEADERBOARD.md`](LEADERBOARD.md).
 
 | # | Model | Static | Active | Δ | Turns |

@@ -1,5 +1,10 @@
 # Publishes site/ to GitHub Pages.
 #
+# This is a mirror, not the primary deployment. The leaderboard is served from
+# https://moyunxiang.com/agentideabench/, which is where the README and the page's own
+# canonical link point. Enabling Pages here is optional and changes nothing
+# about that URL.
+#
 # One-time setup, in the repository's Settings -> Pages: set Source to
 # "GitHub Actions". The repository must be public, or the organization must be
 # on a plan that allows Pages for private repositories; otherwise the deploy

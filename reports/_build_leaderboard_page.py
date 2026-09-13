@@ -21,7 +21,31 @@ ROOT = Path(__file__).resolve().parents[1]
 SRC = ROOT / "reports" / "leaderboard_full.json"
 TPL = ROOT / "reports" / "leaderboard_template.html"
 OUT_HTML = ROOT / "site" / "index.html"
+OUT_FRAGMENT = ROOT / "reports" / "leaderboard_fragment.html"
 OUT_MD = ROOT / "LEADERBOARD.md"
+
+# The template is authored as page content, without a document skeleton, because
+# that is what the Artifact publisher expects: it supplies doctype, charset and
+# viewport itself. A plain web server supplies none of them, so a file served
+# straight from GitHub Pages or a personal domain would render in quirks mode
+# with no mobile viewport. build_html therefore wraps the same content in a real
+# document, and build_fragment keeps the unwrapped form for publishing.
+SKELETON = """<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="{desc}">
+<link rel="canonical" href="https://moyunxiang.com/agentideabench/">
+{head}
+</head>
+<body>
+{body}
+</body>
+</html>
+"""
+DESCRIPTION = ("AgentIdeaBench Active-track leaderboard: hypothesis quality for "
+               "every model evaluated with agent-controlled literature search.")
 
 DIMS = ["originality", "feasibility", "clarity", "impact", "specificity"]
 
@@ -71,9 +95,17 @@ def build_html(data, cells):
     # the short one first would leave "6.33_NAME" on the page.
     for k in sorted(subs, key=len, reverse=True):
         html = html.replace(k, subs[k])
+
+    OUT_FRAGMENT.write_text(html)
+
+    # The template's title, font links and stylesheet all sit ahead of the first
+    # markup, so the end of the <style> block is the head/body boundary.
+    cut = html.index("</style>") + len("</style>")
+    head, body = html[:cut], html[cut:]
     OUT_HTML.parent.mkdir(exist_ok=True)
-    OUT_HTML.write_text(html)
-    return len(html)
+    OUT_HTML.write_text(SKELETON.format(
+        desc=DESCRIPTION, head=head.strip(), body=body.strip()))
+    return OUT_HTML.stat().st_size
 
 
 def build_markdown(data, cells):
@@ -148,8 +180,8 @@ def build_markdown(data, cells):
 
     L.append(
         "\nPer-dimension scores, standard errors and an interactive version of "
-        "this table are on the leaderboard page. Row-level scores for every "
-        "model are in `release_data/`.\n")
+        "this table are at <https://moyunxiang.com/agentideabench/>. Row-level scores for every model are in "
+        "`release_data/`.\n")
     L.append(
         "Critic scores are model judgments, not measurements of scientific "
         "merit. Standard errors are not shown here; they are in "
@@ -165,7 +197,8 @@ def main():
     cells = data["n_critic_scores"]
     n_bytes = build_html(data, cells)
     n_rows = build_markdown(data, cells)
-    print(f"wrote {OUT_HTML.relative_to(ROOT)}  {n_bytes:,} bytes")
+    print(f"wrote {OUT_HTML.relative_to(ROOT)}  {n_bytes:,} bytes  (standalone document)")
+    print(f"wrote {OUT_FRAGMENT.relative_to(ROOT)}  (unwrapped, for the artifact publisher)")
     print(f"wrote {OUT_MD.relative_to(ROOT)}  {n_rows} rows")
 
 
